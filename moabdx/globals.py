@@ -1,7 +1,7 @@
 # Jackson Coxson
 
 _api_key = ""
-_dx_url = "https://moabdx.com/api/v1/"
+_dx_url = "https://api.moabdx.com/"
 
 
 def login(key: str):

@@ -15,3 +15,4 @@ dependencies = [
 
 [project.urls]
 Home = "https://moabdx.com"
+Source = "https://github.com/MoabDX/moabdx-py"

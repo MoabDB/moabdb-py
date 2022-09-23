@@ -2,4 +2,5 @@
 
 import moabdx as mdx
 
-mdx.hello()
+print(mdx.globals._dx_url)
+print(mdx.check_version())
