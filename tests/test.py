@@ -1,6 +1,8 @@
 # Jackson Coxson
 
 import moabdx as mdx
+from moabdx import protocol
 
-print(mdx.globals._dx_url)
-print(mdx.check_version())
+r = protocol.Reqres(1, 4, [1, 2, 3, 4], auth="yarhar")
+b6 = r.serialize()
+print(b6)
