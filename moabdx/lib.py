@@ -6,7 +6,7 @@ from . import __version__
 
 
 def hello():
-    print("Welcome to Moab, where all data is exchanged!")
+    print("Welcome to Moab, where all data is exchanged!!")
 
 
 def check_version() -> bool:
