@@ -1,14 +1,30 @@
 # Jackson Coxson
 
 from typing import List
+from enum import Enum
 import base64
 
 
+class Opcode(Enum):
+    # opcodes
+    ReqEpochTime = 0
+    ResEpochTime = 1
+    EndConnection = 2
+    ClientPubKey = 3
+    ReqFinData = 4
+    ResFinData = 5
+
+    # request errors
+    InvalidBase64 = 50
+    InvalidHeader = 51
+    BadAuth = 52
+    InvalidBody = 53
+
+
 class Reqres:
-    def __init__(self, version: int, op: int, body, auth: str = None):
+    def __init__(self, version: int, op: Opcode, body, auth: str = None):
         """
         Initializes a request/response packet
-
         """
         self.version = version
         self.op = op
