@@ -9,7 +9,7 @@ class DataType(Enum):
 
 
 class DataRequest:
-    def __init__(self, data_type: DataType = None, ticker: str = None, intraday: bool = False, start: int = None, end: int = None, raw_bytes: bytearray = None):
+    def __init__(self, data_type: DataType = None, ticker: str = None, intraday: bool = False, start: int = None, end: int = None, raw_bytes: bytearray = None, op=None):
         if raw_bytes is not None:
             # Ensure the decoded bytes is long enough
             if len(raw_bytes) < 11:
@@ -67,7 +67,7 @@ class DataRequest:
 
 
 class DataResponse:
-    def __init__(self, success: bool = True, data: bytearray = None, raw_bytes: bytearray = None):
+    def __init__(self, success: bool = True, data: bytearray = None, raw_bytes: bytearray = None, op=None):
         if raw_bytes is not None:
             if len(raw_bytes) < 2:
                 raise Exception("Not enough bytes")

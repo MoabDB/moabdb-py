@@ -59,7 +59,7 @@ class Reqres:
             if serializer is None:
                 self.body = None
             else:
-                self.body = serializer(raw_bytes=body_bytes)
+                self.body = serializer(raw_bytes=body_bytes, op=1)
 
             return
 
