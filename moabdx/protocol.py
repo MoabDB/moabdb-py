@@ -23,7 +23,8 @@ class Opcode(Enum):
 
 
 OpcodeDeserializers = {
-    Opcode.ReqFinData: body.DataRequest
+    Opcode.ReqFinData: body.DataRequest,
+    Opcode.ResFinData: body.DataResponse,
 }
 
 

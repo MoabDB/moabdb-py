@@ -64,3 +64,24 @@ class DataRequest:
         buffer += self.start.to_bytes(4, 'little')
         buffer += self.end.to_bytes(4, 'little')
         return buffer
+
+
+class DataResponse:
+    def __init__(self, success: bool = True, data: bytearray = None, raw_bytes: bytearray = None):
+        if raw_bytes is not None:
+            if len(raw_bytes) < 2:
+                raise Exception("Not enough bytes")
+
+            if raw_bytes[0] == 0:
+                self.success = False
+            else:
+                self.success = True
+
+            self.data = raw_bytes[1:]
+            return
+
+        if data is None:
+            raise Exception("Provide required arguments")
+
+        self.data = data
+        self.success = success
