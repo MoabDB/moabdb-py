@@ -2,8 +2,13 @@
 
 from typing import List
 from enum import Enum
-import base64
+
 from . import body
+from . import globals
+from __future__ import annotations
+
+import base64
+import requests
 
 
 class Opcode(Enum):
@@ -88,3 +93,11 @@ class Reqres:
 
         pls = base64.b64encode(buf_len)
         return pls.decode('ascii')
+
+    def send(self) -> Reqres:
+        s = self.serialize()
+        response = requests.get(globals._dx_url, headers={'x-req': s})
+        if response.status_code != 200:
+            raise Exception("Non-200 error code")
+        decoded = base64.b64decode(response.text)
+        return (Reqres(raw_bytes=decoded))
