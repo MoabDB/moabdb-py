@@ -34,7 +34,7 @@ class Reqres:
     def serialize(self) -> str:
         buffer = bytearray([])
         buffer.append(self.version)
-        buffer.append(self.op)
+        buffer.append(self.op.value)
         if self.auth is None:
             buffer.append(0)
         else:
@@ -50,8 +50,49 @@ class Reqres:
         return pls.decode('ascii')
 
 
+class DataType(Enum):
+    Stocks = 0
+    Options = 1
+
+
 class DataRequest:
-    def __init__(self, data_type: int, ticker: str, intraday: bool, start: int, end: int):
+    def __init__(self, data_type: DataType = None, ticker: str = None, intraday: bool = False, start: int = None, end: int = None, raw_bytes: bytearray = None):
+        if raw_bytes is not None:
+            # Ensure the decoded bytes is long enough
+            if len(raw_bytes) < 11:
+                raise Exception("Not enough bytes")
+
+            self.data_type = DataType(raw_bytes[0])
+            ticker_len = raw_bytes[1]
+
+            # Ensure the decoded bytes is long enough
+            if len(raw_bytes) < 11 + ticker_len:
+                raise Exception("Not enough bytes")
+
+            # Convert ticker bytes to string
+            ticker_bytes = raw_bytes[2:(2 + ticker_len)]
+            self.ticker = ticker_bytes.decode('ascii')
+
+            # Convert intraday to bool
+            intraday = raw_bytes[2 + ticker_len]
+            if intraday == 0:
+                self.intraday = False
+            else:
+                self.intraday = True
+
+            # Get the start bytes
+            start_bytes = raw_bytes[(3 + ticker_len):(7 + ticker_len)]
+            self.start = int.from_bytes(start_bytes, 'little')
+
+            # Get the end bytes
+            end_bytes = raw_bytes[(7 + ticker_len):(11 + ticker_len)]
+            self.end = int.from_bytes(end_bytes, 'little')
+
+            return
+
+        if data_type is None or ticker is None or start is None or end is None:
+            raise Exception("Provide required arguments")
+
         self.data_type = data_type
         self.ticker = ticker
         self.intraday = intraday
@@ -60,7 +101,7 @@ class DataRequest:
 
     def serialize(self) -> bytearray:
         buffer = bytearray([])
-        buffer.append(self.data_type)
+        buffer.append(self.data_type.value)
         buffer.append(len(self.ticker))
         buffer.extend(self.ticker.encode())
         if (self.intraday):
