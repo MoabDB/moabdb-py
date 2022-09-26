@@ -1,18 +1,15 @@
 # Jackson Coxson
 
 import base64
+import io
+import pandas as pd
 import moabdx as mdx
 from moabdx import protocol, body
 import requests
 
 bdy = body.DataRequest(body.DataType.Stocks,
-                       "APPL", False, 6969, 12345)
+                       "AAPL", False, 1325381285, 1577842085)
 
 req = protocol.Reqres(1, protocol.Opcode.ReqFinData, bdy)
-
-s_req = req.serialize()
-bs_req = base64.b64decode(s_req)
-
-parsed = protocol.Reqres(raw_bytes=bs_req)
-
-assert parsed.serialize() == s_req
+df = pd.read_parquet(io.BytesIO(req.send().body.data))
+print(df)

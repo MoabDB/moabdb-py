@@ -1,11 +1,11 @@
 # Jackson Coxson
+from __future__ import annotations
 
 from typing import List
 from enum import Enum
 
 from . import body
 from . import globals
-from __future__ import annotations
 
 import base64
 import requests
@@ -96,8 +96,10 @@ class Reqres:
 
     def send(self) -> Reqres:
         s = self.serialize()
-        response = requests.get(globals._dx_url, headers={'x-req': s})
+        response = requests.get(
+            globals._dx_url + 'request/', headers={'x-req': s})
         if response.status_code != 200:
+            print(response.status_code)
             raise Exception("Non-200 error code")
         decoded = base64.b64decode(response.text)
         return (Reqres(raw_bytes=decoded))
