@@ -1,6 +1,7 @@
 # Jackson Coxson
 
 from enum import Enum
+from .protocol import RequestError
 
 
 class DataType(Enum):
@@ -13,14 +14,14 @@ class DataRequest:
         if raw_bytes is not None:
             # Ensure the decoded bytes is long enough
             if len(raw_bytes) < 11:
-                raise Exception("Not enough bytes")
+                raise Exception(RequestError.InvalidBody)
 
             self.data_type = DataType(raw_bytes[0])
             ticker_len = raw_bytes[1]
 
             # Ensure the decoded bytes is long enough
             if len(raw_bytes) < 11 + ticker_len:
-                raise Exception("Not enough bytes")
+                raise Exception(RequestError.InvalidBody)
 
             # Convert ticker bytes to string
             ticker_bytes = raw_bytes[2:(2 + ticker_len)]
@@ -44,7 +45,7 @@ class DataRequest:
             return
 
         if data_type is None or ticker is None or start is None or end is None:
-            raise Exception("Provide required arguments")
+            raise Exception(RequestError.InvalidBody)
 
         self.data_type = data_type
         self.ticker = ticker
@@ -70,7 +71,7 @@ class DataResponse:
     def __init__(self, success: bool = True, data: bytearray = None, raw_bytes: bytearray = None, op=None):
         if raw_bytes is not None:
             if len(raw_bytes) < 2:
-                raise Exception("Not enough bytes")
+                raise Exception(RequestError.InvalidBody)
 
             if raw_bytes[0] == 0:
                 self.success = False
@@ -81,7 +82,7 @@ class DataResponse:
             return
 
         if data is None:
-            raise Exception("Provide required arguments")
+            raise Exception(RequestError.InvalidBody)
 
         self.data = data
         self.success = success
