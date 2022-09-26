@@ -1,14 +1,14 @@
 # Jackson Coxson
 
-import base64
 import io
 import pandas as pd
-import moabdx as mdx
 from moabdx import protocol, body
-import requests
+from dateutil import parser
 
+start = int(parser.parse("2012-01-01").timestamp())
+end = int(parser.parse("2020-01-01").timestamp())
 bdy = body.DataRequest(body.DataType.Stocks,
-                       "AAPL", False, 1325381285, 1577842085)
+                       "gme", False, start, end)
 
 req = protocol.Reqres(1, protocol.Opcode.ReqFinData, bdy)
 df = pd.read_parquet(io.BytesIO(req.send().body.data))
