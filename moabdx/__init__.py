@@ -5,3 +5,4 @@ from .lib import *
 from .globals import *
 from .protocol import *
 from .body import *
+from .errors import *

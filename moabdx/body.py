@@ -1,7 +1,7 @@
 # Jackson Coxson
 
 from enum import Enum
-from .protocol import RequestError
+from .errors import RequestError, InternalError
 
 
 class DataType(Enum):

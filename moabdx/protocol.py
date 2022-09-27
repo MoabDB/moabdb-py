@@ -6,6 +6,7 @@ from enum import Enum
 
 from . import body
 from . import globals
+from .errors import RequestError, InternalError
 
 import base64
 import requests
@@ -18,21 +19,6 @@ class Opcode(Enum):
     ClientPubKey = 0x3
     ReqFinData = 0x4
     ResFinData = 0x5
-
-
-class InternalError(Enum):
-    Unimplmented = 0x30
-    CompressData = 0x31
-    DatabaseConnection = 0x32
-    UnknownError = 0x4f
-
-
-class RequestError(Enum):
-    InvalidBase64 = 0x50
-    InvalidHeader = 0x51
-    BadAuth = 0x52
-    InvalidBody = 0x53
-    UnknownError = 0x6f
 
 
 OpcodeDeserializers = {
