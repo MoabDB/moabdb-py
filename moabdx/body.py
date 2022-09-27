@@ -62,8 +62,8 @@ class DataRequest:
             buffer.append(1)
         else:
             buffer.append(0)
-        buffer += self.start.to_bytes(4, 'little')
-        buffer += self.end.to_bytes(4, 'little')
+        buffer += int(self.start).to_bytes(4, 'little')
+        buffer += int(self.end).to_bytes(4, 'little')
         return buffer
 
 
