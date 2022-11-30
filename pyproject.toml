@@ -3,14 +3,15 @@ requires = ["flit_core >=3.2,<4"]
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "moabdx"
+name = "moabdb"
 authors = [{name = "Jackson Coxson", email = "jkcoxson@gmail.com"}]
 readme = "README.md"
 license = {file = "LICENSE"}
 classifiers = ["License :: OSI Approved :: MIT License"]
 dynamic = ["version", "description"]
 dependencies = [
-    "pandas"
+    "pandas",
+    "protobuf"
 ]
 
 [project.urls]

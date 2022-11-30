@@ -1,4 +1,4 @@
-# Jackson Coxson
+# MoabDB
 
 import requests
 from . import globals
@@ -13,5 +13,5 @@ def check_version() -> bool:
     """
     Checks the server's version, compairing the current version
     """
-    res = requests.get(globals._dx_url + 'version/')
+    res = requests.get(globals._dx_url + 'client_version/')
     return (res.text == __version__)
