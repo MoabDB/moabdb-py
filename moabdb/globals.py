@@ -21,7 +21,7 @@ def login(username: str, key: str):
 
 def set_dx_url(url: str):
     """
-    Sets the URL for the MoabDX API
+    Sets the URL for the MoabDB API
     Only useful for testing
     :param url: The URL to use
     :return: None

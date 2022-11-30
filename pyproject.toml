@@ -15,5 +15,5 @@ dependencies = [
 ]
 
 [project.urls]
-Home = "https://moabdx.com"
-Source = "https://github.com/MoabDX/moabdx-py"
+Home = "https://moabdb.com"
+Source = "https://github.com/MoabDB/moabdb-py"
