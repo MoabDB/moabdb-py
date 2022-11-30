@@ -4,7 +4,7 @@ import requests
 from . import globals
 from . import __version__
 from . import protocol_pb2
-from base64 import b64encode
+from base64 import b64encode, b64decode
 
 
 def hello():
@@ -30,3 +30,5 @@ def send_request(request: protocol_pb2.Request) -> protocol_pb2.Response:
         'x-req': b64encode(s)
     }
     res = requests.get(globals._dx_url + 'request/v1/', headers=headers)
+    res = protocol_pb2.Response().FromString(b64decode(res.text))
+    return res

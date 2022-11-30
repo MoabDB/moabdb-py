@@ -2,7 +2,7 @@
 
 _api_key = ""
 _api_username = ""
-_dx_url = "https://api.moabdx.com/"
+_dx_url = "https://api.moabdb.com/"
 
 
 def login(username: str, key: str):
