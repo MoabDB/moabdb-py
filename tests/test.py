@@ -1,5 +1,7 @@
 # Jackson Coxson
 
-from moabdb.globals import login
+from moabdb import protocol_pb2, send_request
 
-login("jimmy", "fjjVK3BTxcVCTnAdTfOj28iiX1Fop5mT")
+req = protocol_pb2.Request()
+
+send_request(req)

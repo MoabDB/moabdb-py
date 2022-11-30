@@ -3,4 +3,4 @@ __version__ = "0.1.0"
 
 from .lib import *
 from .globals import *
-from .protocol import *
+from .protocol_pb2 import *
