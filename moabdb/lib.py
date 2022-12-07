@@ -4,7 +4,7 @@ import requests
 from . import globals
 from . import __version__
 from . import protocol_pb2
-from .timewindows import get_unix_dates
+from .timewindows import _get_unix_dates
 
 
 from base64 import b64encode, b64decode
@@ -35,7 +35,7 @@ def _check_access() -> bool:
         return False
 
 
-def send_request(request: protocol_pb2.Request) -> protocol_pb2.Response:
+def _send_request(request: protocol_pb2.Request) -> protocol_pb2.Response:
     """
     Sends a request to the MoabDB API
     :param Request: The request to send
@@ -58,7 +58,7 @@ def _server_req(ticker, start, end, datatype):
     req.end = end
     req.datatype = datatype
 
-    res = send_request(req)
+    res = _send_request(req)
 
     if res.code == 200:
         # Place data into a dataframe
@@ -104,9 +104,11 @@ def get_equity(tickers, sample="1m",
             print("Error: Subscription required to access intraday data")
             intraday = False
             equity_freq = "daily_stocks"
+    else:
+        equity_freq = "daily_stocks"
 
     # String time to integer time
-    start_tm, end_tm = get_unix_dates(sample, start, end)
+    start_tm, end_tm = _get_unix_dates(sample, start, end)
 
     # Single ticker request
     if isinstance(tickers, str):
