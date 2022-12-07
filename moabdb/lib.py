@@ -4,7 +4,8 @@ import requests
 from . import globals
 from . import __version__
 from . import protocol_pb2
-from . import convert_seconds, get_seconds_w_freq, time_window
+from .timewindows import get_sample_dts
+
 
 from base64 import b64encode, b64decode
 import pandas as pd
@@ -105,7 +106,7 @@ def get_equity(tickers, sample="5d",
             equity_freq = "daily_stocks"
 
     # String time to integer time
-    start_tm, end_tm = _request_window(sample_len, start, end)
+    start_tm, end_tm = get_sample_dts(sample_len, start, end)
 
     # Single ticker request
     if isinstance(tickers, str):

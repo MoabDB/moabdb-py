@@ -8,7 +8,7 @@ def convert_seconds(date_string):
     tm = (utc_time - datetime(1970, 1, 1)).total_seconds()
     return int(tm)   
 
-def get_seconds_w_freq(sample_len, base_time):
+def convert_seconds_w_freq(sample_len, base_time):
     """
         Provide time frequency and base time, 
             returns offset time.
@@ -33,7 +33,7 @@ def get_seconds_w_freq(sample_len, base_time):
     return(new_time_secs)
 
 
-def time_window(sample_len, start_dt, end_dt):
+def get_sample_dts(sample_len, start_dt, end_dt):
     # User wants a sample window of a specific length and ending today
     if (sample_len is not None) & (end_dt is None) & (start_dt is None):
         today = datetime.now().strftime("%Y-%m-%d")
