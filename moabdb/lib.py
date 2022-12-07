@@ -120,6 +120,7 @@ def get_equity(tickers, sample="1m",
             equity_freq = "daily_stocks"
     else:
         equity_freq = "daily_stocks"
+        columns = _daily_columns
 
     # String time to integer time
     start_tm, end_tm = _get_unix_dates(sample, start, end)
@@ -136,10 +137,10 @@ def get_equity(tickers, sample="1m",
             compile_tickers.append(_server_req(
                 str.upper(tic), start_tm, end_tm, equity_freq))
         return_db = pd.concat(compile_tickers)
-        return_db = return_db.set_index(['Ticker', 'Date']).unstack(0)
+        return_db = return_db.set_index(['symbol', 'date']).unstack(0)
 
     # Unknown ticker request
     else:
         raise errors.MoabRequestError("Invalid window type")
 
-    return (return_db)
+    return (return_db[columns])
