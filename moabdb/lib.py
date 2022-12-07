@@ -58,7 +58,7 @@ def _server_req(ticker, start, end, datatype):
 
     res = _send_request(req)
 
-    if res.code == 200:
+    if res.status_code == 200:
         # Place data into a dataframe
         pq_file = io.BytesIO(res.data)
         df = pd.read_parquet(pq_file)
