@@ -4,7 +4,7 @@ import requests
 from . import globals
 from . import __version__
 from . import protocol_pb2
-from . import get_unix_dates
+from .timewindows import get_unix_dates
 
 
 from base64 import b64encode, b64decode
