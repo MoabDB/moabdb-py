@@ -64,7 +64,7 @@ def _server_req(ticker, start, end, datatype):
         df = pd.read_parquet(pq_file)
         return (df)
     else:
-        print(res.code)
+        print(res.status_code)
         print(res.message)
 
 
