@@ -120,7 +120,7 @@ def get_equity(tickers, sample="1m",
             equity_freq = "daily_stocks"
     else:
         equity_freq = "daily_stocks"
-        columns = _daily_columns
+        columns = globals._daily_columns
 
     # String time to integer time
     start_tm, end_tm = _get_unix_dates(sample, start, end)
