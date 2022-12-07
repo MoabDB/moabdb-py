@@ -46,9 +46,12 @@ def _send_request(request: protocol_pb2.Request) -> protocol_pb2.Response:
         'x-req': b64encode(s)
     }
     res = requests.get(globals._dx_url + 'request/v1/', headers=headers)
-    res = protocol_pb2.Response().FromString(b64decode(res.text))
-    return res
-    
+    if res.status_code == 200:
+        res = protocol_pb2.Response().FromString(b64decode(res.text))
+        return res
+    else:
+        print("Jacksons problem")
+
 def _server_req(ticker, start, end, datatype):
     # Request data from moabdb server
     req = protocol_pb2.Request()
