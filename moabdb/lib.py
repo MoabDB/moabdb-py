@@ -1,6 +1,7 @@
 # MoabDB
 
 import requests
+import io
 from . import globals
 from . import __version__
 from . import protocol_pb2
@@ -49,6 +50,7 @@ def _send_request(request: protocol_pb2.Request) -> protocol_pb2.Response:
     headers = {
         'x-req': b64encode(s)
     }
+
     try:
         res = requests.get(globals._dx_url + 'request/v1/', headers=headers)
         if res.status_code != 200:
@@ -58,7 +60,6 @@ def _send_request(request: protocol_pb2.Request) -> protocol_pb2.Response:
         return res
     except:
         raise errors.MoabHttpError("Unable to connect to server")
-
 
 def _server_req(ticker, start, end, datatype):
     # Request data from moabdb server
