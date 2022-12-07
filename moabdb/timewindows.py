@@ -1,6 +1,6 @@
 import re
 import requests
-from pandas import DateOffset
+import pandas as pd
 from datetime import datetime
 
 def to_unix_epoch(date_string):
@@ -22,13 +22,13 @@ def to_unix_w_freq(sample_len, base_time, base_type):
     base_timestamp = pd.Timestamp(base_time, unit='s')
 
     if str.upper(tm_unit) == 'D':
-        new_time = base_timestamp + DateOffset(days=tm_freq)
+        new_time = base_timestamp + pd.DateOffset(days=tm_freq)
     elif str.upper(tm_unit) == 'W':
-        new_time = base_timestamp + DateOffset(weeks=tm_freq)
+        new_time = base_timestamp + pd.DateOffset(weeks=tm_freq)
     elif str.upper(tm_unit) == 'M':
-        new_time = base_timestamp + DateOffset(months=tm_freq)
+        new_time = base_timestamp + pd.DateOffset(months=tm_freq)
     elif str.upper(tm_unit) == 'Y':
-        new_time = base_timestamp + DateOffset(years=tm_freq)
+        new_time = base_timestamp + pd.DateOffset(years=tm_freq)
     else:
         print("Unknown time unit, accepts: D, W, M, Y")
     return(new_time.timestamp())
