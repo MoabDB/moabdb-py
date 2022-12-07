@@ -33,7 +33,7 @@ def to_unix_w_freq(sample_len, base_time, base_type):
         print("Unknown time unit, accepts: D, W, M, Y")
     return(new_time.timestamp())
 
-def get_sample_dates(sample_len, start_dt, end_dt):
+def get_unix_dates(sample_len, start_dt, end_dt):
     # User provided sample length ...
 
     # ... but didn't provide anything else --> get recent sample

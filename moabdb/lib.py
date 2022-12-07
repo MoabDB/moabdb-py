@@ -4,7 +4,7 @@ import requests
 from . import globals
 from . import __version__
 from . import protocol_pb2
-from . import get_sample_dates
+from . import get_unix_dates
 
 
 from base64 import b64encode, b64decode
@@ -106,7 +106,7 @@ def get_equity(tickers, sample="1m",
             equity_freq = "daily_stocks"
 
     # String time to integer time
-    start_tm, end_tm = get_sample_dts(sample_len, start, end)
+    start_tm, end_tm = get_unix_dates(sample_len, start, end)
 
     # Single ticker request
     if isinstance(tickers, str):
