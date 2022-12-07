@@ -106,7 +106,7 @@ def get_equity(tickers, sample="1m",
             equity_freq = "daily_stocks"
 
     # String time to integer time
-    start_tm, end_tm = get_unix_dates(sample_len, start, end)
+    start_tm, end_tm = get_unix_dates(sample, start, end)
 
     # Single ticker request
     if isinstance(tickers, str):
