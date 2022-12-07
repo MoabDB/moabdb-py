@@ -1,9 +1,10 @@
-# MoabDB 
+# MoabDB
 
 import requests
 from . import globals
 from . import __version__
 from . import protocol_pb2
+from . import errors
 from .timewindows import _get_unix_dates
 
 
@@ -19,8 +20,11 @@ def _check_version() -> bool:
     """
     Checks the server's version, compairing the current version
     """
-    res = requests.get(globals._dx_url + 'client_version/')
-    return (res.text == __version__)
+    try:
+        res = requests.get(globals._dx_url + 'client_version/')
+        return (res.text == __version__)
+    except:
+        raise errors.MoabHttpError("Unable to connect to server")
 
 
 def _check_access() -> bool:
@@ -45,10 +49,17 @@ def _send_request(request: protocol_pb2.Request) -> protocol_pb2.Response:
     headers = {
         'x-req': b64encode(s)
     }
-    res = requests.get(globals._dx_url + 'request/v1/', headers=headers)
-    res = protocol_pb2.Response().FromString(b64decode(res.text))
-    return res
-    
+    try:
+        res = requests.get(globals._dx_url + 'request/v1/', headers=headers)
+        if res.status_code != 200:
+            raise errors.MoabRequestError(
+                "Server returned error code: " + str(res.status_code))
+        res = protocol_pb2.Response().FromString(b64decode(res.text))
+        return res
+    except:
+        raise errors.MoabHttpError("Unable to connect to server")
+
+
 def _server_req(ticker, start, end, datatype):
     # Request data from moabdb server
     req = protocol_pb2.Request()
@@ -62,11 +73,14 @@ def _server_req(ticker, start, end, datatype):
     if res.code == 200:
         # Place data into a dataframe
         pq_file = io.BytesIO(res.data)
-        df = pd.read_parquet(pq_file)
-        return (df)
+        try:
+            df = pd.read_parquet(pq_file)
+            return (df)
+        except:
+            raise errors.MoabResponseError("Server returned invalid data")
     else:
-        print(res.code)
-        print(res.message)
+        raise errors.MoabRequestError(
+            "Server returned error code: " + str(res.code))
 
 
 def get_equity(tickers, sample="1m",
@@ -125,7 +139,6 @@ def get_equity(tickers, sample="1m",
 
     # Unknown ticker request
     else:
-        # TODO: Add error code
-        print("Error accessing tickers: Enter ticker or list of tickers")
+        raise errors.MoabRequestError("Invalid window type")
 
     return (return_db)
