@@ -47,7 +47,8 @@ def _send_request(request: protocol_pb2.Request) -> protocol_pb2.Response:
     }
     res = requests.get(globals._dx_url + 'request/v1/', headers=headers)
     res = protocol_pb2.Response().FromString(b64decode(res.text))
-
+    return res
+    
 def _server_req(ticker, start, end, datatype):
     # Request data from moabdb server
     req = protocol_pb2.Request()
@@ -58,13 +59,13 @@ def _server_req(ticker, start, end, datatype):
 
     res = _send_request(req)
 
-    if res.status_code == 200:
+    if res.code == 200:
         # Place data into a dataframe
         pq_file = io.BytesIO(res.data)
         df = pd.read_parquet(pq_file)
         return (df)
     else:
-        print(res.status_code)
+        print(res.code)
         print(res.message)
 
 
