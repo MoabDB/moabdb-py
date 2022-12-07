@@ -12,7 +12,9 @@ dynamic = ["version", "description"]
 dependencies = [
     "pandas",
     "protobuf",
-    "requests"
+    "requests",
+    "pyarrow",
+    "io"
 ]
 
 [project.urls]
