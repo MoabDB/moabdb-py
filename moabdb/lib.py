@@ -4,7 +4,7 @@ import requests
 from . import globals
 from . import __version__
 from . import protocol_pb2
-from .timewindows import get_sample_dts
+from . import get_sample_dts
 
 
 from base64 import b64encode, b64decode
@@ -70,7 +70,7 @@ def _server_req(ticker, start, end, datatype):
         print(res.message)
 
 
-def get_equity(tickers, sample="5d",
+def get_equity(tickers, sample="1m",
                start=None, end=None,
                intraday=False):
     """
