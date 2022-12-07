@@ -1,6 +1,7 @@
 # MoabDB 
 
 import requests
+import io
 from . import globals
 from . import __version__
 from . import protocol_pb2
