@@ -3,8 +3,8 @@
 _api_key = ""
 _api_username = ""
 _dx_url = "https://api.moabdb.com/"
-
 _daily_columns = ['symbol','date','close','open', 'high', 'low', 'volume']
+
 #intra_columns = ['']
 
 def login(username: str, key: str):
