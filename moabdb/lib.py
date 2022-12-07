@@ -1,7 +1,6 @@
 # MoabDB 
 
 import requests
-import io
 from . import globals
 from . import __version__
 from . import protocol_pb2
@@ -56,10 +55,10 @@ def _send_request(request: protocol_pb2.Request) -> protocol_pb2.Response:
 def _server_req(ticker, start, end, datatype):
     # Request data from moabdb server
     req = protocol_pb2.Request()
-    req.symbol = "AAPL"
-    req.start = 1638835200
-    req.end = 1670371200
-    req.datatype = "daily_stocks"
+    req.symbol = ticker
+    req.start = start
+    req.end = end
+    req.datatype = datatype
 
     res = _send_request(req)
 

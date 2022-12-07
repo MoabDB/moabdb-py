@@ -1,5 +1,5 @@
 """MoabDB"""
-__version__ = "0.1.16"
+__version__ = "0.1.17"
 
 from .lib import *
 from .globals import *
