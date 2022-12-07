@@ -13,8 +13,7 @@ dependencies = [
     "pandas",
     "protobuf",
     "requests",
-    "pyarrow",
-    "io"
+    "pyarrow"
 ]
 
 [project.urls]
