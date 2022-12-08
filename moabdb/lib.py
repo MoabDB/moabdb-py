@@ -94,7 +94,7 @@ def get_equity(tickers, sample="1m",
 
     # Check intraday authorization
     columns = None
-    if intraday == True:
+    if intraday is True:
         equity_freq = "intraday_stocks"
         if not _check_access():
             raise errors.MoabRequestError(
