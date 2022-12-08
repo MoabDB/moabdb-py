@@ -1,4 +1,4 @@
-# MoabDB stuff
+# MoabDB
 
 _api_key = ""
 _api_username = ""
