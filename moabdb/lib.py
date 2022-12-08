@@ -94,19 +94,11 @@ def get_equity(tickers, sample="1m",
 
     # Check intraday authorization
     columns = None
-    if intraday:
+    if intraday == True:
         equity_freq = "intraday_stocks"
-<<<<<<< HEAD
-        if is_authorized == 0:
-            # TODO: Add error code
-            raise errors.MoabRequestError("Access denied")
-#            intraday = False
-#            equity_freq = "daily_stocks"
-=======
         if not _check_access():
             raise errors.MoabRequestError(
                 "Intraday needs API credentials, see moabdb.com")
->>>>>>> e472c88bab587ac5d67d98603400b6e8df992b86
     else:
         equity_freq = "daily_stocks"
         columns = constants.DAILY_COLUMNS
