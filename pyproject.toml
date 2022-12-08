@@ -4,7 +4,7 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "moabdb"
-authors = [{name = "Jackson Coxson", email = "jkcoxson@gmail.com"}]
+authors = [{name = "Jackson Coxson", email = "jkcoxson@gmail.com"}, {name = "Brian Roseman", email = "brian@roseman.dev"}]
 readme = "README.md"
 license = {file = "LICENSE"}
 classifiers = ["License :: OSI Approved :: MIT License"]
