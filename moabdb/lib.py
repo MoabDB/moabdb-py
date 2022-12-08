@@ -51,6 +51,10 @@ def _server_req(ticker, start, end, datatype):
     req.end = end
     req.datatype = datatype
 
+    if constants.API_KEY != "":
+        req.token = constants.API_KEY
+        req.username = constants.API_USERNAME
+
     res = _send_request(req)
 
     if res.code == 200:
