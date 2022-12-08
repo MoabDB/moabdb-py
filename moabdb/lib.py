@@ -115,9 +115,9 @@ def get_equity(tickers, sample="1m",
         equity_freq = "intraday_stocks"
         if is_authorized == 0:
             # TODO: Add error code
-            print("Error: Subscription required to access intraday data")
-            intraday = False
-            equity_freq = "daily_stocks"
+            raise errors.MoabRequestError("Access denied")
+#            intraday = False
+#            equity_freq = "daily_stocks"
     else:
         equity_freq = "daily_stocks"
         columns = globals._daily_columns
