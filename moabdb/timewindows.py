@@ -1,20 +1,21 @@
+"""Time window functions for MoabDB"""
+
 import re
-import requests
-import pandas as pd
 from datetime import datetime
+import pandas as pd
 from . import errors
 
 
 def _to_unix_epoch(date_string):
     # Get uniq epoch time as integer
     unix_epoch = datetime.strptime(date_string, "%Y-%m-%d")
-    tm = (unix_epoch - datetime(1970, 1, 1)).total_seconds()
-    return int(tm)
+    t_m = (unix_epoch - datetime(1970, 1, 1)).total_seconds()
+    return int(t_m)
 
 
 def _to_unix_w_freq(sample_len, base_time, base_type):
     """
-        Provide time frequency and base time, 
+        Provide time frequency and base time,
             returns offset time.
         Enter negative end_tm as base_time to find start date.
         Enter positive beg_tm as base_time to find end date.
@@ -37,7 +38,10 @@ def _to_unix_w_freq(sample_len, base_time, base_type):
     return (int(new_time.timestamp()))
 
 
-def _get_unix_dates(sample_len, start_dt, end_dt):
+def get_unix_dates(sample_len, start_dt, end_dt):
+    """
+    Get unix time for start and end dates
+    """
     # User provided sample length ...
 
     # ... but didn't provide anything else --> get recent sample
@@ -60,5 +64,9 @@ def _get_unix_dates(sample_len, start_dt, end_dt):
     elif (end_dt is not None) & (start_dt is not None):
         end = _to_unix_epoch(end_dt)
         start = _to_unix_epoch(start_dt)
+
+    # ... and provided something else --> error
+    else:
+        raise errors.MoabRequestError("Invalid date input")
 
     return (start, end)
