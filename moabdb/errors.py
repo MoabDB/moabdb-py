@@ -1,8 +1,8 @@
-# MoabDB
+"""MoabDB Errors"""
+
 
 class MoabError(Exception):
     """Base class for exceptions in this module."""
-    pass
 
 
 class MoabVersionError(MoabError):
@@ -14,6 +14,7 @@ class MoabVersionError(MoabError):
     """
 
     def __init__(self, message):
+        super().__init__(message)
         self.message = message
 
     def __str__(self):
@@ -29,6 +30,7 @@ class MoabRequestError(MoabError):
     """
 
     def __init__(self, message):
+        super().__init__(message)
         self.message = message
 
     def __str__(self):
@@ -44,6 +46,7 @@ class MoabInternalError(MoabError):
     """
 
     def __init__(self, message):
+        super().__init__(message)
         self.message = message
 
     def __str__(self):
@@ -59,6 +62,7 @@ class MoabResponseError(MoabError):
     """
 
     def __init__(self, message):
+        super().__init__(message)
         self.message = message
 
     def __str__(self):
@@ -74,6 +78,7 @@ class MoabHttpError(MoabError):
     """
 
     def __init__(self, message):
+        super().__init__(message)
         self.message = message
 
     def __str__(self):

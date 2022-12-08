@@ -1,31 +1,14 @@
-# MoabDB
+"""MoabDB API Library"""
 
-import requests
 import io
-from . import globals
-from . import __version__
-from . import protocol_pb2
-from . import errors
-from .timewindows import _get_unix_dates
-
-
 from base64 import b64encode, b64decode
+import requests
 import pandas as pd
 
-
-def hello():
-    print("Welcome to Moab, where all data is exchanged!!")
-
-
-def _check_version() -> bool:
-    """
-    Checks the server's version, compairing the current version
-    """
-    try:
-        res = requests.get(globals._dx_url + 'client_version/')
-        return (res.text == __version__)
-    except:
-        raise errors.MoabHttpError("Unable to connect to server")
+from . import constants
+from . import proto_wrapper
+from . import errors
+from . import timewindows
 
 
 def _check_access() -> bool:
@@ -34,36 +17,35 @@ def _check_access() -> bool:
     This function is just a local sanity check, the server will
     check the credentials again.
     """
-    if globals._api_key == "":
-        return False
-    elif globals._api_username == "":
-        return False
+    return not (constants.API_KEY == "" or constants.API_USERNAME == "")
 
 
-def _send_request(request: protocol_pb2.Request) -> protocol_pb2.Response:
+def _send_request(request: proto_wrapper.Request) -> proto_wrapper.Response:
     """
     Sends a request to the MoabDB API
     :param Request: The request to send
     :return: The response from the server
     """
-    s = request.SerializeToString()
+    serialized_req = request.SerializeToString()
     headers = {
-        'x-req': b64encode(s)
+        'x-req': b64encode(serialized_req)
     }
 
     try:
-        res = requests.get(globals._dx_url + 'request/v1/', headers=headers)
+        res = requests.get(constants.DB_URL + 'request/v1/',
+                           headers=headers, timeout=10)
         if res.status_code != 200:
             raise errors.MoabRequestError(
                 "Server returned error code: " + str(res.status_code))
-        res = protocol_pb2.Response().FromString(b64decode(res.text))
+        res = proto_wrapper.Response().FromString(b64decode(res.text))
         return res
-    except:
-        raise errors.MoabHttpError("Unable to connect to server")
+    except requests.exceptions.Timeout as exc:
+        raise errors.MoabHttpError("Unable to connect to server") from exc
+
 
 def _server_req(ticker, start, end, datatype):
     # Request data from moabdb server
-    req = protocol_pb2.Request()
+    req = proto_wrapper.Request()
     req.symbol = ticker
     req.start = start
     req.end = end
@@ -75,10 +57,11 @@ def _server_req(ticker, start, end, datatype):
         # Place data into a dataframe
         pq_file = io.BytesIO(res.data)
         try:
-            df = pd.read_parquet(pq_file)
-            return (df)
-        except:
-            raise errors.MoabResponseError("Server returned invalid data")
+            d_f = pd.read_parquet(pq_file)
+            return d_f
+        except Exception as exc:
+            raise errors.MoabResponseError(
+                "Server returned invalid data") from exc
     else:
         raise errors.MoabRequestError(
             "Server returned error code: " + str(res.code))
@@ -110,20 +93,18 @@ def get_equity(tickers, sample="1m",
     """
 
     # Check intraday authorization
-    if (intraday == True):
-        is_authorized = _check_access()
+    columns = None
+    if intraday:
         equity_freq = "intraday_stocks"
-        if is_authorized == 0:
-            # TODO: Add error code
-            print("Error: Subscription required to access intraday data")
-            intraday = False
-            equity_freq = "daily_stocks"
+        if not _check_access():
+            raise errors.MoabRequestError(
+                "Intraday needs API credentials, see moabdb.com")
     else:
         equity_freq = "daily_stocks"
-        columns = globals._daily_columns
+        columns = constants.DAILY_COLUMNS
 
     # String time to integer time
-    start_tm, end_tm = _get_unix_dates(sample, start, end)
+    start_tm, end_tm = timewindows.get_unix_dates(sample, start, end)
 
     # Single ticker request
     if isinstance(tickers, str):
@@ -143,4 +124,6 @@ def get_equity(tickers, sample="1m",
     else:
         raise errors.MoabRequestError("Invalid window type")
 
-    return (return_db[columns])
+    if columns is None:
+        return return_db
+    return return_db[columns]
