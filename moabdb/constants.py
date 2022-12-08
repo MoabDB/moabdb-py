@@ -5,8 +5,7 @@ API_KEY = ""
 API_USERNAME = ""
 DB_URL = "https://api.moabdb.com/"
 DAILY_COLUMNS = ['symbol', 'date', 'close', 'open', 'high', 'low', 'volume']
-
-#intra_columns = ['']
+INTRA_COLUMNS = ['symbol', 'tm', 'close', 'bid', 'ask', 'volume']
 
 
 def login(username: str, key: str):

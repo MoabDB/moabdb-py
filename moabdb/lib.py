@@ -20,7 +20,7 @@ def _check_access() -> bool:
     return not (constants.API_KEY == "" or constants.API_USERNAME == "")
 
 
-def _send_request(request: proto_wrapper.Request) -> proto_wrapper.Response:
+def _send_request(request: proto_wrapper.REQUEST) -> proto_wrapper.RESPONSE:
     """
     Sends a request to the MoabDB API
     :param Request: The request to send
@@ -37,7 +37,7 @@ def _send_request(request: proto_wrapper.Request) -> proto_wrapper.Response:
         if res.status_code != 200:
             raise errors.MoabRequestError(
                 "Server returned error code: " + str(res.status_code))
-        res = proto_wrapper.Response().FromString(b64decode(res.text))
+        res = proto_wrapper.RESPONSE().FromString(b64decode(res.text))
         return res
     except requests.exceptions.Timeout as exc:
         raise errors.MoabHttpError("Unable to connect to server") from exc
@@ -45,7 +45,7 @@ def _send_request(request: proto_wrapper.Request) -> proto_wrapper.Response:
 
 def _server_req(ticker, start, end, datatype):
     # Request data from moabdb server
-    req = proto_wrapper.Request()
+    req = proto_wrapper.REQUEST()
     req.symbol = ticker
     req.start = start
     req.end = end
@@ -93,9 +93,9 @@ def get_equity(tickers, sample="1m",
     """
 
     # Check intraday authorization
-    columns = None
     if intraday is True:
         equity_freq = "intraday_stocks"
+        columns = constants.INTRA_COLUMNS
         if not _check_access():
             raise errors.MoabRequestError(
                 "Intraday needs API credentials, see moabdb.com")
@@ -124,6 +124,4 @@ def get_equity(tickers, sample="1m",
     else:
         raise errors.MoabRequestError("Invalid window type")
 
-    if columns is None:
-        return return_db
     return return_db[columns]

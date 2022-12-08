@@ -35,7 +35,7 @@ def _to_unix_w_freq(sample_len, base_time, base_type):
         new_time = base_timestamp + pd.DateOffset(years=tm_freq)
     else:
         raise errors.MoabRequestError("Unknown time unit, accepts: D, W, M, Y")
-    return (int(new_time.timestamp()))
+    return int(new_time.timestamp())
 
 
 def get_unix_dates(sample_len, start_dt, end_dt):
