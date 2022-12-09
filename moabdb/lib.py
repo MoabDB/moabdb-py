@@ -114,6 +114,7 @@ def get_equity(tickers, sample="1m",
     if isinstance(tickers, str):
         return_db = _server_req(
             str.upper(tickers), start_tm, end_tm, equity_freq)
+        return_db = return_db[columns]
 
     # List of tickers request
     elif isinstance(tickers, list):
@@ -121,11 +122,11 @@ def get_equity(tickers, sample="1m",
         for tic in tickers:
             compile_tickers.append(_server_req(
                 str.upper(tic), start_tm, end_tm, equity_freq))
-        return_db = pd.concat(compile_tickers)
-        return_db = return_db.set_index(['symbol', 'date']).unstack(0)
+        return_db = pd.concat(compile_tickers)[columns]
+        return_db = return_db.set_index(columns[0:2]).unstack(0)
 
     # Unknown ticker request
     else:
         raise errors.MoabRequestError("Invalid window type")
 
-    return return_db[columns]
+    return return_db
