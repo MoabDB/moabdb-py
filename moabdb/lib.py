@@ -33,7 +33,7 @@ def _send_request(request: proto_wrapper.REQUEST) -> proto_wrapper.RESPONSE:
 
     try:
         res = requests.get(constants.DB_URL + 'request/v1/',
-                           headers=headers, timeout=10)
+                           headers=headers, timeout=180)
         if res.status_code != 200:
             raise errors.MoabRequestError(
                 "Server returned error code: " + str(res.status_code))
