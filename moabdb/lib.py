@@ -68,7 +68,7 @@ def _server_req(ticker, start, end, datatype):
                 "Server returned invalid data") from exc
     else:
         raise errors.MoabRequestError(
-            "Server returned error code: " + str(res.code))
+            "Server returned error code " + str(res.code) + ": " + res.message)
 
 
 def get_equity(tickers, sample="1m",
