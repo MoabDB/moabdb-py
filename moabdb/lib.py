@@ -34,11 +34,15 @@ def _send_request(request: proto_wrapper.REQUEST) -> proto_wrapper.RESPONSE:
     try:
         res = requests.get(constants.DB_URL + 'request/v1/',
                            headers=headers, timeout=180)
-        if res.status_code != 200:
-            raise errors.MoabRequestError(
-                "Server returned error code: " + str(res.status_code))
-        res = proto_wrapper.RESPONSE().FromString(b64decode(res.text))
-        return res
+
+        if res.status_code == 200:
+            res = proto_wrapper.RESPONSE().FromString(b64decode(res.text))
+            return res
+        elif res.status_code == 502:
+            raise errors.MoabInternalError("Take2 server is down")
+        else:
+            raise errors.MoabHttpError("Unknown error")
+
     except requests.exceptions.Timeout as exc:
         raise errors.MoabHttpError("Unable to connect to server") from exc
 
@@ -66,9 +70,17 @@ def _server_req(ticker, start, end, datatype):
         except Exception as exc:
             raise errors.MoabResponseError(
                 "Server returned invalid data") from exc
+    elif res.code == 400:
+        raise errors.MoabRequestError("Invalid request: " + res.message)
+    elif res.code == 401:
+        raise errors.MoabUnauthorizedError("Invalid credentials")
+    elif res.code == 404:
+        raise errors.MoabNotFoundError(res.message + " not found")
+    elif res.code == 500:
+        raise errors.MoabInternalError("Server error: " + res.message)
     else:
-        raise errors.MoabRequestError(
-            "Server returned error code " + str(res.code) + ": " + res.message)
+        raise errors.MoabResponseError(
+            "Unknown error " + res.code + ": " + res.message)
 
 
 def get_equity(tickers, sample="1m",
