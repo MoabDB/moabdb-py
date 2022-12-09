@@ -2,8 +2,10 @@
 
 import io
 from base64 import b64encode, b64decode
+import concurrent.futures as cf
 import requests
 import pandas as pd
+
 
 from . import constants
 from . import proto_wrapper
@@ -118,11 +120,15 @@ def get_equity(tickers, sample="1m",
 
     # List of tickers request
     elif isinstance(tickers, list):
-        compile_tickers = []
-        for tic in tickers:
-            compile_tickers.append(_server_req(
-                str.upper(tic), start_tm, end_tm, equity_freq))
-        return_db = pd.concat(compile_tickers)[columns]
+        processed = []
+        with cf.ThreadPoolExecutor() as pool:
+            for result in pool.map(_server_req, tickers, [start_tm]*3, [end_tm]*3, [equity_freq]*3):
+                processed.append(result)
+        #compile_tickers = []
+        #for tic in tickers:
+        #    compile_tickers.append(_server_req(
+        #        str.upper(tic), start_tm, end_tm, equity_freq))
+        return_db = pd.concat(processed)[columns]
         return_db = return_db.set_index(columns[0:2]).unstack(0)
 
     # Unknown ticker request
