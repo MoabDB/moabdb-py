@@ -1,5 +1,5 @@
 """MoabDB"""
-__version__ = "0.1.29"
+__version__ = "0.1.30"
 
 from .constants import *
 from .errors import *
