@@ -35,13 +35,13 @@ def _send_request(request: proto_wrapper.REQUEST) -> proto_wrapper.RESPONSE:
         res = requests.get(constants.DB_URL + 'request/v1/',
                            headers=headers, timeout=180)
 
-        if res.status_code == 200:
-            res = proto_wrapper.RESPONSE().FromString(b64decode(res.text))
-            return res
-        elif res.status_code == 502:
+        if res.status_code == 502:
             raise errors.MoabInternalError("Take2 server is down")
-        else:
+        if res.status_code != 200:
             raise errors.MoabHttpError("Unknown error")
+
+        res = proto_wrapper.RESPONSE().FromString(b64decode(res.text))
+        return res
 
     except requests.exceptions.Timeout as exc:
         raise errors.MoabHttpError("Unable to connect to server") from exc
