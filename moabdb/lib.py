@@ -147,6 +147,7 @@ def get_equity(tickers, sample="1m",
 
     return return_db
 
+
 def get_treasuries(sample="1y",
                    start=None, end=None):
     """
@@ -164,7 +165,6 @@ def get_treasuries(sample="1y",
     """
 
     # Check authorization
-    database = "treasuries"
     if not _check_access():
         raise errors.MoabRequestError(
             "Premium datasets needs API credentials, see moabdb.com")
@@ -173,7 +173,7 @@ def get_treasuries(sample="1y",
     start_tm, end_tm = timewindows.get_unix_dates(sample, start, end)
 
     # Request treasury data
-    return_db = _server_req("treasuries", start_tm, end_tm, database)
+    return_db = _server_req("INTERNAL_TREASURY", start_tm, end_tm, "treasuries")
 
     # Unknown ticker request
     #if return_db != True:
