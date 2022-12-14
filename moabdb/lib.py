@@ -37,6 +37,8 @@ def _send_request(request: proto_wrapper.REQUEST) -> proto_wrapper.RESPONSE:
         res = requests.get(constants.DB_URL + 'request/v1/',
                            headers=headers, timeout=180)
 
+        if res.status_code == 429:
+            raise errors.MoabRequestError("Too many requests")
         if res.status_code == 502:
             raise errors.MoabInternalError("Take2 server is down")
         if res.status_code != 200:
