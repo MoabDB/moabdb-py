@@ -106,8 +106,6 @@ def get_equity(tickers, sample="1m",
             True to return intraday data
             Default is 'False' to return end-of-day data
             See moabdb.com to look at subscriptions for intraday access
-        api_key: str
-            api_key required for intraday data
     """
 
     # Check intraday authorization
@@ -144,5 +142,40 @@ def get_equity(tickers, sample="1m",
     # Unknown ticker request
     else:
         raise errors.MoabRequestError("Invalid window type")
+
+    return return_db
+
+
+def get_treasuries(sample="1y",
+                   start=None, end=None):
+    """
+    get_treasuries paramaters:
+        sample: str
+            Sample length, required if "start" or "end" is missing
+            Enter as number then frequency string (D, W, M, Y)
+              Ex: "30d", "3m", "5y", etc.
+        start: str
+            Beginning date of sample, required if "end" or "sample" is missing
+              Ex: '2020-01-01'
+        end: str
+            Ending date of sample, required if "start" or "sample" is missing
+              Ex: '2022-05-01''
+    """
+
+    # Check authorization
+    database = "treasuries"
+    if not _check_access():
+        raise errors.MoabRequestError(
+            "Premium datasets needs API credentials, see moabdb.com")
+
+    # String time to integer time
+    start_tm, end_tm = timewindows.get_unix_dates(sample, start, end)
+
+    # Request treasury data
+    return_db = _server_req("treasuries", start_tm, end_tm, database)
+
+    # Unknown ticker request
+    #if return_db != True:
+    #    raise errors.MoabRequestError("Invalid window type")
 
     return return_db
