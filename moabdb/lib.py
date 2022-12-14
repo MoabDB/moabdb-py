@@ -147,7 +147,6 @@ def get_equity(tickers, sample="1m",
 
     return return_db
 
-
 def get_treasuries(sample="1y",
                    start=None, end=None):
     """
