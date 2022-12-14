@@ -131,10 +131,6 @@ def get_treasuries(sample="1y",
     start_tm, end_tm = timewindows.get_unix_dates(sample, start, end)
 
     # Request treasury data
+    columns = constants.TREASURY_COLUMNS
     return_db = _server_req("INTERNAL_TREASURY", start_tm, end_tm, "treasuries")
-
-    # Unknown ticker request
-    #if return_db != True:
-    #    raise errors.MoabRequestError("Invalid window type")
-
-    return return_db
+    return return_db[columns]

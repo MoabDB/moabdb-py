@@ -7,6 +7,11 @@ API_USERNAME = ""
 DB_URL = "https://api.moabdb.com/"
 DAILY_COLUMNS = ['symbol', 'date', 'close', 'open', 'high', 'low', 'volume']
 INTRA_COLUMNS = ['symbol', 'time', 'price', 'bid', 'ask', 'volume']
+TREASURY_COLUMNS = ['date', 'Treasury_1m', 'Treasury_2m', 'Treasury_3m',
+                    'Treasury_4m', 'Treasury_6m', 'Treasury_1y', 'Treasury_2y',
+                    'Treasury_3y', 'Treasury_5y', 'Treasury_7y', 'Treasury_10y',
+                    'Treasury_20y', 'Treasury_30y', 'Realrate_5y', 'Realrate_7y',
+                    'Realrate_10y', 'Realrate_20y', 'Realrate_30y']
 
 
 def login(username: str, key: str):
