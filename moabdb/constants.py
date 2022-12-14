@@ -1,5 +1,6 @@
 """MoabDB Constants"""
-# MoabDB
+
+from . import proto_wrapper
 
 API_KEY = ""
 API_USERNAME = ""
@@ -15,6 +16,14 @@ def login(username: str, key: str):
     :return: None
     """
 
+    # Create a login request
+    req = proto_wrapper.REQUEST()
+    req.token = key
+    req.username = username
+
+    res = req.send(DB_URL + 'login/v1/')
+
+    res.throw()
     # pylint: disable=global-statement
     global API_KEY
     global API_USERNAME

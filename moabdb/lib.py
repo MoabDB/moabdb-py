@@ -1,9 +1,7 @@
 """MoabDB API Library"""
 
 import io
-from base64 import b64encode, b64decode
 import concurrent.futures as cf
-import requests
 import pandas as pd
 
 
@@ -22,35 +20,6 @@ def _check_access() -> bool:
     return not (constants.API_KEY == "" or constants.API_USERNAME == "")
 
 
-def _send_request(request: proto_wrapper.REQUEST) -> proto_wrapper.RESPONSE:
-    """
-    Sends a request to the MoabDB API
-    :param Request: The request to send
-    :return: The response from the server
-    """
-    serialized_req = request.SerializeToString()
-    headers = {
-        'x-req': b64encode(serialized_req)
-    }
-
-    try:
-        res = requests.get(constants.DB_URL + 'request/v1/',
-                           headers=headers, timeout=180)
-
-        if res.status_code == 429:
-            raise errors.MoabRequestError("Too many requests")
-        if res.status_code == 502:
-            raise errors.MoabInternalError("Take2 server is down")
-        if res.status_code != 200:
-            raise errors.MoabHttpError("Unknown error")
-
-        res = proto_wrapper.RESPONSE().FromString(b64decode(res.text))
-        return res
-
-    except requests.exceptions.Timeout as exc:
-        raise errors.MoabHttpError("Unable to connect to server") from exc
-
-
 def _server_req(ticker, start, end, datatype):
     # Request data from moabdb server
     req = proto_wrapper.REQUEST()
@@ -63,28 +32,17 @@ def _server_req(ticker, start, end, datatype):
         req.token = constants.API_KEY
         req.username = constants.API_USERNAME
 
-    res = _send_request(req)
+    res = req.send(constants.DB_URL + 'request/v1/')
 
-    if res.code == 200:
-        # Place data into a dataframe
-        pq_file = io.BytesIO(res.data)
-        try:
-            d_f = pd.read_parquet(pq_file)
-            return d_f
-        except Exception as exc:
-            raise errors.MoabResponseError(
-                "Server returned invalid data") from exc
-    elif res.code == 400:
-        raise errors.MoabRequestError("Invalid request: " + res.message)
-    elif res.code == 401:
-        raise errors.MoabUnauthorizedError("Invalid credentials")
-    elif res.code == 404:
-        raise errors.MoabNotFoundError(res.message + " not found")
-    elif res.code == 500:
-        raise errors.MoabInternalError("Server error: " + res.message)
-    else:
-        raise errors.MoabResponseError(
-            "Unknown error " + res.code + ": " + res.message)
+    res.throw()
+
+    # Place data into a dataframe
+    pq_file = io.BytesIO(res.data)
+    try:
+        d_f = pd.read_parquet(pq_file)
+        return d_f
+    except Exception as exc:
+        raise errors.MoabResponseError("Server returned invalid data") from exc
 
 
 def get_equity(tickers, sample="1m",
