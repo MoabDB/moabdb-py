@@ -26,6 +26,16 @@ def login(username: str, key: str):
     Returns:
         None: On success, this will return nothing
 
+    Raises:
+        errors.MoabResponseError: If there's a problem interpreting the response
+        errors.MoabRequestError: If the server has a problem interpreting the request,
+            or if an invalid parameter is passed
+        errors.MoabInternalError: If the server runs into an unrecoverable error internally
+        errors.MoabHttpError: If there's a problem transporting the payload or receiving a response
+        errors.MoabUnauthorizedError: If the user is not authorized to request the datatype
+        errors.MoabNotFoundError: If the data requested wasn't found
+        errors.MoabUnknownError: If the error code couldn't be parsed
+
     Example::
 
         import moabdb as mdb
