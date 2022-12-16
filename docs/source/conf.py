@@ -23,6 +23,7 @@ source_suffix = ['.rst', '.md']
 
 templates_path = ['_templates']
 exclude_patterns = []
+highlight_language = 'python3'
 
 
 # -- Options for HTML output -------------------------------------------------

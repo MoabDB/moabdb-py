@@ -38,9 +38,24 @@ def _to_unix_w_freq(sample_len, base_time, base_type):
     return int(new_time.timestamp())
 
 
-def get_unix_dates(sample_len, start_dt, end_dt):
+def get_unix_dates(sample_len: str, start_dt: str, end_dt: str):
     """
-    Get unix time for start and end dates
+    Convert timestamps/samples into a start and end unix epoch time
+
+    Args:
+        sample_len (:obj:`str`, optional): The sample length to adjust the start/end by
+        start_dt (:obj:`str`, optional): The start timestamp
+        end_dt (:obj:`str`, optional): The end timestamp
+
+    Returns:
+        None: On success, this will return nothing
+
+    Example::
+
+        import moabdb as mdb
+        mdb.login("your-signup-email@mail.com", "secret_key")
+        print("Login succeeded")
+
     """
     # User provided sample length ...
 
