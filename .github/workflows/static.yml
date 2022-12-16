@@ -39,11 +39,11 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Build Site
-        run: cd Docs && make html
+        run: cd docs && make html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: 'Docs/build/html'
+          path: 'docs/build/html'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
