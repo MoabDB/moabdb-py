@@ -7,7 +7,8 @@
   :width: 400
   :alt: Logo
 
-**Financial Data for Python Programmers**
+Documentation
+=============
 
 .. toctree::
    :maxdepth: 2
