@@ -19,7 +19,7 @@ author = 'MoabDB'
 
 extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.napoleon', 'm2r', 'sphinxawesome_theme', 'sphinx-favicon']
-source_suffix = ['.rst', '.md']
+source_suffix = ['.rst']
 
 templates_path = ['_templates']
 exclude_patterns = []
