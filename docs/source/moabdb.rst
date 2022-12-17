@@ -1,4 +1,4 @@
-MoabDB
+API Reference
 ==============
 
 Functions
@@ -36,4 +36,9 @@ Time Windows
 Getting Started
 ===============
 
-.. mdinclude:: ../source/getting_started.md
+.. mdinclude:: ../source/pages/getting_started.md
+
+Datasets
+========
+
+.. mdinclude:: ../source/pages/datasets.md
