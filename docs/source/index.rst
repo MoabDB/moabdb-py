@@ -3,8 +3,11 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to MoabDB's Python documentation!
-=========================================
+.. image:: ../source/_static/images/MoabDB.jpg
+  :width: 400
+  :alt: Logo
+
+**Financial Data for Python Programmers**
 
 .. toctree::
    :maxdepth: 2
