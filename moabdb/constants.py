@@ -1,4 +1,4 @@
-"""MoabDB Constants"""
+"""MoabDB Constants Manager"""
 
 from . import proto_wrapper
 
@@ -18,9 +18,32 @@ TREASURY_COLUMNS = ['date', 'Treasury_1m', 'Treasury_2m', 'Treasury_3m',
 
 def login(username: str, key: str):
     """
-    Logs in to the API to provide data that is not publically available
-    :param key: The API key to use
-    :return: None
+    Logs in to the API to provide data that is not publically available.
+    Throws an error if the username/key is wrong, or if there's a connection error.
+
+    Args:
+        username (str): The email that you signed up with
+        key (str): The key that you got at www.moabdb.com/account/member-api
+
+    Returns:
+        None: On success, this will return nothing
+
+    Raises:
+        errors.MoabResponseError: If there's a problem interpreting the response
+        errors.MoabRequestError: If the server has a problem interpreting the request,
+            or if an invalid parameter is passed
+        errors.MoabInternalError: If the server runs into an unrecoverable error internally
+        errors.MoabHttpError: If there's a problem transporting the payload or receiving a response
+        errors.MoabUnauthorizedError: If the user is not authorized to request the datatype
+        errors.MoabNotFoundError: If the data requested wasn't found
+        errors.MoabUnknownError: If the error code couldn't be parsed
+
+    Example::
+
+        import moabdb as mdb
+        mdb.login("your-signup-email@mail.com", "secret_key")
+        print("Login succeeded")
+
     """
 
     # Create a login request
