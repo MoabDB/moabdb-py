@@ -7,7 +7,7 @@ API_USERNAME = ""
 DB_URL = "https://api.moabdb.com/"
 DAILY_COLUMNS = ['Symbol', 'Date', 'Open', 'High', 'Low', 'Close', 'VWAP',\
                  'BidPrc', 'AskPrc', 'Volume', 'Trades']
-INTRA_COLUMNS = ['Symbol', 'Time', 'Trades', 'Volume', 'Imbalance','Close',\
+INTRA_COLUMNS = ['Symbol', 'Time', 'Trades', 'Volume', 'Imbalance', 'Close',\
                  'VWAP', 'BidPrc', 'AskPrc', 'BidSz', 'AskSz']
 TREASURY_COLUMNS = ['date', 'Treasury_1m', 'Treasury_2m', 'Treasury_3m',
                     'Treasury_4m', 'Treasury_6m', 'Treasury_1y', 'Treasury_2y',
