@@ -55,7 +55,8 @@ def get_equity(tickers: Union[str, list],
 
         For Daily data:
             Timeframe: Based on valid observations between 9:30 AM and 4:00 PM EST
-            Index: Date (datetime64) of the data point as YYYY-MM-DD.
+            Index: 
+                - Date (datetime64): Day of observations formatted as "YYYY-MM-DD".
             Columns:
                 - Symbol (str): Ticker symbol of the equity.
                 - Open (float): Opening trade price.
@@ -70,13 +71,14 @@ def get_equity(tickers: Union[str, list],
 
         Intraday data:
             Timeframe: Valid observations between 8:00 AM and 6:00 PM EST
-            Index: Datetime (datetime64) of the data point as YYYY-MM-DD HH:MM:SS.
+            Index: 
+                - Time (datetime64): Time of observation formatted as "YYYY-MM-DD HH:MM:SS".
             Columns:
                 - Symbol (str): Ticker symbol of the equity.
                 - Time (datetime64): Time of the data point.
                 - Trades (int): Number of trades.
                 - Volume (int): Volume traded.
-                - Imbalance (int): Buy-initiated trade volume minus sell-initiated trade volume.
+                - Imbalance (int): Buy-initiated volume minus sell-initiated volume.
                 - Close (float): Closing trade price.
                 - VWAP (float): Volume-weighted average price.
                 - BidPrc (float): Bid price.
@@ -86,9 +88,9 @@ def get_equity(tickers: Union[str, list],
 
         Note:
             - If the request is for a single ticker, the DataFrame will be returned
-                with a single index level.
+                with single index columns.
             - If the request is for multiple tickers, the DataFrame will be returned
-                with a multi-index level, with the first level being the ticker symbol.
+                with multi-index columns, with the first level being the ticker symbol.
 
 
     Examples:
