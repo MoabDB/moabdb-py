@@ -8,7 +8,7 @@
 #
 
 """
-The get_treasuries() function retrieves historical treasury data from the MoabDB API.
+The get_rates() function retrieves historical treasury data from the MoabDB API.
 """
 
 from . import constants
@@ -18,9 +18,9 @@ from .lib import _check_access, _server_req
 from .constants import pd
 
 
-def get_treasuries(sample: str = "1y",
-                   start: str = None,
-                   end: str = None) -> pd.DataFrame:
+def get_rates(sample: str = "1y",
+              start: str = None,
+              end: str = None) -> pd.DataFrame:
     """
     Gets treasury data from the MoabDB API.
 
@@ -66,15 +66,15 @@ def get_treasuries(sample: str = "1y",
 
         - Request the last year of treasury data:
             import moabdb as mdb
-            df = mdb.get_treasuries("1y")
+            df = mdb.get_rates("1y")
 
         - Request a specific month of data:
             import moabdb as mdb
-            df = mdb.get_treasuries(start="2022-04-01", sample="1m")
+            df = mdb.get_rates(start="2022-04-01", sample="1m")
 
         - Request treasury data for a specific date range:
             import moabdb as mdb
-            df = mdb.get_treasuries(start="2020-01-01", end="2020-12-31")
+            df = mdb.get_rates(start="2020-01-01", end="2020-12-31")
 
     """
 
@@ -87,7 +87,7 @@ def get_treasuries(sample: str = "1y",
     start_tm, end_tm = timewindows.get_unix_dates(sample, start, end)
 
     # Request treasury data
-    columns = constants.TREASURY_COLUMNS
+    columns = constants.RATES_COLUMNS
     return_db = _server_req("INTERNAL_TREASURY",
                             start_tm, end_tm, "treasuries")
 
