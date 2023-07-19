@@ -6,7 +6,6 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('../../'))
-sys.path.append(os.path.abspath('sphinxext'))
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
@@ -19,7 +18,7 @@ author = 'MoabDB'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = ['sphinx.ext.autodoc',
-              'sphinx.ext.napoleon', 'm2r', 'sphinxawesome_theme', 'sphinx-favicon']
+              'sphinx.ext.napoleon', 'm2r', 'sphinxawesome_theme', 'sphinx_favicon']
 source_suffix = ['.rst']
 
 templates_path = ['_templates']
