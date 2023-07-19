@@ -1,10 +1,11 @@
 """MoabDB"""
-__version__ = "0.1.36"
+# pylint: disable=unused-import
+__version__ = "0.1.38"
 
 from .constants import *
 from .errors import *
 from .proto_wrapper import *
 from .protocol_pb2 import *
 from .timewindows import *
-from .lib import get_equity
-from .lib import get_treasuries
+from .get_equity import get_equity
+from .get_treasuries import get_treasuries
