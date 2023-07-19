@@ -19,7 +19,7 @@ from .constants import pd
 
 
 def get_treasuries(sample: str = "1y",
-                   start: str = None, 
+                   start: str = None,
                    end: str = None) -> pd.DataFrame:
     """
     Gets treasury data from the MoabDB API.
@@ -90,8 +90,8 @@ def get_treasuries(sample: str = "1y",
     columns = constants.TREASURY_COLUMNS
     return_db = _server_req("INTERNAL_TREASURY",
                             start_tm, end_tm, "treasuries")
-    
+
     # Format treasury data
     return_db = return_db.set_index(columns[0])
-    
+
     return return_db[columns]

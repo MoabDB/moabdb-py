@@ -20,9 +20,9 @@ from .lib import _check_access, _server_req
 from .constants import pd, Union, cf
 
 
-def get_equity(tickers: Union[str, list], 
+def get_equity(tickers: Union[str, list],
                sample: str = "1m",
-               start: str = None, 
+               start: str = None,
                end: str = None,
                intraday: bool = False) -> pd.DataFrame:
     """
@@ -107,7 +107,7 @@ def get_equity(tickers: Union[str, list],
 
          - Request daily data between specific dates:
             import moabdb as mdb
-            df = mdb.get_equity("AMZN", start="2022-04-01", end="2022-10-01")           
+            df = mdb.get_equity("AMZN", start="2022-04-01", end="2022-10-01")
 
         - Request the most recent month of intraday data:
             import moabdb as mdb
