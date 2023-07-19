@@ -92,6 +92,6 @@ def get_treasuries(sample: str = "1y",
                             start_tm, end_tm, "treasuries")
 
     # Format treasury data
-    return_db = return_db.set_index(columns[0])
+    return_db = return_db[columns].set_index(columns[0])
 
-    return return_db[columns]
+    return return_db
