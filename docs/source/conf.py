@@ -44,40 +44,40 @@ html_css_files = ["custom.css"]
 #     "navbar_persistent": ["search-button"]
 # }
 
-favicons = [
-    {
-        "rel": "icon",
-        "static-file": "favicons/favicon-32x32.png",
-        "type": "image/png",
-    },
-    {
-        "rel": "icon",
-        "sizes": "16x16",
-        'static-file': "favicons/favicon-16x16.png",
-        "type": "image/png",
-    },
-    {
-        "rel": "icon",
-        "sizes": "32x32",
-        "static-file": "favicons/favicon-32x32.png",
-        "type": "image/png",
-    },
-    {
-        "rel": "apple-touch-icon",
-        "sizes": "180x180",
-        "static-file": "favicons/apple-touch-icon.png",
-        "type": "image/png",
-    },
-    {
-        "rel": "android-chrome",
-        "sizes": "192x192",
-        "static-file": "favicons/android-chrome-192x192.png",
-        "type": "image/png",
-    },
-    {
-        "rel": "android-chrome",
-        "sizes": "512x512",
-        "static-file": "favicons/android-chrome-512x512.png",
-        "type": "image/png",
-    },
-]
+# favicons = [
+#     {
+#         "rel": "icon",
+#         "static-file": "favicons/favicon-32x32.png",
+#         "type": "image/png",
+#     },
+#     {
+#         "rel": "icon",
+#         "sizes": "16x16",
+#         'static-file': "favicons/favicon-16x16.png",
+#         "type": "image/png",
+#     },
+#     {
+#         "rel": "icon",
+#         "sizes": "32x32",
+#         "static-file": "favicons/favicon-32x32.png",
+#         "type": "image/png",
+#     },
+#     {
+#         "rel": "apple-touch-icon",
+#         "sizes": "180x180",
+#         "static-file": "favicons/apple-touch-icon.png",
+#         "type": "image/png",
+#     },
+#     {
+#         "rel": "android-chrome",
+#         "sizes": "192x192",
+#         "static-file": "favicons/android-chrome-192x192.png",
+#         "type": "image/png",
+#     },
+#     {
+#         "rel": "android-chrome",
+#         "sizes": "512x512",
+#         "static-file": "favicons/android-chrome-512x512.png",
+#         "type": "image/png",
+#     },
+# ]
