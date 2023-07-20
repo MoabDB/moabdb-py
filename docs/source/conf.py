@@ -55,12 +55,6 @@ html_show_sourcelink = False
 #     'navigation_with_keys': True,
 # }
 
-# html_theme_options = {
-#     "navbar_start": ["navbar-logo"],
-#     "navbar_center": ["navbar-nav"],
-#     "navbar_end": ["navbar-icon-links"],
-#     "navbar_persistent": ["search-button"]
-# }
 
 favicons = [
     {
