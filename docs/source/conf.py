@@ -18,7 +18,7 @@ author = 'MoabDB'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = ['sphinx.ext.autodoc',
-              'sphinx.ext.napoleon', 'm2r', 'sphinxawesome_theme', 'sphinx_favicon']
+              'sphinx.ext.napoleon', 'm2r', 'sphinxawesome_theme', 'sphinx_favicon', 'pydata_sphinx_theme']
 source_suffix = ['.rst']
 
 templates_path = ['_templates']
