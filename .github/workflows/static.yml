@@ -33,16 +33,13 @@ jobs:
       - name: Install Pip
         run: sudo apt install python3-pip
       - name: Install dependencies
-        run: pip install -U Sphinx && pip install m2r && pip install sphinxawesome-theme && pip install moabdb && pip install sphinx-favicon
+        run: pip install -U Sphinx && pip install m2r && pip install sphinxawesome-theme && pip install moabdb && pip install sphinx-favicon && pip install --upgrade pydata-sphinx-theme
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Build Site
-        run: |
-              pip install --upgrade pip
-              pip install sphinx pydata-sphinx-theme
-              cd docs && make html
+        run: cd docs && make clean && make html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
