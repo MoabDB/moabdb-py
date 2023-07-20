@@ -7,16 +7,49 @@
   :width: 400
   :alt: Logo
 
+
+MoabDB |version|
+================
+
+MoabDB is a fast and easy-to-use database for financial data. 
+
+API Highlights
+--------------
+
+The MoabDB API offers the following features:
+
+* Built with Rust for fast data retrieval
+* Accessible with Python for easy data manipulation
+
+Data Provided by MoabDB
+-----------------------
+
+MoabDB provides the following data:
+
+* Equities: Daily-level and Second-by-second
+* Options: Daily-level and Minute-by-minute
+* Interest Rates
+* Financial Statements
+
+Source code
+-----------
+
+The source code is available on GitHub at: `MoabDB GitHub Repository <https://github.com/MoabDB/moabdb-py>`_
+
 Documentation
-=============
+-------------
 
 .. toctree::
    :maxdepth: 2
-   :caption: Datasets:
-
 
    :caption: Data Functions:
-   :func:`get_equity() <get_equity>`
 
+   pages/get_equity
+   pages/get_rates
+
+   :caption: Datasets:
+   
+   pages/rates
+   pages/equities
 
 ..   moabdb

@@ -1,4 +1,4 @@
-Equities
+Equity Data
 ###############
 
 Articles and pages
