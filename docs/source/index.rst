@@ -12,6 +12,11 @@ Documentation
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Datasets:
 
-   moabdb
+
+   :caption: Data Functions:
+   :func:`get_equity() <get_equity>`
+
+
+..   moabdb
