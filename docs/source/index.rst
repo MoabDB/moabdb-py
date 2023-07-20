@@ -42,16 +42,20 @@ Source code
 
 The source code is available on GitHub at: `MoabDB GitHub Repository <https://github.com/MoabDB/moabdb-py>`_
 
-Documentation
+Data Retrieval
 -------------
 
 .. toctree::
    :maxdepth: 2
-   :caption: Data Functions
+   :caption: Get Data Functions
 
    data_functions/get_equity
    data_functions/get_rates
 
+Datasets
+-------------
+.. toctree::
+   :maxdepth: 2
    :caption: Datasets
 
    datasets/rates
