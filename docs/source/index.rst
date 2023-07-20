@@ -8,7 +8,7 @@
   :alt: Logo
 
 
-MoabDB |version|
+MoabDB |release|
 ================
 
 MoabDB is a fast and easy-to-use database for financial data. 
@@ -31,6 +31,12 @@ MoabDB provides the following data:
 * Interest Rates
 * Financial Statements
 
+```python
+import moabdb as mdb
+mdb.get_equity("AAPL")
+# something idk docs
+```
+
 Source code
 -----------
 
@@ -44,12 +50,12 @@ Documentation
 
    :caption: Data Functions:
 
-   pages/get_equity
-   pages/get_rates
+   data_functions/get_equity
+   data_functions/get_rates
 
    :caption: Datasets:
-   
-   pages/rates
-   pages/equities
+
+   datasets/rates
+   datasets/equity
 
 ..   moabdb
