@@ -27,12 +27,14 @@ def get_equity(tickers: Union[str, list],
                intraday: bool = False) -> pd.DataFrame:
     """
     Function to retrieve equity data from the MoabDB API.
-    
+
     The get_equity() function can be used to access both historical daily and intraday data.
 
     .. admonition:: Data Aggregation
-        - Daily data: Returns a single data point per day based on activity between 9:30 AM and 4:00 PM EST
-        - Intraday data: Returns second-level aggregations for market activity 8:00 AM and 6:00 PM EST
+        - Daily data: Returns a single data point per day based on activity \
+            between 9:30 AM and 4:00 PM EST
+        - Intraday data: Returns second-level aggregations for \
+            market activity 8:00 AM and 6:00 PM EST
 
 
     Parameters
@@ -60,7 +62,7 @@ def get_equity(tickers: Union[str, list],
 
         For Daily data:
             Timeframe: Based on valid observations between 9:30 AM and 4:00 PM EST
-            Index: 
+            Index:
                 - Date (datetime64): Day of observations formatted as "YYYY-MM-DD".
             Columns:
                 - Symbol (str): Ticker symbol of the equity.
@@ -76,7 +78,7 @@ def get_equity(tickers: Union[str, list],
 
         Intraday data:
             Timeframe: Valid observations between 8:00 AM and 6:00 PM EST
-            Index: 
+            Index:
                 - Time (datetime64): Time of observation formatted as "YYYY-MM-DD HH:MM:SS".
             Columns:
                 - Symbol (str): Ticker symbol of the equity.
@@ -191,7 +193,8 @@ def get_equity(tickers: Union[str, list],
     #     errors.MoabRequestError: If the server has a problem interpreting the request,
     #         or if an invalid parameter is passed
     #     errors.MoabInternalError: If the server runs into an unrecoverable error internally
-    #     errors.MoabHttpError: If there's a problem transporting the payload or receiving a response
+    #     errors.MoabHttpError: If there's a problem transporting \
+    # the payload or receiving a response
     #     errors.MoabUnauthorizedError: If the user is not authorized to request the datatype
     #     errors.MoabNotFoundError: If the data requested wasn't found
     #     errors.MoabUnknownError: If the error code couldn't be parsed
@@ -201,7 +204,7 @@ def get_equity(tickers: Union[str, list],
 
     #     For Daily data:
     #         Timeframe: Based on valid observations between 9:30 AM and 4:00 PM EST
-    #         Index: 
+    #         Index:
     #             - Date (datetime64): Day of observations formatted as "YYYY-MM-DD".
     #         Columns:
     #             - Symbol (str): Ticker symbol of the equity.
@@ -217,7 +220,7 @@ def get_equity(tickers: Union[str, list],
 
     #     Intraday data:
     #         Timeframe: Valid observations between 8:00 AM and 6:00 PM EST
-    #         Index: 
+    #         Index:
     #             - Time (datetime64): Time of observation formatted as "YYYY-MM-DD HH:MM:SS".
     #         Columns:
     #             - Symbol (str): Ticker symbol of the equity.
