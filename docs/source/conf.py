@@ -3,6 +3,8 @@
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
+from moabdb import __version__
+import datetime
 import os
 import sys
 sys.path.insert(0, os.path.abspath('../../'))
@@ -12,35 +14,46 @@ sys.path.insert(0, os.path.abspath('../../'))
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'MoabDB'
-copyright = '2022, MoabDB'
+year = datetime.datetime.now().date().year
+copyright = f'2022–{year}'
 author = 'MoabDB'
 
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-#extensions = ['sphinx.ext.autodoc',
-#              'sphinx.ext.napoleon', 'm2r', 'sphinxawesome_theme', 'sphinx_favicon', 'furo']
-
+templates_path = ['_templates']
 extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.ifconfig',
               'sphinx.ext.extlinks']
-
 source_suffix = ['.rst']
-
-templates_path = ['_templates']
-exclude_patterns = []
+master_doc = 'index'
+exclude_patterns = ['_build']
 highlight_language = 'python3'
+release = __version__
+
 
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = "furo"
+html_title = f'<strong>{project}</strong> <i>{release}</i>'
 html_baseurl = 'https://docs.moabdb.com/'
 html_static_path = ['_static']
 html_css_files = ["custom.css"]
 html_logo = "_static/images/MoabDB.png"
+
+html_use_smartypants = True
+html_use_modindex = False
+html_use_index = False
+html_show_sourcelink = False
+
+# html_theme_options = {
+#     'light_logo': 'pelican-logo.svg',
+#     'dark_logo': 'pelican-logo.svg',
+#     'navigation_with_keys': True,
+# }
 
 # html_theme_options = {
 #     "navbar_start": ["navbar-logo"],
