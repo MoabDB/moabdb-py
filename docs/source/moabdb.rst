@@ -33,12 +33,12 @@ Time Windows
    :undoc-members:
    :show-inheritance:
 
-Getting Started
-===============
+.. Getting Started
+.. ===============
 
-.. mdinclude:: ../source/pages/getting_started.md
+.. .. mdinclude:: ../source/pages/getting_started.md
 
-Datasets
-========
+.. Datasets
+.. ========
 
-.. mdinclude:: ../source/pages/datasets.md
+.. .. mdinclude:: ../source/pages/datasets.md

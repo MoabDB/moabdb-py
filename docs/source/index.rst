@@ -47,13 +47,12 @@ Documentation
 
 .. toctree::
    :maxdepth: 2
-
-   :caption: Data Functions:
+   :caption: Data Functions
 
    data_functions/get_equity
    data_functions/get_rates
 
-   :caption: Datasets:
+   :caption: Datasets
 
    datasets/rates
    datasets/equity
