@@ -35,7 +35,7 @@ html_theme = "pydata_sphinx_theme"
 html_baseurl = 'https://docs.moabdb.com/'
 html_static_path = ['_static']
 html_css_files = ["custom.css"]
-html_logo = "_static/images/MoabDB.jpg"
+html_logo = "_static/images/MoabDB.png"
 
 # html_theme_options = {
 #     "navbar_start": ["navbar-logo"],
