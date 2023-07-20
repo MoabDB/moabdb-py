@@ -20,7 +20,7 @@ author = 'MoabDB'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = ['sphinx.ext.autodoc',
-              'sphinx.ext.napoleon', 'm2r', 'sphinxawesome_theme', 'sphinx_favicon', 'sphinx-rtd-theme']
+              'sphinx.ext.napoleon', 'm2r', 'sphinxawesome_theme', 'sphinx_favicon', 'sphinx_rtd_theme']
 source_suffix = ['.rst']
 
 templates_path = ['_templates']
@@ -31,7 +31,7 @@ highlight_language = 'python3'
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = "sphinx-rtd-theme"
+html_theme = "sphinx_rtd_theme"
 html_baseurl = 'https://docs.moabdb.com/'
 html_static_path = ['_static']
 html_css_files = ["custom.css"]
