@@ -55,6 +55,12 @@ html_show_sourcelink = False
 #     'navigation_with_keys': True,
 # }
 
+html_theme_options = {
+    "light_css_variables": {
+        "color-background-secondary": transparent,
+        "color-brand-content": "#7C4DFF",
+    },
+}
 
 favicons = [
     {
