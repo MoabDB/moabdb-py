@@ -57,7 +57,7 @@ html_show_sourcelink = False
 
 html_theme_options = {
     "light_css_variables": {
-        "color-background-secondary": transparent,
+        "color-background-secondary": 'rgba(248, 249, 251, 0)',
         "color-brand-content": "#7C4DFF",
     },
 }
