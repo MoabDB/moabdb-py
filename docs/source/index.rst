@@ -11,11 +11,11 @@
 MoabDB API and Dataset Documentation 
 ====================================
 
-MoabDB is a fast and easy-to-use database for financial data. 
+MoabDB is a fast and easy-to-use database for financial data.
 
 .. seealso::
 
-   Information on subscriptions to access advnaced datasets can be found at the homepage: 
+   Information on subscriptions to advnaced datasets can be found at the homepage: 
    `MoabDB.com <https://moabdb.com>`_
 
 
