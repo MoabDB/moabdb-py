@@ -1,32 +1,17 @@
----
-title: MoabDB Documentation
----
+.. MoabDB documentation master file, created by
+   sphinx-quickstart on Fri Dec 16 10:22:22 2022.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
 
-::::{grid}
-:reverse:
-:gutter: 2 1 1 1
-:margin: 4 4 1 1
+.. .. image:: ../source/_static/images/MoabDB.jpg
+..   :width: 400
+..   :alt: Logo
 
-:::{grid-item}
-:columns: 4
-
-```{image} ./_static/favicons/android-chrome-192x192.png
-:width: 150px
-```
-:::
-
-:::{grid-item}
-:columns: 8
-:class: sd-fs-3
 
 MoabDB API and Dataset Documentation
 
 |release|
 =========
-
-:::
-
-::::
 
 MoabDB is a fast and easy-to-use database for financial data. 
 For subscriptions visit the homepage: `MoabDB.com <https://moabdb.com>`_
