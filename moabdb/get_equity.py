@@ -39,13 +39,18 @@ def get_equity(tickers: Union[str, list],
 
     Parameters
     ----------
-        tickers: (Union[str, list]), The ticker(s) to look up
-        sample: (str), optional, The sample length, requires at least one of "start" or "end"
-        start: (str), optional, The sample start date, requires at least one of "end" or "sample"
-        end: (str), optional, The sample end date, requires at least one of "start" or "sample"
-        intraday: (bool), optional, Set to `True` to return intraday data
-            Default is "False" to return end-of-day data
-            See moabdb.com for subscriptions for intraday access
+    tickers : (Union[str, list])
+        The ticker(s) to look up
+    sample : (str), optional
+        The sample length, requires at least one of "start" or "end"
+    start : (str), optional
+        The sample start date, requires at least one of "end" or "sample"
+    end : (str), optional
+        The sample end date, requires at least one of "start" or "sample"
+    intraday : (bool), optional
+        Set to `True` to return intraday data
+        Default is "False" to return end-of-day data
+        See moabdb.com for subscriptions for intraday access
 
     Raises:
         errors.MoabResponseError: If there's a problem interpreting the response

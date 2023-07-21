@@ -1,4 +1,4 @@
-get_equity()
+The get_equity() function
 ===================
 
 .. automodule:: moabdb.get_equity
