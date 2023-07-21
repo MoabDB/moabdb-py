@@ -3,12 +3,13 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-.. image:: ../source/_static/images/MoabDB.jpg
-  :width: 400
-  :alt: Logo
+.. .. image:: ../source/_static/images/MoabDB.jpg
+..   :width: 400
+..   :alt: Logo
 
 
-MoabDB |release|
+MoabDB API and Dataset Documentation
+|release|
 ================
 
 MoabDB is a fast and easy-to-use database for financial data. 
@@ -49,8 +50,8 @@ Data Retrieval
    :maxdepth: 2
    :caption: Get Data Functions
 
-   data_functions/get_equity
-   data_functions/get_rates
+   api/get_equity
+   api/get_rates
 
 Datasets
 -------------

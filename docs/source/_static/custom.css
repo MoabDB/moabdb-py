@@ -3,7 +3,7 @@
     --color-brand: rgb(203, 132, 0);
 }
 
-/* Font and colors */
+/* Transparent background for body and sidebar */
 body {
     background-color: transparent !important;
     font-family: Arial, sans-serif;
