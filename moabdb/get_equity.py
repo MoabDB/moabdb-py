@@ -57,32 +57,35 @@ def get_equity(tickers: Union[str, list],
     -------
     out : pandas.DataFrame
         DataFrame containing equity price and volume information.
+        - Datetime index
+        - Daily Columns : ``Symbol``, ``Open``, ``High``, ``Low``, ``Close``,
+            ``VWAP``, ``BidPrc``, ``AskPrc``, ``Volume``, ``Trades``
+        - Intraday Columns : ``Symbol``, ``Time``, ``Trades``, ``Volume``,
+            ``Imbalance``, ``Close``, ``VWAP``, ``BidPrc``, ``AskPrc``,
+            ``BidSz``, ``AskSz``
 
-    Notes
-    -----
-    The returned array will be guaranteed to have the listed requirements
-    by making a copy if needed.
+        Notes
+        -----
+        - If the request is for a single ticker, the DataFrame will be returned
+            with single index columns.
+        - If the request is for multiple tickers, the DataFrame will be returned
+            with multi-index columns, with the first level being the ticker symbol.
 
     Examples
     --------
-    >>> x = np.arange(6).reshape(2,3)
-    >>> x.flags
-    C_CONTIGUOUS : True
-    F_CONTIGUOUS : False
-    OWNDATA : False
-    WRITEABLE : True
-    ALIGNED : True
-    WRITEBACKIFCOPY : False
+    Request the last year of ``AAPL`` daily data:
 
-    >>> y = np.require(x, dtype=np.float32, requirements=['A', 'O', 'W', 'F'])
-    >>> y.flags
-    C_CONTIGUOUS : False
-    F_CONTIGUOUS : True
-    OWNDATA : True
-    WRITEABLE : True
-    ALIGNED : True
-    WRITEBACKIFCOPY : False
+    >>> import moabdb as mdb
+    >>> df = mdb.get_equity("AAPL", "1y")
 
+    Request the most recent year of daily equity data for a multiple stocks:
+
+    >>> df = mdb.get_equity(["AMZN", "MSFT", "TSLA"], "1y")
+
+    Request a specific month of daily data:
+    >>> df = mdb.get_equity("AMZN", start="2022-04-01", sample="1m")
+    
+    
     Errors Raised:
     --------------
     errors.MoabResponseError:

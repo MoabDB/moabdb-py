@@ -1,7 +1,7 @@
 """MoabDB"""
 # pylint: disable=unused-import
 
-__version__ = "0.1.46"
+__version__ = "0.1.47"
 
 from .constants import *
 from .errors import *
