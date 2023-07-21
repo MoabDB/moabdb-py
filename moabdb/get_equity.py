@@ -28,7 +28,7 @@ def get_equity(tickers: Union[str, list],
     """
     Function to retrieve equity data from the MoabDB API.
 
-    The get_equity2() function can be used to access both historical daily and intraday data.
+    The get_equity() function can be used to access both historical daily and intraday data.
 
     .. admonition:: Data Aggregation
         - Daily data: Returns a single data point per day based on activity \
