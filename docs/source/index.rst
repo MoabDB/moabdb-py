@@ -7,14 +7,17 @@
 ..   :width: 400
 ..   :alt: Logo
 
-
-MoabDB API and Dataset Documentation
-
-|release|
-=========
+====================================
+MoabDB API and Dataset Documentation 
+====================================
 
 MoabDB is a fast and easy-to-use database for financial data. 
-For subscriptions visit the homepage: `MoabDB.com <https://moabdb.com>`_
+
+.. seealso::
+
+   Information on subscriptions to access advnaced datasets can be found at the homepage: 
+   `MoabDB.com <https://moabdb.com>`_
+
 
 API Highlights
 --------------
@@ -23,6 +26,7 @@ The MoabDB API offers the following features:
 
 * Built with Rust for fast data retrieval
 * Accessible with Python for easy data manipulation
+
 
 Data Provided by MoabDB
 -----------------------
@@ -39,29 +43,37 @@ import moabdb as mdb
 mdb.get_equity("AAPL")
 # something idk docs
 ```
+9184170814
 
 Source code
 -----------
 
 The source code is available on GitHub at: `MoabDB GitHub Repository <https://github.com/MoabDB/moabdb-py>`_
 
-Data Retrieval
--------------
+
+Core API Functions to Retrieve Data 
+-----------------------------------
 
 .. toctree::
    :maxdepth: 2
-   :caption: Get Data Functions
+   :caption: Core API Functions
 
    api/get_equity
+   api/get_options
    api/get_rates
+   api/get_financials
 
-Datasets
--------------
+Datasets on Demand
+------------------
 .. toctree::
    :maxdepth: 2
    :caption: Datasets
 
-   datasets/rates
    datasets/equity
+   datasets/options
+   datasets/interest_rates
+   datasets/financials_balancesheet
+   datasets/financials_cashflows
+   datasets/financials_income
 
 ..   moabdb

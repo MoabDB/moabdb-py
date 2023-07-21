@@ -1,4 +1,4 @@
-Interest Rates
+Option Trading
 ##############
 
 .. automodule:: moabdb.get_rates.get_rates

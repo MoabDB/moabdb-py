@@ -1,4 +1,4 @@
-Historical Equity Trading
+Historical Option Trading
 #########################
 
 Articles and pages

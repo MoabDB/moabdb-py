@@ -1,5 +1,5 @@
-The get_equity() functions
-===================
+Equity Trading
+##############
 
 .. automodule:: moabdb.get_equity
    :members:
