@@ -37,8 +37,8 @@ def get_equity(tickers: Union[str, list],
             market activity 8:00 AM and 6:00 PM EST
 
 
-    Parameters
-    ----------
+    Parameters:
+    -----------
     tickers : (Union[str, list])
         The ticker(s) to look up
     sample : (str), optional
@@ -53,50 +53,60 @@ def get_equity(tickers: Union[str, list],
         See moabdb.com for subscriptions for intraday access
 
     Raises:
-        errors.MoabResponseError: If there's a problem interpreting the response
-        errors.MoabRequestError: If the server has a problem interpreting the request,
-            or if an invalid parameter is passed
-        errors.MoabInternalError: If the server runs into an unrecoverable error internally
-        errors.MoabHttpError: If there's a problem transporting the payload or receiving a response
-        errors.MoabUnauthorizedError: If the user is not authorized to request the datatype
-        errors.MoabNotFoundError: If the data requested wasn't found
-        errors.MoabUnknownError: If the error code couldn't be parsed
+    -------
+    errors.MoabResponseError:
+        If there's a problem interpreting the response
+    errors.MoabRequestError:
+        If the server has a problem interpreting the request,
+        or if an invalid parameter is passed
+    errors.MoabInternalError:
+        If the server runs into an unrecoverable error internally
+    errors.MoabHttpError:
+        If there's a problem transporting the payload or receiving a response
+    errors.MoabUnauthorizedError:
+        If the user is not authorized to request the datatype
+    errors.MoabNotFoundError:
+        If the data requested wasn't found
+    errors.MoabUnknownError:
+        If the error code couldn't be parsed
 
     Returns:
-        pandas.DataFrame: A DataFrame containing equity price and volume information.
+    -------
+    pandas.DataFrame:
+        A DataFrame containing equity price and volume information.
 
-        For Daily data:
-            Timeframe: Based on valid observations between 9:30 AM and 4:00 PM EST
-            Index:
-                - Date (datetime64): Day of observations formatted as "YYYY-MM-DD".
-            Columns:
-                - Symbol (str): Ticker symbol of the equity.
-                - Open (float): Opening trade price.
-                - High (float): Highest trade price.
-                - Low (float): Lowest trade price.
-                - Close (float): Closing trade price.
-                - VWAP (float): Volume-weighted average price.
-                - BidPrc (float): Bid price.
-                - AskPrc (float): Ask price.
-                - Volume (int): Volume traded.
-                - Trades (int): Number of trades.
+    For Daily data:
+        Timeframe: Based on valid observations between 9:30 AM and 4:00 PM EST
+        Index:
+            - Date (datetime64): Day of observations formatted as "YYYY-MM-DD".
+        Columns:
+            - Symbol (str): Ticker symbol of the equity.
+            - Open (float): Opening trade price.
+            - High (float): Highest trade price.
+            - Low (float): Lowest trade price.
+            - Close (float): Closing trade price.
+            - VWAP (float): Volume-weighted average price.
+            - BidPrc (float): Bid price.
+            - AskPrc (float): Ask price.
+            - Volume (int): Volume traded.
+            - Trades (int): Number of trades.
 
-        Intraday data:
-            Timeframe: Valid observations between 8:00 AM and 6:00 PM EST
-            Index:
-                - Time (datetime64): Time of observation formatted as "YYYY-MM-DD HH:MM:SS".
-            Columns:
-                - Symbol (str): Ticker symbol of the equity.
-                - Time (datetime64): Time of the data point.
-                - Trades (int): Number of trades.
-                - Volume (int): Volume traded.
-                - Imbalance (int): Buy-initiated volume minus sell-initiated volume.
-                - Close (float): Closing trade price.
-                - VWAP (float): Volume-weighted average price.
-                - BidPrc (float): Bid price.
-                - AskPrc (float): Ask price.
-                - BidSz (int): Round lots available at BidPrc.
-                - AskSz (int): Round lots available at AskPrc.
+    Intraday data:
+        Timeframe: Valid observations between 8:00 AM and 6:00 PM EST
+        Index:
+            - Time (datetime64): Time of observation formatted as "YYYY-MM-DD HH:MM:SS".
+        Columns:
+            - Symbol (str): Ticker symbol of the equity.
+            - Time (datetime64): Time of the data point.
+            - Trades (int): Number of trades.
+            - Volume (int): Volume traded.
+            - Imbalance (int): Buy-initiated volume minus sell-initiated volume.
+            - Close (float): Closing trade price.
+            - VWAP (float): Volume-weighted average price.
+            - BidPrc (float): Bid price.
+            - AskPrc (float): Ask price.
+            - BidSz (int): Round lots available at BidPrc.
+            - AskSz (int): Round lots available at AskPrc.
 
         Note:
             - If the request is for a single ticker, the DataFrame will be returned
