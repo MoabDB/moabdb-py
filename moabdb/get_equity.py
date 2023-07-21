@@ -26,70 +26,80 @@ def get_equity(tickers: Union[str, list],
                end: str = None,
                intraday: bool = False) -> pd.DataFrame:
     """
-    Return an ndarray of the provided type that satisfies requirements.
+    Return a ``pandas.DataFrame`` of historical price and volume information 
+    for the ticker(s) provided.
 
-    This function is useful to be sure that an array with the correct flags
-    is returned for passing to compiled code (perhaps through ctypes).
+    This function can be modified to pull daily-level data or intraday
+    second-level data. Daily data reflects market trades between 9:30 AM
+    and 4:00 PM, Eastern. Intraday data reflects market trades between
+    8:00 AM and 6:00 PM, Eastern.
 
-    Parameters
-    ----------
-    a : array_like
-       The object to be converted to a type-and-requirement-satisfying array.
-    dtype : data-type
-       The required data-type. If None preserve the current dtype. If your
-       application requires the data to be in native byteorder, include
-       a byteorder specification as a part of the dtype specification.
-    requirements : str or sequence of str
-       The requirements list can be any of the following
+        Parameters
+        ----------
+        tickers : str or list[str]
+            The ticker(s) to look up
+        sample : str (optional)
+            Sample period length, can be used alone or with ``start``/``end``
+        start : str (optional)
+            Sample start date, requires one of ``end`` or ``sample``
+        end : str (optional)
+            Sample end date, requires one of ``start`` or ``sample``
+        intraday : bool, default False (optional)
+            Set to ``True`` to return intraday data
+            Default is ``False`` to return end-of-day data
+            See moabdb.com for subscriptions for intraday access
 
-       * 'F_CONTIGUOUS' ('F') - ensure a Fortran-contiguous array
-       * 'C_CONTIGUOUS' ('C') - ensure a C-contiguous array
-       * 'ALIGNED' ('A')      - ensure a data-type aligned array
-       * 'WRITEABLE' ('W')    - ensure a writable array
-       * 'OWNDATA' ('O')      - ensure an array that owns its own data
-       * 'ENSUREARRAY', ('E') - ensure a base array, instead of a subclass
-    ${ARRAY_FUNCTION_LIKE}
+                .. note:: ``sample`` can be used alone to return the most recent
+                    data, but ``start`` and ``end`` require two arguments
+                    from [``sample``, ``start``, ``end``]
 
-        .. versionadded:: 1.20.0
+        Returns
+        -------
+        out : pandas.DataFrame
+            DataFrame containing equity price and volume information.
 
-    Returns
-    -------
-    out : ndarray
-        Array with specified requirements and type if given.
+        Notes
+        -----
+        The returned array will be guaranteed to have the listed requirements
+        by making a copy if needed.
 
-    See Also
-    --------
-    asarray : Convert input to an ndarray.
-    asanyarray : Convert to an ndarray, but pass through ndarray subclasses.
-    ascontiguousarray : Convert input to a contiguous array.
-    asfortranarray : Convert input to an ndarray with column-major
-                     memory order.
-    ndarray.flags : Information about the memory layout of the array.
+        Examples
+        --------
+        >>> x = np.arange(6).reshape(2,3)
+        >>> x.flags
+        C_CONTIGUOUS : True
+        F_CONTIGUOUS : False
+        OWNDATA : False
+        WRITEABLE : True
+        ALIGNED : True
+        WRITEBACKIFCOPY : False
 
-    Notes
-    -----
-    The returned array will be guaranteed to have the listed requirements
-    by making a copy if needed.
+        >>> y = np.require(x, dtype=np.float32, requirements=['A', 'O', 'W', 'F'])
+        >>> y.flags
+        C_CONTIGUOUS : False
+        F_CONTIGUOUS : True
+        OWNDATA : True
+        WRITEABLE : True
+        ALIGNED : True
+        WRITEBACKIFCOPY : False
 
-    Examples
-    --------
-    >>> x = np.arange(6).reshape(2,3)
-    >>> x.flags
-      C_CONTIGUOUS : True
-      F_CONTIGUOUS : False
-      OWNDATA : False
-      WRITEABLE : True
-      ALIGNED : True
-      WRITEBACKIFCOPY : False
-
-    >>> y = np.require(x, dtype=np.float32, requirements=['A', 'O', 'W', 'F'])
-    >>> y.flags
-      C_CONTIGUOUS : False
-      F_CONTIGUOUS : True
-      OWNDATA : True
-      WRITEABLE : True
-      ALIGNED : True
-      WRITEBACKIFCOPY : False
+        Errors Raised:
+        --------------
+        errors.MoabResponseError:
+            If there's a problem interpreting the response
+        errors.MoabRequestError:
+            If the server has a problem interpreting the request,
+            or if an invalid parameter is passed
+        errors.MoabInternalError:
+            If the server runs into an unrecoverable error internally
+        errors.MoabHttpError:
+            If there's a problem transporting the payload or receiving a response
+        errors.MoabUnauthorizedError:
+            If the user is not authorized to request the datatype
+        errors.MoabNotFoundError:
+            If the data requested wasn't found
+        errors.MoabUnknownError:
+            If the error code couldn't be parsed
 
     """
 
