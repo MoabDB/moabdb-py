@@ -34,72 +34,72 @@ def get_equity(tickers: Union[str, list],
     and 4:00 PM, Eastern. Intraday data reflects market trades between
     8:00 AM and 6:00 PM, Eastern.
 
-        Parameters
-        ----------
-        tickers : str or list[str]
-            The ticker(s) to look up
-        sample : str (optional)
-            Sample period length, can be used alone or with ``start``/``end``
-        start : str (optional)
-            Sample start date, requires one of ``end`` or ``sample``
-        end : str (optional)
-            Sample end date, requires one of ``start`` or ``sample``
-        intraday : bool, default False (optional)
-            Set to ``True`` to return intraday data
-            Default is ``False`` to return end-of-day data
-            See moabdb.com for subscriptions for intraday access
+    Parameters
+    ----------
+    tickers : str or list[str]
+        The ticker(s) to look up
+    sample : str (optional)
+        Sample period length, can be used alone or with ``start``/``end``
+    start : str (optional)
+        Sample start date, requires one of ``end`` or ``sample``
+    end : str (optional)
+        Sample end date, requires one of ``start`` or ``sample``
+    intraday : bool, default False (optional)
+        Set to ``True`` to return intraday data
+        Default is ``False`` to return end-of-day data
+        See moabdb.com for subscriptions for intraday access
 
-                .. note:: ``sample`` can be used alone to return the most recent
-                    data, but ``start`` and ``end`` require two arguments
-                    from [``sample``, ``start``, ``end``]
+            .. note:: ``sample`` can be used alone to return the most recent
+                data, but ``start`` and ``end`` require two arguments
+                from [``sample``, ``start``, ``end``]
 
-        Returns
-        -------
-        out : pandas.DataFrame
-            DataFrame containing equity price and volume information.
+    Returns
+    -------
+    out : pandas.DataFrame
+        DataFrame containing equity price and volume information.
 
-        Notes
-        -----
-        The returned array will be guaranteed to have the listed requirements
-        by making a copy if needed.
+    Notes
+    -----
+    The returned array will be guaranteed to have the listed requirements
+    by making a copy if needed.
 
-        Examples
-        --------
-        >>> x = np.arange(6).reshape(2,3)
-        >>> x.flags
-        C_CONTIGUOUS : True
-        F_CONTIGUOUS : False
-        OWNDATA : False
-        WRITEABLE : True
-        ALIGNED : True
-        WRITEBACKIFCOPY : False
+    Examples
+    --------
+    >>> x = np.arange(6).reshape(2,3)
+    >>> x.flags
+    C_CONTIGUOUS : True
+    F_CONTIGUOUS : False
+    OWNDATA : False
+    WRITEABLE : True
+    ALIGNED : True
+    WRITEBACKIFCOPY : False
 
-        >>> y = np.require(x, dtype=np.float32, requirements=['A', 'O', 'W', 'F'])
-        >>> y.flags
-        C_CONTIGUOUS : False
-        F_CONTIGUOUS : True
-        OWNDATA : True
-        WRITEABLE : True
-        ALIGNED : True
-        WRITEBACKIFCOPY : False
+    >>> y = np.require(x, dtype=np.float32, requirements=['A', 'O', 'W', 'F'])
+    >>> y.flags
+    C_CONTIGUOUS : False
+    F_CONTIGUOUS : True
+    OWNDATA : True
+    WRITEABLE : True
+    ALIGNED : True
+    WRITEBACKIFCOPY : False
 
-        Errors Raised:
-        --------------
-        errors.MoabResponseError:
-            If there's a problem interpreting the response
-        errors.MoabRequestError:
-            If the server has a problem interpreting the request,
-            or if an invalid parameter is passed
-        errors.MoabInternalError:
-            If the server runs into an unrecoverable error internally
-        errors.MoabHttpError:
-            If there's a problem transporting the payload or receiving a response
-        errors.MoabUnauthorizedError:
-            If the user is not authorized to request the datatype
-        errors.MoabNotFoundError:
-            If the data requested wasn't found
-        errors.MoabUnknownError:
-            If the error code couldn't be parsed
+    Errors Raised:
+    --------------
+    errors.MoabResponseError:
+        If there's a problem interpreting the response
+    errors.MoabRequestError:
+        If the server has a problem interpreting the request,
+        or if an invalid parameter is passed
+    errors.MoabInternalError:
+        If the server runs into an unrecoverable error internally
+    errors.MoabHttpError:
+        If there's a problem transporting the payload or receiving a response
+    errors.MoabUnauthorizedError:
+        If the user is not authorized to request the datatype
+    errors.MoabNotFoundError:
+        If the data requested wasn't found
+    errors.MoabUnknownError:
+        If the error code couldn't be parsed
 
     """
 
