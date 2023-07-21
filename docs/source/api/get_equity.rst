@@ -1,5 +1,5 @@
-Equity Trading
-##############
+Get Equity Data
+###############
 
 .. automodule:: moabdb.get_equity
    :members:
