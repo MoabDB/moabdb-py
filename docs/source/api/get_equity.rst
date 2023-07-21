@@ -1,5 +1,5 @@
-Get Equity Data
-###############
+Get Equity Datas
+################
 
 .. automodule:: moabdb.get_equity
    :members:
