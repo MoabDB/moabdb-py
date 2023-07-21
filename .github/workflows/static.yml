@@ -33,7 +33,14 @@ jobs:
       - name: Install Pip
         run: sudo apt install python3-pip
       - name: Install dependencies
-        run: pip install --upgrade sphinx && pip install m2r && pip install sphinxawesome-theme && pip install moabdb && pip install sphinx-favicon && pip install --upgrade furo && pip install pydata-sphinx-theme
+        run: pip install --upgrade sphinx && \
+              pip install m2r && \
+              pip install sphinxawesome-theme && \
+              pip install moabdb && \
+              pip install sphinx-favicon && \
+              pip install furo && \
+              pip install pydata-sphinx-theme && \
+              pip install sphinx-book-theme
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup Pages
