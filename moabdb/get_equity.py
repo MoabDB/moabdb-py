@@ -14,7 +14,7 @@ information for equities from the Moab Database (moabdb.com). It allows users
 to request both daily-level and intraday-level data for one or multiple ticker
 symbols.
 
-All data retrieved using the `moabdb` module are returned as pandas DataFrames.
+All data retrieved using the ``moabdb`` module are returned as pandas DataFrames.
 
 Usage
 -----
@@ -23,7 +23,7 @@ Import the module and use the available functions to fetch equity and rates data
 >>> import moabdb as mdb
 >>> df = mdb.get_equity("AAPL", "6m") # Get 6 months of AAPL daily data
 
-To access intraday data, you must first log in with your API credentials:
+To access intraday data, you must first login with your API credentials:
 
 >>> import moabdb as mdb
 >>> mdb.login("your_email@example.com", "moabdb_api_key")
@@ -32,7 +32,9 @@ To access intraday data, you must first log in with your API credentials:
 
 
 For information on subscriptions visit https://moabdb.com.
+
 To view the source code visit https://github.com/MoabDB.
+
 """
 
 
@@ -51,7 +53,7 @@ def get_equity(tickers: Union[str, list],
                end: str = None,
                intraday: bool = False) -> pd.DataFrame:
     """
-    Return a ``pandas.DataFrame`` of historical price and volume information 
+    Return a ``pandas.DataFrame`` of historical price and volume information
     for the ticker(s) provided.
 
     This function can be modified to pull daily-level data or intraday
@@ -59,7 +61,7 @@ def get_equity(tickers: Union[str, list],
     and 4:00 PM, Eastern. Intraday data reflects market trades between
     8:00 AM and 6:00 PM, Eastern.
 
-    
+
     Parameters
     ----------
     tickers : str or list of str
@@ -67,7 +69,7 @@ def get_equity(tickers: Union[str, list],
         or a list of ticker symbols (list of str).
 
     sample : str, optional
-        Sample period length. It can be used alone or with ``start``/``end``.
+        Sample period length. Can be used alone or with ``start`` | ``end``.
 
     start : str, optional
         Sample start date. Requires one of ``end`` or ``sample``.
@@ -80,12 +82,12 @@ def get_equity(tickers: Union[str, list],
         Default is ``False`` to return end-of-day data.
         See moabdb.com for subscriptions for intraday access.
 
-    .. note:: 
+    .. note::
         - ``sample`` can be used alone to return the most recent data,
-            but ``start`` and ``end`` require two arguments
-            from ``sample``/``start``/``end``.
+          but ``start`` and ``end`` require two arguments
+          from ``sample`` | ``start`` | ``end``.
 
-              
+
     Returns
     -------
     out : pandas.DataFrame
@@ -93,53 +95,57 @@ def get_equity(tickers: Union[str, list],
 
         **Daily Data Columns:**
 
-        +-------------------+---------------------------------------------+
+        +-------------------+--------------------------------------------+
+        | Column variable   | Variable Description                       |
+        +===================+============================================+
         | Symbol (str)      | Ticker symbol of the equity.               |
-        +-------------------+---------------------------------------------+
+        +-------------------+--------------------------------------------+
         | Open (float)      | Opening trade price.                       |
-        +-------------------+---------------------------------------------+
+        +-------------------+--------------------------------------------+
         | High (float)      | Highest trade price.                       |
-        +-------------------+---------------------------------------------+
+        +-------------------+--------------------------------------------+
         | Low (float)       | Lowest trade price.                        |
-        +-------------------+---------------------------------------------+
+        +-------------------+--------------------------------------------+
         | Close (float)     | Closing trade price.                       |
-        +-------------------+---------------------------------------------+
+        +-------------------+--------------------------------------------+
         | VWAP (float)      | Volume-weighted average price.             |
-        +-------------------+---------------------------------------------+
+        +-------------------+--------------------------------------------+
         | BidPrc (float)    | Bid price.                                 |
-        +-------------------+---------------------------------------------+
+        +-------------------+--------------------------------------------+
         | AskPrc (float)    | Ask price.                                 |
-        +-------------------+---------------------------------------------+
+        +-------------------+--------------------------------------------+
         | Volume (int)      | Volume traded.                             |
-        +-------------------+---------------------------------------------+
+        +-------------------+--------------------------------------------+
         | Trades (int)      | Number of trades.                          |
-        +-------------------+---------------------------------------------+
+        +-------------------+--------------------------------------------+
 
         **Intraday Data Columns:**
 
-        +-------------------+---------------------------------------------+
-        | Symbol (str)      | Ticker symbol of the equity.               |
-        +-------------------+---------------------------------------------+
-        | Time (datetime64) | Time of the data point.                    |
-        +-------------------+---------------------------------------------+
-        | Trades (int)      | Number of trades.                          |
-        +-------------------+---------------------------------------------+
-        | Volume (int)      | Volume traded.                             |
-        +-------------------+---------------------------------------------+
+        +-------------------+--------------------------------------------------+
+        | Column variable   | Variable Description                             |
+        +===================+==================================================+
+        | Symbol (str)      | Ticker symbol of the equity.                     |
+        +-------------------+--------------------------------------------------+
+        | Time (datetime64) | Time of the data point.                          |
+        +-------------------+--------------------------------------------------+
+        | Trades (int)      | Number of trades.                                |
+        +-------------------+--------------------------------------------------+
+        | Volume (int)      | Volume traded.                                   |
+        +-------------------+--------------------------------------------------+
         | Imbalance (int)   | Buy-initiated volume minus sell-initiated volume.|
-        +-------------------+---------------------------------------------+
-        | Close (float)     | Closing trade price.                       |
-        +-------------------+---------------------------------------------+
-        | VWAP (float)      | Volume-weighted average price.             |
-        +-------------------+---------------------------------------------+
-        | BidPrc (float)    | Bid price.                                 |
-        +-------------------+---------------------------------------------+
-        | AskPrc (float)    | Ask price.                                 |
-        +-------------------+---------------------------------------------+
-        | BidSz (int)       | Round lots available at BidPrc.            |
-        +-------------------+---------------------------------------------+
-        | AskSz (int)       | Round lots available at AskPrc.            |
-        +-------------------+---------------------------------------------+
+        +-------------------+--------------------------------------------------+
+        | Close (float)     | Closing trade price.                             |
+        +-------------------+--------------------------------------------------+
+        | VWAP (float)      | Volume-weighted average price.                   |
+        +-------------------+--------------------------------------------------+
+        | BidPrc (float)    | Bid price.                                       |
+        +-------------------+--------------------------------------------------+
+        | AskPrc (float)    | Ask price.                                       |
+        +-------------------+--------------------------------------------------+
+        | BidSz (int)       | Round lots available at BidPrc.                  |
+        +-------------------+--------------------------------------------------+
+        | AskSz (int)       | Round lots available at AskPrc.                  |
+        +-------------------+--------------------------------------------------+
 
     .. note::
 
@@ -149,7 +155,7 @@ def get_equity(tickers: Union[str, list],
         - If the request is for multiple tickers, the DataFrame will be returned
           with multi-index columns, with the first level being the ticker symbol.
 
-          
+
     Examples
     --------
     **Request the last year of ``AAPL`` daily data:**
@@ -176,7 +182,7 @@ def get_equity(tickers: Union[str, list],
     >>> mdb.login("your_email@example.com", "moabdb_api_key")
     >>> df = mdb.get_equity("TSLA", start="2020-01-01", end="2020-06-01", intraday=True)
 
-    
+
     Raises
     ------
     errors.MoabResponseError:
@@ -196,7 +202,7 @@ def get_equity(tickers: Union[str, list],
         If the error code couldn't be parsed
 
     """
-    
+
     # Check intraday authorization
     if intraday is True:
         equity_freq = "intraday_stocks"
