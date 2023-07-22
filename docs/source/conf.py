@@ -22,7 +22,8 @@ author = 'MoabDB'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 templates_path = ['_templates']
-extensions = ['sphinx.ext.autodoc',
+extensions = ["numpydoc", 
+              'sphinx.ext.autodoc',
               "sphinx.ext.intersphinx",
               "sphinx.ext.viewcode"]
               #'sphinx.ext.ifconfig',
