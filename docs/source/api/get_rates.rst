@@ -1,7 +1,5 @@
 Interest Rates
 ##############
 
-.. automodule:: moabdb.get_rates.get_rates
-   :members:
-   :undoc-members:
-   :show-inheritance:
+.. automodule:: moabdb
+   :members: get_rates

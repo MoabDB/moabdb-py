@@ -47,7 +47,7 @@ from .lib import _check_access, _server_req
 from .constants import pd, Union, cf
 
 
-def get_equity(tickers: Union[str, list],
+def get_equity2(tickers: Union[str, list],
                sample: str = "1m",
                start: str = None,
                end: str = None,

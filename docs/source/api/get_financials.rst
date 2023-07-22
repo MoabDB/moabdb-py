@@ -224,7 +224,7 @@ errors.MoabUnknownError:
 | | ``AskSz`` (int)           | | Round lots available at AskPrc.                  |
 +-----------------------------+----------------------------------------------------+
 
-.. automodule:: moabdb.get_rates.get_rates
-   :members:
-   :undoc-members:
-   :show-inheritance:
+.. .. automodule:: moabdb.get_rates.get_rates
+..    :members:
+..    :undoc-members:
+..    :show-inheritance:
