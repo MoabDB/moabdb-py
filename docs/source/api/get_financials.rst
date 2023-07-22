@@ -2,39 +2,40 @@ Financial Statements
 ####################
 
 
-Return a ``pandas.DataFrame`` of historical price and volume information
-for the ticker(s) provided.
 
-This function can be modified to pull daily-level data or intraday
-second-level data. Daily data reflects market trades between 9:30 AM
-and 4:00 PM, Eastern. Intraday data reflects market trades between
-8:00 AM and 6:00 PM, Eastern.
+Examples
+--------
+
+.. code-block:: python
+   :linenos:
+
+   import moabdb as mdb
+   
+   # -- Pulling daily data -- #
+
+   #Request the last year of ``AAPL`` daily data:
+   df = mdb.get_equity("AAPL", "1y")
+
+   # Request the most recent year of daily equity data for multiple stocks:
+   df = mdb.get_equity(["AMZN", "MSFT", "TSLA"], "1y")
+
+   # Request a specific month of daily data:
+   df = mdb.get_equity("AMZN", start="2022-04-01", sample="1m")
+
+   # Request daily data between two specific dates:
+   df = mdb.get_equity("AMZN", start="2022-04-01", end="2022-10-01")
 
 
-Parameters
-----------
-tickers : str or list of str
-   The ticker(s) to look up. It can be a single ticker symbol (str)
-   or a list of ticker symbols (list of str).
+   # -- Pulling intraday data -- #
 
-sample : str, optional
-   Sample period length. Can be used alone or with ``start`` | ``end``.
+   mdb.login("your_email@example.com", "moabdb_api_key")
+   
+   # Request the most recent month of intraday data:
+   df = mdb.get_equity("TSLA", "1m", intraday=True)
 
-start : str, optional
-   Sample start date. Requires one of ``end`` or ``sample``.
+   # Request intraday data between two specific dates:
+   df = mdb.get_equity("TSLA", start="2020-01-01", end="2020-06-01", intraday=True)
 
-end : str, optional
-   Sample end date. Requires one of ``start`` or ``sample``.
-
-intraday : bool, optional, default False
-   Set to ``True`` to return intraday data.
-   Default is ``False`` to return end-of-day data.
-   See moabdb.com for subscriptions for intraday access.
-
-.. note::
-   - ``sample`` can be used alone to return the most recent data,
-      but ``start`` and ``end`` require two arguments
-      from ``sample`` | ``start`` | ``end``.
 
 
 Returns
