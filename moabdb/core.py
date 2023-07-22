@@ -50,7 +50,7 @@ def get_equity(tickers: Union[str, list],
                start: str = None,
                end: str = None,
                intraday: bool = False) -> pd.DataFrame:
-    """Create a memory-map to an array stored in a *binary* file on disk.
+    """
 
     Return a ``pandas.DataFrame`` of historical price and volume information
     for the ticker(s) provided.
@@ -76,7 +76,9 @@ def get_equity(tickers: Union[str, list],
         Default is ``False`` to return end-of-day data.
         See moabdb.com for subscriptions for intraday access.
 
+
     .. note::
+
         - ``sample`` can be used alone to return the most recent data,
           but ``start`` and ``end`` require two arguments
           from ``sample`` | ``start`` | ``end``.
@@ -86,8 +88,13 @@ def get_equity(tickers: Union[str, list],
     -------
     out : pandas.DataFrame
         DataFrame containing equity price and volume information, indexed by datetime64.
+        The format of the DataFrame depends on the request type.
 
-        **Columns returned with daily data request:**
+        If the request is for a single ticker, the DataFrame will be returned with single
+        index.If the request is for multiple tickers, the DataFrame will be returned
+        with multi-index columns, with the first level being the ticker symbol.
+
+        **If the request is for daily data, the DataFrame will contain the following columns:**
 
         +-----------------------+--------------------------------------------+
         | DataFrame Columns     | Column Description                         |
@@ -113,10 +120,10 @@ def get_equity(tickers: Union[str, list],
         | ``Trades`` (int)      | Number of trades.                          |
         +-----------------------+--------------------------------------------+
 
-        **Columns returned with intraday data request:**
+        **If the request is for intraday data, the DataFrame will contain the following columns:**
 
         +-----------------------+--------------------------------------------------+
-        | DataFrame Columns     | Column Description                         |
+        | DataFrame Columns     | Column Description                               |
         +=======================+==================================================+
         | ``Symbol`` (str)      | Ticker symbol of the equity.                     |
         +-----------------------+--------------------------------------------------+
@@ -151,7 +158,7 @@ def get_equity(tickers: Union[str, list],
     Examples
     --------
 
-    ** Import the library **
+    **Import the library**
 
     >>> import moabdb as mdb
 
@@ -176,7 +183,7 @@ def get_equity(tickers: Union[str, list],
     >>> df = mdb.get_equity("AMZN", start="2022-04-01", end="2022-10-01")
 
 
-    ** Login for intraday data requests **
+    **Login for intraday data requests**
 
     >>> mdb.login("your_email@example.com", "moabdb_api_key")
 
