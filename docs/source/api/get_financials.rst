@@ -59,9 +59,9 @@ Financial Statements
 | AskSz (int)       | Round lots available at AskPrc.                  |
 +-------------------+--------------------------------------------------+
 
-+-------------------+----------------------------------------------------+
++---------------------+--------------------------------------------------+
 | Column variable     | Variable Description                             |
-+===================+====================================================+
++=====================+==================================================+
 | | Symbol (str)      | Ticker symbol of the equity.                     |
 | | Time (datetime64) | Time of the data point.                          |
 | | Trades (int)      | Number of trades.                                |
@@ -73,7 +73,7 @@ Financial Statements
 | | AskPrc (float)    | Ask price.                                       |
 | | BidSz (int)       | Round lots available at BidPrc.                  |
 | | AskSz (int)       | Round lots available at AskPrc.                  |
-+-------------------+----------------------------------------------------+
++---------------------+--------------------------------------------------+
 
 +----------+----------+----------+
 | Header 1 | Header 2 | Header 3 |
