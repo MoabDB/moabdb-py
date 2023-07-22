@@ -1,8 +1,48 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+# moabdb - Online finance database
+# https://github.com/MoabDB
+# https://moabdb.com
+# Copyright 2022-2023
+#
+
+
+"""
+The `get_equity` function provides access to historical price and volume
+information for equities from the Moab Database (moabdb.com). It allows users
+to request both daily-level and intraday-level data for one or multiple ticker
+symbols.
+
+All data retrieved using the ``moabdb`` module are returned as pandas DataFrames.
+
+Usage
+-----
+Import the module and use the available functions to fetch equity and rates data:
+
+>>> import moabdb as mdb
+>>> df = mdb.get_equity("AAPL", "6m") # Get 6 months of AAPL daily data
+
+To access intraday data, you must first login with your API credentials:
+
+>>> import moabdb as mdb
+>>> mdb.login("your_email@example.com", "moabdb_api_key")
+>>> df = mdb.get_equity("AAPL", "6m") # Get 6 months of AAPL intraday data
+
+
+
+For information on subscriptions visit https://moabdb.com.
+
+To view the source code visit https://github.com/MoabDB.
+
+"""
+
 from . import constants
 from . import errors
 from . import timewindows
 from .lib import _check_access, _server_req
 from .constants import pd, Union, cf
+
 
 
 def get_equity(tickers: Union[str, list],

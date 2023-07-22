@@ -40,243 +40,243 @@ To view the source code visit https://github.com/MoabDB.
 
 
 
-from . import constants
-from . import errors
-from . import timewindows
-from .lib import _check_access, _server_req
-from .constants import pd, Union, cf
+# from . import constants
+# from . import errors
+# from . import timewindows
+# from .lib import _check_access, _server_req
+# from .constants import pd, Union, cf
 
 
-def get_equity2(tickers: Union[str, list],
-               sample: str = "1m",
-               start: str = None,
-               end: str = None,
-               intraday: bool = False) -> pd.DataFrame:
-    """Create a memory-map to an array stored in a *binary* file on disk.
+# def get_equity2(tickers: Union[str, list],
+#                sample: str = "1m",
+#                start: str = None,
+#                end: str = None,
+#                intraday: bool = False) -> pd.DataFrame:
+#     """Create a memory-map to an array stored in a *binary* file on disk.
 
-    Memory-mapped files are used for accessing small segments of large files
-    on disk, without reading the entire file into memory.  NumPy's
-    memmap's are array-like objects.  This differs from Python's ``mmap``
-    module, which uses file-like objects.
+#     Memory-mapped files are used for accessing small segments of large files
+#     on disk, without reading the entire file into memory.  NumPy's
+#     memmap's are array-like objects.  This differs from Python's ``mmap``
+#     module, which uses file-like objects.
 
-    This subclass of ndarray has some unpleasant interactions with
-    some operations, because it doesn't quite fit properly as a subclass.
-    An alternative to using this subclass is to create the ``mmap``
-    object yourself, then create an ndarray with ndarray.__new__ directly,
-    passing the object created in its 'buffer=' parameter.
+#     This subclass of ndarray has some unpleasant interactions with
+#     some operations, because it doesn't quite fit properly as a subclass.
+#     An alternative to using this subclass is to create the ``mmap``
+#     object yourself, then create an ndarray with ndarray.__new__ directly,
+#     passing the object created in its 'buffer=' parameter.
 
-    This class may at some point be turned into a factory function
-    which returns a view into an mmap buffer.
+#     This class may at some point be turned into a factory function
+#     which returns a view into an mmap buffer.
 
-    Flush the memmap instance to write the changes to the file. Currently there
-    is no API to close the underlying ``mmap``. It is tricky to ensure the
-    resource is actually closed, since it may be shared between different
-    memmap instances.
-
-
-    Parameters
-    ----------
-    filename : str, file-like object, or pathlib.Path instance
-        The file name or file object to be used as the array data buffer.
-    dtype : data-type, optional
-        The data-type used to interpret the file contents.
-        Default is `uint8`.
-    mode : {'r+', 'r', 'w+', 'c'}, optional
-        The file is opened in this mode:
-
-        +------+-------------------------------------------------------------+
-        | 'r'  | Open existing file for reading only.                        |
-        +------+-------------------------------------------------------------+
-        | 'r+' | Open existing file for reading and writing.                 |
-        +------+-------------------------------------------------------------+
-        | 'w+' | Create or overwrite existing file for reading and writing.  |
-        |      | If ``mode == 'w+'`` then `shape` must also be specified.    |
-        +------+-------------------------------------------------------------+
-        | 'c'  | Copy-on-write: assignments affect data in memory, but       |
-        |      | changes are not saved to disk.  The file on disk is         |
-        |      | read-only.                                                  |
-        +------+-------------------------------------------------------------+
-
-        Default is 'r+'.
-    offset : int, optional
-        In the file, array data starts at this offset. Since `offset` is
-        measured in bytes, it should normally be a multiple of the byte-size
-        of `dtype`. When ``mode != 'r'``, even positive offsets beyond end of
-        file are valid; The file will be extended to accommodate the
-        additional data. By default, ``memmap`` will start at the beginning of
-        the file, even if ``filename`` is a file pointer ``fp`` and
-        ``fp.tell() != 0``.
-    shape : tuple, optional
-        The desired shape of the array. If ``mode == 'r'`` and the number
-        of remaining bytes after `offset` is not a multiple of the byte-size
-        of `dtype`, you must specify `shape`. By default, the returned array
-        will be 1-D with the number of elements determined by file size
-        and data-type.
-    order : {'C', 'F'}, optional
-        Specify the order of the ndarray memory layout:
-        :term:`row-major`, C-style or :term:`column-major`,
-        Fortran-style.  This only has an effect if the shape is
-        greater than 1-D.  The default order is 'C'.
-
-    Attributes
-    ----------
-    filename : str or pathlib.Path instance
-        Path to the mapped file.
-    offset : int
-        Offset position in the file.
-    mode : str
-        File mode.
-
-    Methods
-    -------
-    flush
-        Flush any changes in memory to file on disk.
-        When you delete a memmap object, flush is called first to write
-        changes to disk.
+#     Flush the memmap instance to write the changes to the file. Currently there
+#     is no API to close the underlying ``mmap``. It is tricky to ensure the
+#     resource is actually closed, since it may be shared between different
+#     memmap instances.
 
 
-    See also
-    --------
-    lib.format.open_memmap : Create or load a memory-mapped ``.npy`` file.
+#     Parameters
+#     ----------
+#     filename : str, file-like object, or pathlib.Path instance
+#         The file name or file object to be used as the array data buffer.
+#     dtype : data-type, optional
+#         The data-type used to interpret the file contents.
+#         Default is `uint8`.
+#     mode : {'r+', 'r', 'w+', 'c'}, optional
+#         The file is opened in this mode:
 
-    Notes
-    -----
-    The memmap object can be used anywhere an ndarray is accepted.
-    Given a memmap ``fp``, ``isinstance(fp, numpy.ndarray)`` returns
-    ``True``.
+#         +------+-------------------------------------------------------------+
+#         | 'r'  | Open existing file for reading only.                        |
+#         +------+-------------------------------------------------------------+
+#         | 'r+' | Open existing file for reading and writing.                 |
+#         +------+-------------------------------------------------------------+
+#         | 'w+' | Create or overwrite existing file for reading and writing.  |
+#         |      | If ``mode == 'w+'`` then `shape` must also be specified.    |
+#         +------+-------------------------------------------------------------+
+#         | 'c'  | Copy-on-write: assignments affect data in memory, but       |
+#         |      | changes are not saved to disk.  The file on disk is         |
+#         |      | read-only.                                                  |
+#         +------+-------------------------------------------------------------+
 
-    Memory-mapped files cannot be larger than 2GB on 32-bit systems.
+#         Default is 'r+'.
+#     offset : int, optional
+#         In the file, array data starts at this offset. Since `offset` is
+#         measured in bytes, it should normally be a multiple of the byte-size
+#         of `dtype`. When ``mode != 'r'``, even positive offsets beyond end of
+#         file are valid; The file will be extended to accommodate the
+#         additional data. By default, ``memmap`` will start at the beginning of
+#         the file, even if ``filename`` is a file pointer ``fp`` and
+#         ``fp.tell() != 0``.
+#     shape : tuple, optional
+#         The desired shape of the array. If ``mode == 'r'`` and the number
+#         of remaining bytes after `offset` is not a multiple of the byte-size
+#         of `dtype`, you must specify `shape`. By default, the returned array
+#         will be 1-D with the number of elements determined by file size
+#         and data-type.
+#     order : {'C', 'F'}, optional
+#         Specify the order of the ndarray memory layout:
+#         :term:`row-major`, C-style or :term:`column-major`,
+#         Fortran-style.  This only has an effect if the shape is
+#         greater than 1-D.  The default order is 'C'.
 
-    When a memmap causes a file to be created or extended beyond its
-    current size in the filesystem, the contents of the new part are
-    unspecified. On systems with POSIX filesystem semantics, the extended
-    part will be filled with zero bytes.
+#     Attributes
+#     ----------
+#     filename : str or pathlib.Path instance
+#         Path to the mapped file.
+#     offset : int
+#         Offset position in the file.
+#     mode : str
+#         File mode.
 
-    Examples
-    --------
-    >>> data = np.arange(12, dtype='float32')
-    >>> data.resize((3,4))
+#     Methods
+#     -------
+#     flush
+#         Flush any changes in memory to file on disk.
+#         When you delete a memmap object, flush is called first to write
+#         changes to disk.
 
-    This example uses a temporary file so that doctest doesn't write
-    files to your directory. You would use a 'normal' filename.
 
-    >>> from tempfile import mkdtemp
-    >>> import os.path as path
-    >>> filename = path.join(mkdtemp(), 'newfile.dat')
+#     See also
+#     --------
+#     lib.format.open_memmap : Create or load a memory-mapped ``.npy`` file.
 
-    Create a memmap with dtype and shape that matches our data:
+#     Notes
+#     -----
+#     The memmap object can be used anywhere an ndarray is accepted.
+#     Given a memmap ``fp``, ``isinstance(fp, numpy.ndarray)`` returns
+#     ``True``.
 
-    >>> fp = np.memmap(filename, dtype='float32', mode='w+', shape=(3,4))
-    >>> fp
-    memmap([[0., 0., 0., 0.],
-            [0., 0., 0., 0.],
-            [0., 0., 0., 0.]], dtype=float32)
+#     Memory-mapped files cannot be larger than 2GB on 32-bit systems.
 
-    Write data to memmap array:
+#     When a memmap causes a file to be created or extended beyond its
+#     current size in the filesystem, the contents of the new part are
+#     unspecified. On systems with POSIX filesystem semantics, the extended
+#     part will be filled with zero bytes.
 
-    >>> fp[:] = data[:]
-    >>> fp
-    memmap([[  0.,   1.,   2.,   3.],
-            [  4.,   5.,   6.,   7.],
-            [  8.,   9.,  10.,  11.]], dtype=float32)
+#     Examples
+#     --------
+#     >>> data = np.arange(12, dtype='float32')
+#     >>> data.resize((3,4))
 
-    >>> fp.filename == path.abspath(filename)
-    True
+#     This example uses a temporary file so that doctest doesn't write
+#     files to your directory. You would use a 'normal' filename.
 
-    Flushes memory changes to disk in order to read them back
+#     >>> from tempfile import mkdtemp
+#     >>> import os.path as path
+#     >>> filename = path.join(mkdtemp(), 'newfile.dat')
 
-    >>> fp.flush()
+#     Create a memmap with dtype and shape that matches our data:
 
-    Load the memmap and verify data was stored:
+#     >>> fp = np.memmap(filename, dtype='float32', mode='w+', shape=(3,4))
+#     >>> fp
+#     memmap([[0., 0., 0., 0.],
+#             [0., 0., 0., 0.],
+#             [0., 0., 0., 0.]], dtype=float32)
 
-    >>> newfp = np.memmap(filename, dtype='float32', mode='r', shape=(3,4))
-    >>> newfp
-    memmap([[  0.,   1.,   2.,   3.],
-            [  4.,   5.,   6.,   7.],
-            [  8.,   9.,  10.,  11.]], dtype=float32)
+#     Write data to memmap array:
 
-    Read-only memmap:
+#     >>> fp[:] = data[:]
+#     >>> fp
+#     memmap([[  0.,   1.,   2.,   3.],
+#             [  4.,   5.,   6.,   7.],
+#             [  8.,   9.,  10.,  11.]], dtype=float32)
 
-    >>> fpr = np.memmap(filename, dtype='float32', mode='r', shape=(3,4))
-    >>> fpr.flags.writeable
-    False
+#     >>> fp.filename == path.abspath(filename)
+#     True
 
-    Copy-on-write memmap:
+#     Flushes memory changes to disk in order to read them back
 
-    >>> fpc = np.memmap(filename, dtype='float32', mode='c', shape=(3,4))
-    >>> fpc.flags.writeable
-    True
+#     >>> fp.flush()
 
-    It's possible to assign to copy-on-write array, but values are only
-    written into the memory copy of the array, and not written to disk:
+#     Load the memmap and verify data was stored:
 
-    >>> fpc
-    memmap([[  0.,   1.,   2.,   3.],
-            [  4.,   5.,   6.,   7.],
-            [  8.,   9.,  10.,  11.]], dtype=float32)
-    >>> fpc[0,:] = 0
-    >>> fpc
-    memmap([[  0.,   0.,   0.,   0.],
-            [  4.,   5.,   6.,   7.],
-            [  8.,   9.,  10.,  11.]], dtype=float32)
+#     >>> newfp = np.memmap(filename, dtype='float32', mode='r', shape=(3,4))
+#     >>> newfp
+#     memmap([[  0.,   1.,   2.,   3.],
+#             [  4.,   5.,   6.,   7.],
+#             [  8.,   9.,  10.,  11.]], dtype=float32)
 
-    File on disk is unchanged:
+#     Read-only memmap:
 
-    >>> fpr
-    memmap([[  0.,   1.,   2.,   3.],
-            [  4.,   5.,   6.,   7.],
-            [  8.,   9.,  10.,  11.]], dtype=float32)
+#     >>> fpr = np.memmap(filename, dtype='float32', mode='r', shape=(3,4))
+#     >>> fpr.flags.writeable
+#     False
 
-    Offset into a memmap:
+#     Copy-on-write memmap:
 
-    >>> fpo = np.memmap(filename, dtype='float32', mode='r', offset=16)
-    >>> fpo
-    memmap([  4.,   5.,   6.,   7.,   8.,   9.,  10.,  11.], dtype=float32)
+#     >>> fpc = np.memmap(filename, dtype='float32', mode='c', shape=(3,4))
+#     >>> fpc.flags.writeable
+#     True
 
-    """
+#     It's possible to assign to copy-on-write array, but values are only
+#     written into the memory copy of the array, and not written to disk:
 
-    # Check intraday authorization
-    if intraday is True:
-        equity_freq = "intraday_stocks"
-        columns = constants.INTRA_COLUMNS
-        if not _check_access():
-            raise errors.MoabRequestError(
-                "Intraday needs API credentials, see moabdb.com")
-    else:
-        equity_freq = "daily_stocks"
-        columns = constants.DAILY_COLUMNS
+#     >>> fpc
+#     memmap([[  0.,   1.,   2.,   3.],
+#             [  4.,   5.,   6.,   7.],
+#             [  8.,   9.,  10.,  11.]], dtype=float32)
+#     >>> fpc[0,:] = 0
+#     >>> fpc
+#     memmap([[  0.,   0.,   0.,   0.],
+#             [  4.,   5.,   6.,   7.],
+#             [  8.,   9.,  10.,  11.]], dtype=float32)
 
-    # String time to integer time
-    start_tm, end_tm = timewindows.get_unix_dates(sample, start, end)
+#     File on disk is unchanged:
 
-    # Single ticker request
-    if isinstance(tickers, str):
-        return_db = _server_req(
-            str.upper(tickers), start_tm, end_tm, equity_freq)
-        return_db = return_db[columns]
-        return_db = return_db.set_index(columns[1])
+#     >>> fpr
+#     memmap([[  0.,   1.,   2.,   3.],
+#             [  4.,   5.,   6.,   7.],
+#             [  8.,   9.,  10.,  11.]], dtype=float32)
 
-    # Multiple tickers request
-    elif isinstance(tickers, list):
-        processed = []
-        calls = len(tickers)
-        with cf.ThreadPoolExecutor() as pool:
-            for result in pool.map(_server_req, tickers, [start_tm]*calls,
-                                   [end_tm]*calls, [equity_freq]*calls):
-                processed.append(result)
-        return_db = pd.concat(processed)[columns]
-        return_db = return_db.set_index(columns[0:2]).unstack(0)
+#     Offset into a memmap:
 
-    # Unknown ticker request
-    else:
-        raise errors.MoabRequestError("Invalid window type")
+#     >>> fpo = np.memmap(filename, dtype='float32', mode='r', offset=16)
+#     >>> fpo
+#     memmap([  4.,   5.,   6.,   7.,   8.,   9.,  10.,  11.], dtype=float32)
 
-    # Round float columns
-    float_columns = return_db.select_dtypes(include=['float32', 'float64'])
-    if float_columns.size > 0:
-        return_db[float_columns.columns] = float_columns.astype('float64').round(4)
+#     """
 
-    return return_db
+#     # Check intraday authorization
+#     if intraday is True:
+#         equity_freq = "intraday_stocks"
+#         columns = constants.INTRA_COLUMNS
+#         if not _check_access():
+#             raise errors.MoabRequestError(
+#                 "Intraday needs API credentials, see moabdb.com")
+#     else:
+#         equity_freq = "daily_stocks"
+#         columns = constants.DAILY_COLUMNS
+
+#     # String time to integer time
+#     start_tm, end_tm = timewindows.get_unix_dates(sample, start, end)
+
+#     # Single ticker request
+#     if isinstance(tickers, str):
+#         return_db = _server_req(
+#             str.upper(tickers), start_tm, end_tm, equity_freq)
+#         return_db = return_db[columns]
+#         return_db = return_db.set_index(columns[1])
+
+#     # Multiple tickers request
+#     elif isinstance(tickers, list):
+#         processed = []
+#         calls = len(tickers)
+#         with cf.ThreadPoolExecutor() as pool:
+#             for result in pool.map(_server_req, tickers, [start_tm]*calls,
+#                                    [end_tm]*calls, [equity_freq]*calls):
+#                 processed.append(result)
+#         return_db = pd.concat(processed)[columns]
+#         return_db = return_db.set_index(columns[0:2]).unstack(0)
+
+#     # Unknown ticker request
+#     else:
+#         raise errors.MoabRequestError("Invalid window type")
+
+#     # Round float columns
+#     float_columns = return_db.select_dtypes(include=['float32', 'float64'])
+#     if float_columns.size > 0:
+#         return_db[float_columns.columns] = float_columns.astype('float64').round(4)
+
+#     return return_db
 
     # """
     # Return a ``pandas.DataFrame`` of historical price and volume information
