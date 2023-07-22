@@ -35,13 +35,6 @@ release = __version__
 # -- Options for autodoc ----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#configuration
 
-# Automatically extract typehints when specified and place them in
-# descriptions of the relevant function/method.
-autodoc_typehints = "both"
-
-# Don't show class signature with the class' name.
-autodoc_class_signature = "separated"
-
 
 
 # -- Options for HTML output -------------------------------------------------
