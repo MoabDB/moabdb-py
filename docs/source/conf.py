@@ -23,8 +23,10 @@ author = 'MoabDB'
 
 templates_path = ['_templates']
 extensions = ['sphinx.ext.autodoc',
-              'sphinx.ext.ifconfig',
-              'sphinx.ext.extlinks']
+              "sphinx.ext.intersphinx",
+              "sphinx.ext.viewcode"]
+              #'sphinx.ext.ifconfig',
+              #'sphinx.ext.extlinks']
 source_suffix = ['.rst']
 master_doc = 'index'
 exclude_patterns = ['_build']
@@ -34,6 +36,13 @@ release = __version__
 
 # -- Options for autodoc ----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#configuration
+
+# Automatically extract typehints when specified and place them in
+# descriptions of the relevant function/method.
+# autodoc_typehints = "both"
+
+# Don't show class signature with the class' name.
+# autodoc_class_signature = "separated"
 
 
 
