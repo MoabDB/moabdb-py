@@ -78,7 +78,7 @@ html_theme_options = {
     },
 }
 
-html_favicon = "favicons/favicon-16x16.png"
+html_favicon = "_static/favicons/favicon-32x32.ico"
 
 favicons = [
     {
