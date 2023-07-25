@@ -9,27 +9,22 @@
 
 
 """
-The `get_equity` function provides access to historical price and volume
-information for equities from the Moab Database (moabdb.com). It allows users
-to request both daily-level and intraday-level data for one or multiple ticker
-symbols.
 
-All data retrieved using the ``moabdb`` module are returned as pandas DataFrames.
+All data retrieved using the ``moabdb`` API are returned as pandas DataFrames.
 
-Usage
------
-Import the module and use the available functions to fetch equity and rates data:
+Usage without login
+-------------------
 
 >>> import moabdb as mdb
 >>> df = mdb.get_equity("AAPL", "6m") # Get 6 months of AAPL daily data
 
-To access intraday data, you must first login with your API credentials:
+
+Usage with login
+----------------
 
 >>> import moabdb as mdb
 >>> mdb.login("your_email@example.com", "moabdb_api_key")
->>> df = mdb.get_equity("AAPL", "6m") # Get 6 months of AAPL intraday data
-
-
+>>> df = mdb.get_equity("AAPL", "6m", intraday=True) # Get 6 months of AAPL intraday data
 
 For information on subscriptions visit https://moabdb.com.
 
@@ -52,36 +47,56 @@ def get_equity(tickers: Union[str, list],
                intraday: bool = False) -> pd.DataFrame:
     """
 
-    Return a ``pandas.DataFrame`` of historical price and volume information
-    for the ticker(s) provided.
+    Returns a ``pandas.DataFrame`` of historical price and volume information
+    for the ticker(s) requested.
 
-    This function can be modified to pull daily-level data or intraday
-    second-level data. Daily data reflects market trades between 9:30 AM
-    and 4:00 PM, Eastern. Intraday data reflects market trades between
-    8:00 AM and 6:00 PM, Eastern.
+    Modifying the intraday flag changes the return dataframe between
+    daily-level and intraday-level data. Daily-level data is returned by
+    default, and intraday-level data is returned when the intraday flag is set
+    to ``True``. Intraday data is only available to users with an active
+    subscription to intraday data from moabdb.com. Daily level data
+    reports aggregated information for trades between 9:30 AM and 4:00 PM
+    Eastern. Intraday level data reports aggregated information by second
+    for trades between 8:00 AM and 6:00 PM Eastern.
+
 
     Parameters
     ----------
     tickers : str or list of str
-        The ticker(s) to look up. It can be a single ticker symbol (str)
-        or a list of ticker symbols (list of str).
+        The ticker(s) to look up. Accepts a single ticker as a string or
+        multiple tickers as a list of strings.
+
+        If a single ticker (str) is provided, the resulting DataFrame
+        will have a Datetime index, and the columns will represent individual
+        data variables, such as "Open", "High", "Low", "Close", etc.
+
+        If multiple tickers (List[str]) are provided, the resulting DataFrame
+        will have a Datetime index, and the columns will have a multi-index
+        with the first level being the ticker symbol, and the second level
+        being the data variable, such as "Open", "High", "Low", "Close", etc.
+        For example, if you pass ["AAPL", "MSFT"], the DataFrame columns will look like:
+
+        +-----------+-----------+-----------+-----------+-----------+
+        |           |   'AAPL'  |   'MSFT'  |   'AAPL'  |   'MSFT'  |
+        +===========+===========+===========+===========+===========+
+        |           |   Open    |   Open    |   High    |   High    |
+        +-----------+-----------+-----------+-----------+-----------+
+        | Datetime  |           |           |           |           |
+        +-----------+-----------+-----------+-----------+-----------+
+
     sample : str, optional
-        Sample period length. Can be used alone or with ``start`` | ``end``.
+        Sample period length. It can be used alone or with ``start`` | ``end``.
+
     start : str, optional
         Sample start date. Requires one of ``end`` or ``sample``.
+
     end : str, optional
         Sample end date. Requires one of ``start`` or ``sample``.
+
     intraday : bool, optional, default False
-        Set to ``True`` to return intraday data.
-        Default is ``False`` to return end-of-day data.
+        Set to True to return intraday data.
+        Default is False to return end-of-day data.
         See moabdb.com for subscriptions for intraday access.
-
-
-    .. note::
-
-        - ``sample`` can be used alone to return the most recent data,
-          but ``start`` and ``end`` require two arguments
-          from ``sample`` | ``start`` | ``end``.
 
 
     Returns
@@ -94,10 +109,11 @@ def get_equity(tickers: Union[str, list],
         index.If the request is for multiple tickers, the DataFrame will be returned
         with multi-index columns, with the first level being the ticker symbol.
 
-        **If the request is for daily data, the DataFrame will contain the following columns:**
+
+        Daily data includes the following variables:
 
         +-----------------------+--------------------------------------------+
-        | DataFrame Columns     | Column Description                         |
+        | DataFrame Column      | Variable Description                       |
         +=======================+============================================+
         | ``Symbol`` (str)      | Ticker symbol of the equity.               |
         +-----------------------+--------------------------------------------+
@@ -120,10 +136,11 @@ def get_equity(tickers: Union[str, list],
         | ``Trades`` (int)      | Number of trades.                          |
         +-----------------------+--------------------------------------------+
 
-        **If the request is for intraday data, the DataFrame will contain the following columns:**
+
+        Intraday data includes the following variables:
 
         +-----------------------+--------------------------------------------------+
-        | DataFrame Columns     | Column Description                               |
+        | DataFrame Column      | Variable Description                             |
         +=======================+==================================================+
         | ``Symbol`` (str)      | Ticker symbol of the equity.                     |
         +-----------------------+--------------------------------------------------+
@@ -149,10 +166,11 @@ def get_equity(tickers: Union[str, list],
     .. note::
 
         - If the request is for a single ticker, the DataFrame will be returned
-          with single index columns.
+          with individual columns representing variables.
 
-        - If the request is for multiple tickers, the DataFrame will be returned
-          with multi-index columns, with the first level being the ticker symbol.
+        - If the request is for multiple tickers, the DataFrame will have multi-index
+          columns with the first level being the ticker symbol, and the second level
+          being the data variable.
 
 
     Raises
@@ -172,7 +190,6 @@ def get_equity(tickers: Union[str, list],
         If the data requested wasn't found
     errors.MoabUnknownError:
         If the error code couldn't be parsed
-
 
     """
 
@@ -225,59 +242,93 @@ def get_rates(sample: str = "1y",
               start: str = None,
               end: str = None) -> pd.DataFrame:
     """
-    Gets treasury data from the MoabDB API.
 
-    Args:
-        sample (str, optional): Sample length, required if "start" or "end" is missing.
-        start (str, optional): Beginning date of sample, required if "end" or "sample" is missing.
-        end (str, optional): Ending date of sample, required if "start" or "sample" is missing.
+    Returns a ``pandas.DataFrame`` of historical interest rates.
 
-    Raises:
-        errors.MoabResponseError: If there's a problem interpreting the response.
-        errors.MoabRequestError: If the server has a problem interpreting the request,
-            or if an invalid parameter is passed.
-        errors.MoabInternalError: If the server runs into an unrecoverable error internally.
-        errors.MoabHttpError: If there's a problem transporting the payload or receiving a response.
-        errors.MoabUnauthorizedError: If the user is not authorized to request the datatype.
-        errors.MoabNotFoundError: If the data requested wasn't found.
-        errors.MoabUnknownError: If the error code couldn't be parsed.
+    Modifying the ``sample``, ``start``, and ``end`` parameters allows for the
+    customization of the date range for the returned data. If the ``sample``
+    parameter is specified, the most recent data for that sample length
+    is returned. If the ``start`` and ``end`` parameters are specified, the
+    data for that specific date range is returned.
 
-    Returns:
-        pandas.DataFrame: A DataFrame containing daily treasury data.
-            Index: Date (datetime64): Date of the data point as YYYY-MM-DD.
-            Columns:
-                - Treasury_1m (float): Treasury yield for a 1-month maturity.
-                - Treasury_2m (float): Treasury yield for a 2-month maturity.
-                - Treasury_3m (float): Treasury yield for a 3-month maturity.
-                - Treasury_4m (float): Treasury yield for a 4-month maturity.
-                - Treasury_6m (float): Treasury yield for a 6-month maturity.
-                - Treasury_1y (float): Treasury yield for a 1-year maturity.
-                - Treasury_2y (float): Treasury yield for a 2-year maturity.
-                - Treasury_3y (float): Treasury yield for a 3-year maturity.
-                - Treasury_5y (float): Treasury yield for a 5-year maturity.
-                - Treasury_7y (float): Treasury yield for a 7-year maturity.
-                - Treasury_10y (float): Treasury yield for a 10-year maturity.
-                - Treasury_20y (float): Treasury yield for a 20-year maturity.
-                - Treasury_30y (float): Treasury yield for a 30-year maturity.
-                - Realrate_5y (float): Real interest rate for a 5-year maturity.
-                - Realrate_7y (float): Real interest rate for a 7-year maturity.
-                - Realrate_10y (float): Real interest rate for a 10-year maturity.
-                - Realrate_20y (float): Real interest rate for a 20-year maturity.
-                - Realrate_30y (float): Real interest rate for a 30-year maturity.
 
-    Examples:
+    Parameters
+    ----------
+    sample : str, optional
+        Sample period length. It can be used alone or with ``start`` | ``end``.
 
-        - Request the last year of treasury data:
-            import moabdb as mdb
-            df = mdb.get_rates("1y")
+    start : str, optional
+        Sample start date. Requires one of ``end`` or ``sample``.
 
-        - Request a specific month of data:
-            import moabdb as mdb
-            df = mdb.get_rates(start="2022-04-01", sample="1m")
+    end : str, optional
+        Sample end date. Requires one of ``start`` or ``sample``.
 
-        - Request treasury data for a specific date range:
-            import moabdb as mdb
-            df = mdb.get_rates(start="2020-01-01", end="2020-12-31")
+
+    Returns
+    -------
+    out : pandas.DataFrame
+        DataFrame containing treasury data, indexed by datetime64. Each column
+        represents a different term for the treasury yield.
+
+        Data includes the following variables:
+
+        +-------------------+--------------------------------------------+
+        | DataFrame Column  | Variable Description                       |
+        +===================+============================================+
+        | ``Treasury_1m``   | Treasury yield for a 1-month maturity.     |
+        +-------------------+--------------------------------------------+
+        | ``Treasury_2m``   | Treasury yield for a 2-month maturity.     |
+        +-------------------+--------------------------------------------+
+        | ``Treasury_3m``   | Treasury yield for a 3-month maturity.     |
+        +-------------------+--------------------------------------------+
+        | ``Treasury_4m``   | Treasury yield for a 4-month maturity.     |
+        +-------------------+--------------------------------------------+
+        | ``Treasury_6m``   | Treasury yield for a 6-month maturity.     |
+        +-------------------+--------------------------------------------+
+        | ``Treasury_1y``   | Treasury yield for a 1-year maturity.      |
+        +-------------------+--------------------------------------------+
+        | ``Treasury_2y``   | Treasury yield for a 2-year maturity.      |
+        +-------------------+--------------------------------------------+
+        | ``Treasury_3y``   | Treasury yield for a 3-year maturity.      |
+        +----------------------+-----------------------------------------+
+        | ``Treasury_5y``   | Treasury yield for a 5-year maturity.      |
+        +-------------------+--------------------------------------------+
+        | ``Treasury_7y``   | Treasury yield for a 7-year maturity.      |
+        +-------------------+--------------------------------------------+
+        | ``Treasury_10y``  | Treasury yield for a 10-year maturity.     |
+        +-------------------+--------------------------------------------+
+        | ``Treasury_20y``  | Treasury yield for a 20-year maturity.     |
+        +-------------------+--------------------------------------------+
+        | ``Treasury_30y``  | Treasury yield for a 30-year maturity.     |
+        +-------------------+--------------------------------------------+
+        | ``Realrate_5y``   | Real interest rate for a 5-year maturity.  |
+        +-------------------+--------------------------------------------+
+        | ``Realrate_7y``   | Real interest rate for a 7-year maturity.  |
+        +-------------------+--------------------------------------------+
+        | ``Realrate_10y``  | Real interest rate for a 10-year maturity. |
+        +-------------------+--------------------------------------------+
+        | ``Realrate_20y``  | Real interest rate for a 20-year maturity. |
+        +-------------------+--------------------------------------------+
+        | ``Realrate_30y``  | Real interest rate for a 30-year maturity. |
+        +-------------------+--------------------------------------------+
+
+    Raises
+    ------
+    errors.MoabResponseError:
+        If there's a problem interpreting the response
+    errors.MoabRequestError:
+        If the server has a problem interpreting the request,
+        or if an invalid parameter is passed
+    errors.MoabInternalError:
+        If the server runs into an unrecoverable error internally
+    errors.MoabHttpError:
+        If there's a problem transporting the payload or receiving a response
+    errors.MoabUnauthorizedError:
+        If the user is not authorized to request the datatype
+    errors.MoabNotFoundError:
+        If the data requested wasn't found
+    errors.MoabUnknownError:
+        If the error code couldn't be parsed
 
     """
 
