@@ -78,6 +78,8 @@ html_theme_options = {
     },
 }
 
+html_favicon = "favicons/favicon-16x16.png"
+
 favicons = [
     {
         "rel": "icon",
