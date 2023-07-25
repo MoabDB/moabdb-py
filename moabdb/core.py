@@ -290,7 +290,7 @@ def get_rates(sample: str = "1y",
         | ``Treasury_2y``   | Treasury yield for a 2-year maturity.      |
         +-------------------+--------------------------------------------+
         | ``Treasury_3y``   | Treasury yield for a 3-year maturity.      |
-        +----------------------+-----------------------------------------+
+        +-------------------+--------------------------------------------+
         | ``Treasury_5y``   | Treasury yield for a 5-year maturity.      |
         +-------------------+--------------------------------------------+
         | ``Treasury_7y``   | Treasury yield for a 7-year maturity.      |

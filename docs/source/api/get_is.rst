@@ -1,5 +1,5 @@
-get_financials
-##############
+get_is - Historical Income Statement
+####################################
 
 Examples
 --------
