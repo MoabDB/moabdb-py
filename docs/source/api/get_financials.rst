@@ -1,7 +1,5 @@
-Financial Statements
-####################
-
-
+get_financials
+##############
 
 Examples
 --------
