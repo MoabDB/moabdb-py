@@ -47,12 +47,3 @@ Request the most recent month of intraday data.
 Request intraday data between two specific dates:**
 
 >>> df = mdb.get_equity("TSLA", start="2020-01-01", end="2020-06-01", intraday=True)
-
-
-.. `get_equity` function
-.. #####################
-
-.. .. autofunction:: moabdb.get_equity.get_equity
-..    :members:
-..    :undoc-members:
-..    :show-inheritance:
