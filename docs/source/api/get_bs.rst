@@ -1,5 +1,5 @@
-get_bs - Historical Balance Sheet
-#################################
+get_bs
+######
 
 Examples
 --------

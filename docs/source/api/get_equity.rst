@@ -1,5 +1,5 @@
-get_equity - Historical Equity
-##############################
+get_equity
+##########
 
 .. automodule:: moabdb
    :members: get_equity

@@ -1,5 +1,5 @@
-get_cf - Historical Statement of Cash Flows
-###########################################
+get_cf
+######
 
 Examples
 --------

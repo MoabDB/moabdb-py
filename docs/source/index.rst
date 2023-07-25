@@ -60,9 +60,7 @@ Core API Functions to Retrieve Data
 
    api/get_equity
    api/get_options
-   api/get_is
-   api/get_bs
-   api/get_cf
+   api/financial_statements
    api/get_rates
 
 
