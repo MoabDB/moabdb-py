@@ -1,5 +1,5 @@
-Equity Prices: get_equity
-#########################
+Equity Prices: ``get_equity``
+#############################
 
 .. automodule:: moabdb
    :members: get_equity

@@ -1,5 +1,5 @@
-Statement of Cashflows: get_cf
-##############################
+Statement of Cashflows: ``get_cf``
+##################################
 
 Examples
 --------

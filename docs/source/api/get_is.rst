@@ -1,5 +1,5 @@
-Income Statement: get_is
-########################
+Income Statement: ``get_is``
+############################
 
 Examples
 --------
