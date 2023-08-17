@@ -8,7 +8,7 @@
 ..   :alt: Logo
 
 ====================================
-MoabDB API and Dataset Documentation 
+MoabDB API and Dataset Documentation
 ====================================
 
 MoabDB is a fast and easy-to-use database for financial data.
