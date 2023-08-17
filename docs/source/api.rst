@@ -1,8 +1,5 @@
-MoabDB API
-##########
-
-The MoabDB API
-==============
+API Functions
+#############
 
 .. toctree::
    :maxdepth: 1
@@ -10,8 +7,9 @@ The MoabDB API
    api/get_equity
    api/get_options
    api/get_rates
-   api/financial_statements
-
+   api/get_bs
+   api/get_cf
+   api/get_is
    .. get_equity
    .. get_options
    .. get_rates

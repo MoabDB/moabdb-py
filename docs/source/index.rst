@@ -59,10 +59,12 @@ Core API Functions to Retrieve Data
    :caption: Core API Functions
 
    api
+   
    .. api/get_equity
    .. api/get_options
-   .. api/financial_statements
    .. api/get_rates
+   .. api/financial_statements
+
 
 
 Datasets on Demand
@@ -72,3 +74,12 @@ Datasets on Demand
    :caption: Datasets
 
    datasets
+
+   .. datasets/equity
+   .. datasets/options
+   .. datasets/interest_rates
+   .. datasets/financials_balancesheet
+   .. datasets/financials_cashflows
+   .. datasets/financials_income
+
+..   moabdb
