@@ -1,5 +1,5 @@
-get_equity
-##########
+The get_equity function
+#######################
 
 .. automodule:: moabdb
    :members: get_equity
