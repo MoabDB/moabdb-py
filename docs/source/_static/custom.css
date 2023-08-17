@@ -3,6 +3,10 @@
     --color-brand: rgb(203, 132, 0);
 }
 
+.toctree-l1.current>ul {
+    display: block !important;
+}
+
 /* Transparent background for body and sidebar */
 /* body {
     background-color: transparent !important;
