@@ -52,21 +52,24 @@ The source code is available on GitHub at: `MoabDB GitHub Repository <https://gi
 
 
 
-.. .. toctree::
-..    :maxdepth: 2
-..    :caption: Getting Started
-..    tutorial
+.. toctree::
+   :maxdepth: 2
+   :caption: Getting Started
+
+   tutorial
 
 
 .. toctree::
    :maxdepth: 2
    :caption: Core API Functions
+
    api
 
 
 .. toctree::
    :maxdepth: 2
    :caption: Datasets
+
    datasets
 
    .. moabdb
