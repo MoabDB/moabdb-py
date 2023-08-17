@@ -70,11 +70,12 @@ Datasets on Demand
    :maxdepth: 2
    :caption: Datasets
 
-   datasets/equity
-   datasets/options
-   datasets/interest_rates
-   datasets/financials_balancesheet
-   datasets/financials_cashflows
-   datasets/financials_income
+   datasets
+   .. datasets/equity
+   .. datasets/options
+   .. datasets/interest_rates
+   .. datasets/financials_balancesheet
+   .. datasets/financials_cashflows
+   .. datasets/financials_income
 
 ..   moabdb
