@@ -1,5 +1,5 @@
-get_bs
-######
+Retrieving balance sheet: get_bs
+################################
 
 Examples
 --------

@@ -1,5 +1,5 @@
-get_cf
-######
+Retrieving statement of cashflows: get_cf
+#########################################
 
 Examples
 --------
