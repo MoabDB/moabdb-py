@@ -1,5 +1,5 @@
-Income Statement
-################
+Income Statement: get_is
+########################
 
 Examples
 --------

@@ -1,5 +1,5 @@
-Balance Sheet
-#############
+Balance Sheet: get_bs
+#####################
 
 Examples
 --------

@@ -1,5 +1,5 @@
-Historical Equity Prices
-########################
+Equity Prices: get_equity
+#########################
 
 .. automodule:: moabdb
    :members: get_equity
