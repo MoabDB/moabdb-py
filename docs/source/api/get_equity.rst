@@ -1,5 +1,5 @@
-The get_equity function
-#######################
+Historical Equity Prices
+########################
 
 .. automodule:: moabdb
    :members: get_equity

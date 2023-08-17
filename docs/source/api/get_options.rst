@@ -1,5 +1,5 @@
-get_options
-###########
+Historical Options
+##################
 
 .. automodule:: moabdb.get_rates.get_rates
    :members:
