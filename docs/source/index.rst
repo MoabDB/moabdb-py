@@ -29,13 +29,13 @@ The MoabDB API offers the following features:
 * Built with Rust for fast data retrieval
 * Accessible with Python for easy data manipulation
 
+
 .. toctree::
    :maxdepth: 2
    :caption: 
 
    index
-
-   `MoabDB Home <https://moabdb.com>`_
+   MoabDB Home <https://moabdb.com>
 
 .. toctree::
    :maxdepth: 2
