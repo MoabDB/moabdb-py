@@ -74,13 +74,14 @@ html_theme_options = {
         "color-background-secondary": 'rgba(248, 249, 251, 0)',
         "color-brand-content": "#7C4DFF",
     },
+#}
+    "external_links": [
+        {
+            "url": "https://moabdb.com",
+            "name": "MoabDB Home",
+        },
+    ],
 }
-#     "external_links": [
-#         {
-#             "url": "https://moabdb.com",
-#             "name": "MoabDB Home",
-#         },
-#     ],
 #     "icon_links": [
 #         {
 #             "name": "MoabDB Homepage",
