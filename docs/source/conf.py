@@ -52,8 +52,12 @@ html_theme = "sphinx_book_theme"
 #html_theme = "pydata_sphinx_theme"
 html_title = f'<strong>{project}</strong> <i>{release}</i>'
 
-html_baseurl = 'https://moabdb.com/'
+html_baseurl = 'https://docs.moabdb.com/'
 html_favicon = '_static/favicon.ico'
+
+html_context = {
+    'custom_link': ('https://moabdb.com', 'Main MoabDB'),
+}
 
 html_static_path = ['_static']
 html_css_files = ["custom.css"]

@@ -3,9 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-.. .. image:: ../source/_static/images/MoabDB.jpg
-..   :width: 400
-..   :alt: Logo
+.. |custom_link| raw:: html
+
+   <a href="{{ custom_link[0] }}">{{ custom_link[1] }}</a>
 
 ====================================
 MoabDB API and Dataset Documentation
