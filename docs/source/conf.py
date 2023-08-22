@@ -80,13 +80,18 @@ html_theme_options = {
         "color-background-secondary": 'rgba(248, 249, 251, 0)',
         "color-brand-content": "#7C4DFF",
     },
-    "icon_links": {
-        "name": "Executable Books",
-        "url": "https://moabdb.org/",
-        "icon": "_static/favicons/favicon-32x32.ico",
-        "type": "local",
-    }
+    "icon_links": [
+        {
+            "name": "MoabDB Main",
+            "url": "https://moabdb.com",
+            "icon": "_static/favicons/favicon-32x32.ico",
+            "type": "url",
+        },
+    ],
 }
+
+
+
 
 # html_theme_options = {
 #     "light_css_variables":
