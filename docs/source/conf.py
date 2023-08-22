@@ -48,40 +48,41 @@ release = __version__
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
+
 html_theme = "sphinx_book_theme"
-#html_theme = "pydata_sphinx_theme"
 html_title = f'<strong>{project}</strong> <i>{release}</i>'
-
-html_baseurl = 'https://docs.moabdb.com/'
+html_logo = "_static/images/MoabDB.png"
 html_favicon = '_static/favicon.ico'
-
+# html_favicon = "_static/favicons/favicon-32x32.ico"
+html_baseurl = 'https://docs.moabdb.com/'
 html_context = {
     'custom_link': ('https://moabdb.com', 'Main MoabDB'),
 }
 
 html_static_path = ['_static']
 html_css_files = ["custom.css"]
-#html_logo = "_static/images/MoabDB.png"
 
 html_use_smartypants = True
 html_use_modindex = False
 html_use_index = False
 html_show_sourcelink = False
 
-# html_theme_options = {
-#     'light_logo': 'pelican-logo.svg',
-#     'dark_logo': 'pelican-logo.svg',
-#     'navigation_with_keys': True,
-# }
-
 html_theme_options = {
-    "light_css_variables": {
+    "light_css_variables": 
+        {
         "color-background-secondary": 'rgba(248, 249, 251, 0)',
         "color-brand-content": "#7C4DFF",
-    },
-}
+        },
+    "icon_links": 
+        {
+        "name": "Executable Books",
+        "url": "https://moabdb.org/",
+        "icon": "_static/favicons/favicon-32x32.ico",
+        "type": "local",
+        },
+    }
 
-html_favicon = "_static/favicons/favicon-32x32.ico"
+
 
 favicons = [
     {
