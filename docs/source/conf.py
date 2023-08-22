@@ -57,7 +57,7 @@ html_static_path = ['_static']
 html_css_files = ["custom.css"]
 
 # html_favicon = "_static/favicons/favicon-32x32.ico"
-# html_logo = "_static/images/MoabDB.png"
+html_logo = "_static/images/MoabDB.png"
 
 # html_context = {
 #     'custom_link': ('https://moabdb.com', 'Main MoabDB'),
@@ -74,21 +74,22 @@ html_theme_options = {
         "color-background-secondary": 'rgba(248, 249, 251, 0)',
         "color-brand-content": "#7C4DFF",
     },
-    "external_links": [
-        {
-            "url": "https://moabdb.com",
-            "name": "MoabDB Home",
-        },
-    ],
-    "icon_links": [
-        {
-            "name": "MoabDB Homepage",
-            "url": "https://moabdb.com",
-            "icon": "_static/images/MoabDB.png",
-            "type": "url",
-        },
-    ],
 }
+#     "external_links": [
+#         {
+#             "url": "https://moabdb.com",
+#             "name": "MoabDB Home",
+#         },
+#     ],
+#     "icon_links": [
+#         {
+#             "name": "MoabDB Homepage",
+#             "url": "https://moabdb.com",
+#             "icon": "_static/images/MoabDB.png",
+#             "type": "url",
+#         },
+#     ],
+# }
 
 
 favicons = [

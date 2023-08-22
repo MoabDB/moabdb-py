@@ -11,9 +11,9 @@ MoabDB API and Dataset Documentation
 
 MoabDB is a fast and easy-to-use database for financial data.
 
-.. |custom_link| raw:: html
+.. .. |custom_link| raw:: html
 
-   <a href="{{ custom_link[0] }}">{{ custom_link[1] }}</a>
+..    <a href="{{ custom_link[0] }}">{{ custom_link[1] }}</a>
 
 .. seealso::
 
