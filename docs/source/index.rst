@@ -32,13 +32,6 @@ The MoabDB API offers the following features:
 
 .. toctree::
    :maxdepth: 2
-   :caption: test
-
-   index
-   MoabDB Home <https://moabdb.com>
-
-.. toctree::
-   :maxdepth: 2
    :caption: Getting Started
 
    tutorial
