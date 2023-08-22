@@ -61,7 +61,7 @@ html_context = {
 
 html_static_path = ['_static']
 html_css_files = ["custom.css"]
-html_logo = "_static/images/MoabDB.png"
+#html_logo = "_static/images/MoabDB.png"
 
 html_use_smartypants = True
 html_use_modindex = False

@@ -3,9 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-.. |custom_link| raw:: html
 
-   <a href="{{ custom_link[0] }}">{{ custom_link[1] }}</a>
 
 ====================================
 MoabDB API and Dataset Documentation
@@ -13,6 +11,10 @@ MoabDB API and Dataset Documentation
 
 MoabDB is a fast and easy-to-use database for financial data.
 
+.. |custom_link| raw:: html
+
+   <a href="{{ custom_link[0] }}">{{ custom_link[1] }}</a>
+   
 .. seealso::
 
    Information on subscriptions to advnaced datasets can be found at the homepage: 
