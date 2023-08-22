@@ -9,6 +9,7 @@ if "%SPHINXBUILD%" == "" (
 )
 set SOURCEDIR=source
 set BUILDDIR=build
+set SPHINXOPTS=-D html_context={"custom_link": ["https://moabdb.com", "MoabDB Home"]}
 
 %SPHINXBUILD% >NUL 2>NUL
 if errorlevel 9009 (
