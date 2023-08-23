@@ -1,4 +1,4 @@
-.. _get-equity-label:
+.. _link_get_equity:
 
 Equity Prices: ``get_equity``
 #############################
