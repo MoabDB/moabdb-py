@@ -1,4 +1,4 @@
-.. _my-reference-label:
+.. _get-equity-ref:
 
 Equity Prices: ``get_equity``
 #############################
