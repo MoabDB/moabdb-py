@@ -1,97 +1,67 @@
-Historical Option Trading
-#########################
-
-Articles and pages
+==================
+Option Market Data
 ==================
 
-Pelican considers "articles" to be chronological content, such as posts on a
-blog, and thus associated with a date.
+The Historical Option Trading Data provides an in-depth look at 
+the options market, capturing data from the most recent trades 
+to trades from years past. Derived from leading global exchanges, 
+our historical option data provides unparalleled insights 
+for option traders, researchers, and analysts. 
 
-The idea behind "pages" is that they are usually not temporal in nature and are
-used for content that does not change very often (e.g., "About" or "Contact"
-pages).
+About the Data
+==============
 
-You can find sample content in the repository at ``samples/content/``.
+Options are financial derivatives that provide buyers with the 
+right, but not the obligation, to buy or sell an asset at a 
+specified price on or before a particular date. Their complex 
+nature demands richer datasets to ensure informed trading 
+and research. Beyond the basic trade and quote data, our 
+historical option data includes the Greeks – the various 
+factors that influence an option's price – and 
+implied volatility, a crucial metric in option pricing.
 
-.. _internal_metadata:
+Trade Data
+==========
 
-File metadata
-=============
+Our trade data encompasses details of each option transaction. 
+This includes the strike price, expiration date, and whether 
+the option is a call or put. Each transaction also provides 
+insights into the volume, direction of the trade, exact 
+timestamp, and the price at which the option was traded.
 
-Pelican tries to be smart enough to get the information it needs from the
-file system (for instance, about the category of your articles), but some
-information you need to provide in the form of metadata inside your files.
+Quotes and the Bid-Ask Spread
+=============================
 
-If you are writing your content in reStructuredText format, you can provide
-this metadata in text files via the following syntax (give your file the
-``.rst`` extension)::
+Quotes are especially critical for options due to their 
+intricate pricing model. Our dataset provides the bid 
+and ask prices, as well as the volume associated with 
+these quotes. By studying the bid-ask spread, traders 
+can glean insights into an option's liquidity and 
+potential transaction costs.
 
-    My super title
-    ##############
+Greeks and Implied Volatility
+=============================
 
-    :date: 2010-10-03 10:20
-    :modified: 2010-10-04 18:40
-    :tags: thats, awesome
-    :category: yeah
-    :slug: my-super-post
-    :authors: Alexis Metaireau, Conan Doyle
-    :summary: Short version for index and feeds
+The Greeks play a pivotal role in option pricing 
+and risk management. Our data provides:
 
-Author and tag lists may be semicolon-separated instead, which allows
-you to write authors and tags containing commas::
+- **Delta:** Measures the rate of change of the option price concerning a change in the underlying asset price.
+- **Gamma:** Represents the rate of change of Delta concerning the underlying asset's price.
+- **Theta:** Measures the rate of decline in the option's 
+value due to the passage of time.
+- **Vega:** Captures the sensitivity of the option price to 
+changes in the underlying asset's volatility.
+- **Rho:** Represents the sensitivity of the option price to changes in the risk-free interest rate.
 
-    :tags: pelican, publishing tool; pelican, bird
-    :authors: Metaireau, Alexis; Doyle, Conan
+Beyond the Greeks, our dataset offers the Implied Volatility for each option, which is a projection of the option's future volatility and a key ingredient in option pricing models.
 
-Pelican implements an extension to reStructuredText to enable support for the
-``abbr`` HTML tag. To use it, write something like this in your post::
+Data Integrity and Trust
+========================
 
-    This will be turned into :abbr:`HTML (HyperText Markup Language)`.
+With the complexity of options, ensuring data accuracy is even more crucial. Our algorithms continuously cross-check data points for inconsistencies, and any irregularities are swiftly corrected. 
 
-You can also use Markdown syntax (with a file ending in ``.md``, ``.markdown``,
-``.mkd``, or ``.mdown``). Markdown generation requires that you first
-explicitly install the Python-Markdown_ package, which can be done via ``pip
-install Markdown``.
+See Also
+========
 
-Pelican also supports `Markdown Extensions`_, which might have to be installed
-separately if they are not included in the default ``Markdown`` package and can
-be configured and loaded via the ``MARKDOWN`` setting.
-
-Metadata syntax for Markdown posts should follow this pattern::
-
-    Title: My super title
-    Date: 2010-12-03 10:20
-    Modified: 2010-12-05 19:30
-    Category: Python
-    Tags: pelican, publishing
-    Slug: my-super-post
-    Authors: Alexis Metaireau, Conan Doyle
-    Summary: Short version for index and feeds
-
-    This is the content of my super blog post.
-
-You can also have your own metadata keys (so long as they don't conflict with
-reserved metadata keywords) for use in your templates. The following table
-contains a list of reserved metadata keywords:
-
-=============== ===============================================================
-    Metadata                              Description
-=============== ===============================================================
-``title``       Title of the article or page
-``date``        Publication date (e.g., ``YYYY-MM-DD HH:SS``)
-``modified``    Modification date (e.g., ``YYYY-MM-DD HH:SS``)
-``tags``        Content tags, separated by commas
-``keywords``    Content keywords, separated by commas (HTML content only)
-``category``    Content category (one only — not multiple)
-``slug``        Identifier used in URLs and translations
-``author``      Content author, when there is only one
-``authors``     Content authors, when there are multiple
-``summary``     Brief description of content for index pages
-``lang``        Content language ID (``en``, ``fr``, etc.)
-``translation`` If content is a translation of another (``true`` or ``false``)
-``status``      Content status: ``draft``, ``hidden``, or ``published``
-``template``    Name of template to use to generate content (without extension)
-``save_as``     Save content to this relative file path
-``url``         URL to use for this article/page
-=============== ===============================================================
-
+- `Equity Market Data <equity-market-data-label_>`_: Comprehensive data on historical equity trades.
+- `Option Retrieval API <option-retrieval-label_>`_: Documentation on fetching live option data using our API.

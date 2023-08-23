@@ -3,7 +3,8 @@ Equity Market Data
 ==================
 
 .. note::
-    See :ref:`my-reference-label` for documentation and retrieving equity data using the MoabDB API.
+    See :ref:`get-equity-ref` for documentation and retrieving 
+    equity data using the MoabDB API.
 
 The Equity Market Data API provides comprehensive data about 
 equity markets. The data can be accessed either at the end 

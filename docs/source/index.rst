@@ -31,7 +31,7 @@ The MoabDB API offers the following features:
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Navigation
 
    MoabDB Home <https://moabdb.com>
@@ -57,7 +57,7 @@ import moabdb as mdb
 mdb.get_equity("AAPL")
 # something idk docs
 ```
-9184170814
+
 
 Source code
 -----------
