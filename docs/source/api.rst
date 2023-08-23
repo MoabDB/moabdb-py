@@ -1,5 +1,5 @@
-API Functions
-#############
+MoabDB API
+##########
 
 .. toctree::
    :maxdepth: 1
