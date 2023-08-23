@@ -1,4 +1,4 @@
-.. _link_get_equity:
+.. _my-reference-label:
 
 Equity Prices: ``get_equity``
 #############################
