@@ -32,32 +32,14 @@ The MoabDB API offers the following features:
 
 .. toctree::
    :maxdepth: 2
-   :caption: test
+   :caption: Navigation
 
    MoabDB Home <https://moabdb.com>
+   Docs Home <https://docs.moabdb.com/index.html>
    tutorial
    api
    datasets
 
-.. .. toctree::
-..    :maxdepth: 2
-..    :caption: Getting Started
-
-..    tutorial
-
-
-.. .. toctree::
-..    :maxdepth: 2
-..    :caption: Core API Functions
-
-..    api
-
-
-.. .. toctree::
-..    :maxdepth: 2
-..    :caption: Datasets
-
-..    datasets
 
    
 Data Provided by MoabDB
