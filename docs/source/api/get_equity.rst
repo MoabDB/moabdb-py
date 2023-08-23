@@ -1,3 +1,5 @@
+.. _get-equity-label:
+
 Equity Prices: ``get_equity``
 #############################
 

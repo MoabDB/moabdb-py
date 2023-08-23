@@ -2,6 +2,12 @@
 Equity Market Data
 ==================
 
+See Also
+--------
+
+- `Equity Retrieval API <get-equity-label_>`_: Detailed documentation on how to retrieve equity data using our API. 
+
+
 The Equity Market Data API provides comprehensive data about 
 equity markets. The data can be accessed either at the end 
 of the day or the beginning of the day. 
@@ -76,8 +82,10 @@ the tools they need to be proactive and reactive in the
 ever-evolving world of equity markets.
 
 
-Data Returned
-=============
+Accessing Data
+==============
+
+
 
 End of Day Data
 ---------------
