@@ -2,12 +2,85 @@
 Equity Market Data
 ==================
 
-The Equity Market Data API provides comprehensive data about equity markets. The data can be accessed either at the end of the day or the beginning of the day. 
+The Equity Market Data API provides comprehensive data about 
+equity markets. The data can be accessed either at the end 
+of the day or the beginning of the day. 
 
-When accessed, the following dataframes are returned:
+About the Exchanges
+===================
+
+Equity Market Data is sourced from leading global exchanges, 
+ensuring a comprehensive coverage of major market activities. 
+From the New York Stock Exchange to the Tokyo Stock Exchange, 
+our data encompasses a broad spectrum of markets to offer users 
+insights from different parts of the world. The integration of 
+data from multiple exchanges provides users with a holistic 
+view of the market, making it easier to spot global trends 
+and correlations.
+
+Trade Data
+==========
+
+Trade data represents the core of our offering. With each trade, 
+a wealth of information is produced. Beyond the basics of price 
+and volume, our data captures the nuances of each transaction, 
+providing insights such as the direction of the trade (buy or sell), 
+the size of the trade, and the exact timestamp. Such granular 
+data can be invaluable for high-frequency traders, market makers, 
+and anyone interested in a deep dive into market microstructure.
+
+Quotes and the Bid-Ask Spread
+=============================
+
+In the world of finance, quotes are the lifeblood of trading. 
+A quote provides the most recent price at which an asset, 
+in this case equities, was traded. But beyond the last traded price, 
+our data dives into the details of the bid and ask prices. 
+This bid-ask spread can be an important indicator of liquidity and 
+potential transaction costs. A tighter spread often indicates a more 
+liquid market, while a wider spread can signify less liquidity. 
+Our API not only provides the bid and ask prices but also offers the 
+size (in terms of volume) associated with these quotes, further 
+adding depth to your analysis.
+
+Leveraging the Power of VWAP
+============================
+
+The Volume-Weighted Average Price (VWAP) is a critical metric for 
+many institutional investors. Serving as a benchmark, VWAP helps 
+traders understand if they received a good price for their trades 
+relative to the day's trading activity. Our data provides the VWAP 
+for each equity, ensuring that users can gauge their trading 
+efficiency and make more informed decisions in future trades.
+
+Data Accuracy and Integrity
+===========================
+
+Ensuring the accuracy and integrity of our data is paramount. 
+With advanced algorithms and stringent quality checks, 
+we ensure that the data provided is free from anomalies and 
+aberrations. Any discrepancies, no matter how minor, are 
+quickly identified and rectified. Our commitment to data 
+quality means that users can trust the insights derived 
+from our platform, making critical decisions with confidence.
+
+Real-time vs. Historical Data
+=============================
+
+While intraday data provides a snapshot of the market's 
+current state, historical data allows users to see the bigger 
+picture. By analyzing trends over time, users can identify patterns, 
+make predictions, and develop a comprehensive trading strategy. 
+Our API seamlessly integrates both, giving traders and analysts 
+the tools they need to be proactive and reactive in the 
+ever-evolving world of equity markets.
+
+
+Data Returned
+=============
 
 End of Day Data
-===============
+---------------
 
 .. list-table:: 
    :widths: 25 75
