@@ -31,7 +31,7 @@ The MoabDB API offers the following features:
 
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
    :caption: Navigation
 
    MoabDB Home <https://moabdb.com>
