@@ -3,8 +3,8 @@
 ``get_equity()``
 ################
 
-Equity Prices: ``get_equity``
-=============================
+Retrieving Equity Prices
+========================
 
 
 .. automodule:: moabdb
@@ -12,8 +12,10 @@ Equity Prices: ``get_equity``
 
 
 
-Examples
---------
+Daily data examples, no login
+=============================
+
+.. Example 1
 
 **Import the library**
 
@@ -39,6 +41,8 @@ Request daily data between two specific dates.
 
 >>> df = mdb.get_equity("AMZN", start="2022-04-01", end="2022-10-01")
 
+Intraday data examples, with login
+==================================
 
 **Login for intraday data requests**
 
