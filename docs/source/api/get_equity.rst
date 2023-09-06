@@ -1,7 +1,11 @@
 .. _get-equity-ref:
 
+``get_equity``
+##############
+
 Equity Prices: ``get_equity``
-#############################
+=============================
+
 
 .. automodule:: moabdb
    :members: get_equity

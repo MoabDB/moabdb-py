@@ -1,5 +1,5 @@
-MoabDB Login
-############
+``Login``
+#########
 
 .. automodule:: moabdb
    :members: login
