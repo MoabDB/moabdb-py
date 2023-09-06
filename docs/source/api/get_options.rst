@@ -1,5 +1,5 @@
-Options Prices: ``get_options``
-###############################
+``get_options()``
+#################
 
 .. automodule:: moabdb.get_rates.get_rates
    :members:

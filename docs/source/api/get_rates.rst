@@ -1,5 +1,5 @@
-Interest Rates: ``get_rates``
-#############################
+``get_rates()``
+###############
 
 .. automodule:: moabdb
    :members: get_rates
