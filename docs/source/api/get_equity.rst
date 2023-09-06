@@ -1,7 +1,7 @@
 .. _get-equity-ref:
 
-``get_equity``
-##############
+``get_equity()``
+################
 
 Equity Prices: ``get_equity``
 =============================
