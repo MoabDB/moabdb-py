@@ -4,6 +4,7 @@ MoabDB API
 .. toctree::
    :maxdepth: 1
 
+   api/login
    api/get_equity
    api/get_options
    api/get_rates

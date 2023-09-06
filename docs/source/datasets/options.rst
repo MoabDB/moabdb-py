@@ -47,10 +47,8 @@ and risk management. Our data provides:
 
 - **Delta:** Measures the rate of change of the option price concerning a change in the underlying asset price.
 - **Gamma:** Represents the rate of change of Delta concerning the underlying asset's price.
-- **Theta:** Measures the rate of decline in the option's 
-value due to the passage of time.
-- **Vega:** Captures the sensitivity of the option price to 
-changes in the underlying asset's volatility.
+- **Theta:** Measures the rate of decline in the option's value due to the passage of time.
+- **Vega:** Captures the sensitivity of the option price to changes in the underlying asset's volatility.
 - **Rho:** Represents the sensitivity of the option price to changes in the risk-free interest rate.
 
 Beyond the Greeks, our dataset offers the Implied Volatility for each option, which is a projection of the option's future volatility and a key ingredient in option pricing models.
