@@ -1,11 +1,8 @@
 Datasets
 ########
 
-
-
-
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    datasets/equity
    datasets/options

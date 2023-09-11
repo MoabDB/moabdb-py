@@ -2,7 +2,7 @@ MoabDB API
 ##########
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    api/login
    api/get_equity
