@@ -43,7 +43,7 @@ The MoabDB API offers the following features:
 
 .. toctree::
    :maxdepth: 2
-   :caption: Getting Staqrted
+   :caption: 
 
    MoabDB Home <https://moabdb.com>
    Docs Home <https://docs.moabdb.com/index.html>
@@ -61,8 +61,9 @@ The MoabDB API offers the following features:
    :maxdepth: 2
    :caption: API
 
-   api/get_bst
+   api/get_equity
    api/get_options
+   api/get_rates
 
 
    
