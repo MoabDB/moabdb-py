@@ -30,15 +30,39 @@ The MoabDB API offers the following features:
 * Accessible with Python for easy data manipulation
 
 
+.. .. toctree::
+..    :maxdepth: 2
+..    :caption: Navigation
+
+..    MoabDB Home <https://moabdb.com>
+..    Docs Home <https://docs.moabdb.com/index.html>
+..    tutorial
+..    api
+..    datasets
+
+
 .. toctree::
    :maxdepth: 2
-   :caption: Navigation
+   :caption: Getting Staqrted
 
    MoabDB Home <https://moabdb.com>
    Docs Home <https://docs.moabdb.com/index.html>
-   tutorial
-   api
-   datasets
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Tutorials
+
+   tutorial/installations
+   tutorial/simple_example
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: API
+
+   api/get_bst
+   api/get_options
 
 
    
