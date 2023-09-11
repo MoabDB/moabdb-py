@@ -43,7 +43,7 @@ The MoabDB API offers the following features:
 
 .. toctree::
    :maxdepth: 2
-   :caption: 
+   :caption: MoabDB
 
    MoabDB Home <https://moabdb.com>
    Docs Home <https://docs.moabdb.com/index.html>
@@ -53,7 +53,7 @@ The MoabDB API offers the following features:
    :maxdepth: 2
    :caption: Tutorials
 
-   tutorial/installations
+   tutorial/installation
    tutorial/simple_example
 
 
