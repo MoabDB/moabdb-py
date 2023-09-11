@@ -1,7 +1,8 @@
 .. _equity-data-ref:
 
+==================
 Equity Market Data
-##################
+==================
 
 .. note::
     See :ref:`get-equity-ref` for documentation and retrieving 
