@@ -70,6 +70,7 @@ html_use_index = False
 html_show_sourcelink = False
 
 html_theme_options = {
+    "show_toc_level": 2,
     "light_css_variables": {
         "color-background-secondary": 'rgba(248, 249, 251, 0)',
         "color-brand-content": "#7C4DFF",

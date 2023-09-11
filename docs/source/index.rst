@@ -48,7 +48,7 @@ The MoabDB API offers the following features:
    :maxdepth: 2
    :caption: Datasets
 
-   datasets/equiy
+   datasets/equity
    datasets/options
    datasets/interest_rates
    datasets/financials_balancesheet
