@@ -1,6 +1,7 @@
-==================
+.. _equity-data-ref:
+
 Equity Market Data
-==================
+##################
 
 .. note::
     See :ref:`get-equity-ref` for documentation and retrieving 
@@ -10,9 +11,8 @@ The Equity Market Data API provides comprehensive data about
 equity markets. The data can be accessed either at the end 
 of the day or the beginning of the day. 
 
-
-Dataset Variables
-=================
+Variables
+=========
 
 End of Day Data
 ---------------
@@ -76,8 +76,11 @@ Intraday Data
 
 
 
-About the Exchanges
-===================
+About the Data
+==============
+
+Exchanges
+---------
 
 Equity Market Data is sourced from leading global exchanges, 
 ensuring a comprehensive coverage of major market activities. 
@@ -88,8 +91,8 @@ data from multiple exchanges provides users with a holistic
 view of the market, making it easier to spot global trends 
 and correlations.
 
-Trade Data
-==========
+Trades
+------
 
 Trade data represents the core of our offering. With each trade, 
 a wealth of information is produced. Beyond the basics of price 
@@ -100,7 +103,7 @@ data can be invaluable for high-frequency traders, market makers,
 and anyone interested in a deep dive into market microstructure.
 
 Quotes and the Bid-Ask Spread
-=============================
+-----------------------------
 
 In the world of finance, quotes are the lifeblood of trading. 
 A quote provides the most recent price at which an asset, 
@@ -113,8 +116,8 @@ Our API not only provides the bid and ask prices but also offers the
 size (in terms of volume) associated with these quotes, further 
 adding depth to your analysis.
 
-Leveraging the Power of VWAP
-============================
+VWAP
+----
 
 The Volume-Weighted Average Price (VWAP) is a critical metric for 
 many institutional investors. Serving as a benchmark, VWAP helps 
@@ -134,18 +137,8 @@ quickly identified and rectified. Our commitment to data
 quality means that users can trust the insights derived 
 from our platform, making critical decisions with confidence.
 
-Real-time vs. Historical Data
-=============================
-
-While intraday data provides a snapshot of the market's 
-current state, historical data allows users to see the bigger 
-picture. By analyzing trends over time, users can identify patterns, 
-make predictions, and develop a comprehensive trading strategy. 
-Our API seamlessly integrates both, giving traders and analysts 
-the tools they need to be proactive and reactive in the 
-ever-evolving world of equity markets.
-
-
 Accessing Data
 ==============
 
+See :ref:`get-equity-ref` for documentation and retrieving 
+equity data using the MoabDB API.

@@ -6,6 +6,10 @@
 Retrieving Equity Prices
 ========================
 
+.. note::
+    See :ref:`equity-data-ref` for documentation about the dataset 
+    and variables.
+
 
 .. automodule:: moabdb
    :members: get_equity
