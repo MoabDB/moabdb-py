@@ -29,26 +29,13 @@ The MoabDB API offers the following features:
 * Built with Rust for fast data retrieval
 * Accessible with Python for easy data manipulation
 
-
-.. .. toctree::
-..    :maxdepth: 2
-..    :caption: Navigation
-
-..    MoabDB Home <https://moabdb.com>
-..    Docs Home <https://docs.moabdb.com/index.html>
-..    tutorial
-..    api
-..    datasets
-
-
 .. toctree::
    :maxdepth: 2
    :caption: MoabDB
 
+   Documentation Home <https://docs.moabdb.com/index.html>
    MoabDB Home <https://moabdb.com>
-   Docs Home <https://docs.moabdb.com/index.html>
-
-
+   
 .. toctree::
    :maxdepth: 2
    :caption: Tutorials
@@ -59,12 +46,26 @@ The MoabDB API offers the following features:
 
 .. toctree::
    :maxdepth: 2
+   :caption: Datasets
+
+   datasets/equiy
+   datasets/options
+   datasets/interest_rates
+   datasets/financials_balancesheet
+   datasets/financials_cashflows
+   datasets/financialss_income
+
+.. toctree::
+   :maxdepth: 2
    :caption: API
 
+   api/login
    api/get_equity
    api/get_options
    api/get_rates
-
+   api/get_bs
+   api/get_cf
+   api/get_is
 
    
 Data Provided by MoabDB
@@ -93,3 +94,13 @@ The source code is available on GitHub at: `MoabDB GitHub Repository <https://gi
 
 
    .. moabdb
+
+.. .. toctree::
+..    :maxdepth: 2
+..    :caption: Navigation
+
+..    MoabDB Home <https://moabdb.com>
+..    Docs Home <https://docs.moabdb.com/index.html>
+..    tutorial
+..    api
+..    datasets
