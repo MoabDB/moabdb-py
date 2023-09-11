@@ -20,30 +20,23 @@ Daily data examples, no login
 =============================
 
 .. Example 1
+.. code-block:: python
+    :linenos:
 
-**Import the library**
+    import moabdb as mdb
 
->>> import moabdb as mdb
+    # Request the last year of ``AAPL`` daily data.
+    df = mdb.get_equity("AAPL", "1y")
 
+    # Request the most recent year of daily equity data for multiple stocks.
+    df = mdb.get_equity(["AMZN", "MSFT", "TSLA"], "1y")
 
-Request the last year of ``AAPL`` daily data.
+    # Request a specific month of daily data.
+    df = mdb.get_equity("AMZN", start="2022-04-01", sample="1m")
 
->>> df = mdb.get_equity("AAPL", "1y")
+    # Request daily data between two specific dates.
+    df = mdb.get_equity("AMZN", start="2022-04-01", end="2022-10-01")
 
-
-Request the most recent year of daily equity data for multiple stocks.
-
->>> df = mdb.get_equity(["AMZN", "MSFT", "TSLA"], "1y")
-
-
-Request a specific month of daily data.
-
->>> df = mdb.get_equity("AMZN", start="2022-04-01", sample="1m")
-
-
-Request daily data between two specific dates.
-
->>> df = mdb.get_equity("AMZN", start="2022-04-01", end="2022-10-01")
 
 Intraday data examples, with login
 ==================================
