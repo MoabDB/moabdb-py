@@ -10,10 +10,7 @@ MoabDB API and Dataset Documentation
 ====================================
 
 MoabDB is a fast and easy-to-use database for financial data.
-
-.. .. |custom_link| raw:: html
-
-..    <a href="{{ custom_link[0] }}">{{ custom_link[1] }}</a>
+It is built with Rust for fast data retrieval and is accessible with Python for easy data manipulation.
 
 .. seealso::
 
@@ -48,11 +45,11 @@ The MoabDB API offers the following features:
    :caption: Datasets
 
    datasets/equity
-   datasets/options
    datasets/interest_rates
-   datasets/financials_balancesheet
-   datasets/financials_cashflows
-   datasets/financialss_income
+   datasets/options
+   .. datasets/financials_balancesheet
+   .. datasets/financials_cashflows
+   .. datasets/financialss_income
 
 .. toctree::
    :maxdepth: 2
@@ -60,11 +57,11 @@ The MoabDB API offers the following features:
 
    api/login
    api/get_equity
-   api/get_options
    api/get_rates
-   api/get_bs
-   api/get_cf
-   api/get_is
+   api/get_options
+   .. api/get_bs
+   .. api/get_cf
+   .. api/get_is
 
    
 Data Provided by MoabDB
