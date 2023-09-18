@@ -50,10 +50,10 @@ Try accessing data.
 Advanced Data Access with API Key
 =================================
 
-Example 1: Manually Enter Credentials
--------------------------------------
+Manually Enter Credentials
+--------------------------
 
-With an API key and subscription, intraday data is available. To access intraday data, you must first login with your API key:
+With an API key and subscription, you can access additional data. To access the data you must first login with your API key.
 
 .. code-block:: python
 
@@ -64,21 +64,19 @@ With an API key and subscription, intraday data is available. To access intraday
     print(test_df)
 
 
-Example 2: Use Config File for API Key
---------------------------------------
+Use Config File for API Key
+---------------------------
 
-**Example 2: Use Config File for API Credentials**:
-
-Instead of hardcoding your email and API key in the code, a safer practice is to store them in a configuration file. This method prevents the accidental exposure of sensitive credentials, especially if sharing or publishing your code.
+Instead of hardcoding your email and API key in the code, a safer practice is to store them in a configuration file. 
+This method prevents the accidental exposure of sensitive credentials, especially if sharing or publishing your code.
 
 **Config File Setup**
 
 Create a file named ``config.ini`` and structure it as follows:
 
 .. code-block:: python
-    [Credentials]
-    email = your-email@example.com
-    api_key = your-secret-api-key
+    email = 'your-email@example.com'
+    api_key = 'your-secret-api-key'
 
 **Using Credentials from the Config File in Python**
 
