@@ -26,7 +26,7 @@ Download the client library:
 
 
 Access data without API Key
----------------------------
+===========================
 
 1. **Import MoabDB Library**:
 
@@ -48,63 +48,66 @@ Access data without API Key
       print(test_df)
 
 
-Access data with API Key
-------------------------
+Access data with API Key - Manual Key Entry
+===========================================
 
-1. **Example 1: Manually Enter Credentials**:
+**Example 1: Manually Enter Credentials**:
 
-    With an API key and subscription, intraday data is available. To access intraday data, you must first login with your API key:
+With an API key and subscription, intraday data is available. To access intraday data, you must first login with your API key:
 
-    .. code-block:: python
+.. code-block:: python
 
-        import moabdb as mdb
+    import moabdb as mdb
 
-        mdb.login('your-email', 'your-api-key')
-        test_df = mdb.get_equity('AAPL',intraday=True)
-        print(test_df)
+    mdb.login('your-email', 'your-api-key')
+    test_df = mdb.get_equity('AAPL',intraday=True)
+    print(test_df)
 
 
-2. **Example 2: Use Config File for API Credentials**:
+Access data with API Key - Config File for Key Entry
+====================================================
 
-    Instead of hardcoding your email and API key in the code, a safer practice is to store them in a configuration file. This method prevents the accidental exposure of sensitive credentials, especially if sharing or publishing your code.
+**Example 2: Use Config File for API Credentials**:
 
-    Config File Setup
-    ^^^^^^^^^^^^^^^^^
+Instead of hardcoding your email and API key in the code, a safer practice is to store them in a configuration file. This method prevents the accidental exposure of sensitive credentials, especially if sharing or publishing your code.
 
-    Create a file named ``config.ini`` and structure it as follows:
+Config File Setup
+-----------------
 
-    .. code-block:: ini
-        [Credentials]
-        email = your-email@example.com
-        api_key = your-secret-api-key
+Create a file named ``config.ini`` and structure it as follows:
 
-    Using Credentials from the Config File in Python
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. code-block:: ini
+    [Credentials]
+    email = your-email@example.com
+    api_key = your-secret-api-key
 
-    With an API key and subscription, intraday data is available. 
-    To access intraday data, you must first retrieve your 
-    credentials from the config file and then login with your API key:
+Using Credentials from the Config File in Python
+------------------------------------------------
 
-    .. code-block:: python
+With an API key and subscription, intraday data is available. 
+To access intraday data, you must first retrieve your 
+credentials from the config file and then login with your API key:
 
-        import configparser
-        import moabdb as mdb
+.. code-block:: python
 
-        # Read credentials from config file
-        config = configparser.ConfigParser()
-        config.read('config.ini')
-        email = config['Credentials']['email']
-        api_key = config['Credentials']['api_key']
+    import configparser
+    import moabdb as mdb
 
-        mdb.login(email, api_key)
-        test_df = mdb.get_equity('AAPL', intraday=True)
-        print(test_df)
+    # Read credentials from config file
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+    email = config['Credentials']['email']
+    api_key = config['Credentials']['api_key']
 
-    Security Notes
-    ^^^^^^^^^^^^^^
+    mdb.login(email, api_key)
+    test_df = mdb.get_equity('AAPL', intraday=True)
+    print(test_df)
 
-    - Ensure your ``config.ini`` file is kept secure and out of the reach of unauthorized users.
-    - Never commit the ``config.ini`` file to public version control repositories to prevent exposure of your credentials.
+Security Notes
+--------------
+
+- Ensure your ``config.ini`` file is kept secure and out of the reach of unauthorized users.
+- Never commit the ``config.ini`` file to public version control repositories to prevent exposure of your credentials.
 
 
 
