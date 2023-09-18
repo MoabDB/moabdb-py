@@ -74,10 +74,14 @@ This method prevents the accidental exposure of sensitive credentials, especiall
 
 Create a file named ``config.ini`` and structure it as follows:
 
+.. .. code-block:: python
+..     email = 'your-email@example.com'
+..     api_key = 'your-secret-api-key'
 .. code-block:: python
-    email = 'your-email@example.com'
-    api_key = 'your-secret-api-key'
-
+    :linenos:
+    import configparser
+    import moabdb as mdb
+    
 **Using Credentials from the Config File in Python**
 
 With an API key and subscription, intraday data is available. 
@@ -85,7 +89,7 @@ To access intraday data, you must first retrieve your
 credentials from the config file and then login with your API key:
 
 .. code-block:: python
-
+    :linenos:
     import configparser
     import moabdb as mdb
 
