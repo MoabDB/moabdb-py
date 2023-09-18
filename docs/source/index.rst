@@ -76,7 +76,7 @@ API Documentation
 -----------------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: API
 
    api/login
@@ -88,12 +88,6 @@ API Documentation
    .. api/get_is
 
 
-```python
-import moabdb as mdb
-mdb.get_equity("AAPL")
-# something idk docs
-```
-
 
 Source code
 -----------
@@ -103,14 +97,8 @@ The source code is available on GitHub at: `MoabDB GitHub Repository <https://gi
 
 
 
-   .. moabdb
-
-.. .. toctree::
-..    :maxdepth: 2
-..    :caption: Navigation
-
-..    MoabDB Home <https://moabdb.com>
-..    Docs Home <https://docs.moabdb.com/index.html>
-..    tutorial
-..    api
-..    datasets
+.. ```python
+.. import moabdb as mdb
+.. mdb.get_equity("AAPL")
+.. # something idk docs
+.. ```
