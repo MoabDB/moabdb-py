@@ -12,9 +12,9 @@ MoabDB API and Dataset Documentation
 MoabDB is a fast and easy-to-use database for financial data.
 It is built with Rust for fast data retrieval and is accessible with Python for easy data manipulation.
 
-.. seealso::
+.. note::
 
-   Information on subscriptions to advnaced datasets can be found at the homepage: 
+   If you're looking for subscriptions options they can be found at  
    `MoabDB.com <https://moabdb.com>`_
 
 
@@ -24,14 +24,32 @@ API Highlights
 The MoabDB API offers the following features:
 
 * Built with Rust for fast data retrieval
-* Accessible with Python for easy data manipulation
+* Easily accessible with Python
+* Simple and intuitive
+* Robust data offerings
+* Customizable requests
+
+
+Data Provided by MoabDB
+-----------------------
+
+MoabDB provides the following data:
+
+* Equities: Daily-level and Second-by-second
+* Options: Daily-level and Minute-by-minute
+* Interest Rates
+* Financial Statements
+
 
 .. toctree::
    :maxdepth: 2
 
    Documentation Home <https://docs.moabdb.com/index.html>
    MoabDB Home <https://moabdb.com>
-   
+
+Getting Started Tutorials
+-------------------------
+
 .. toctree::
    :maxdepth: 2
    :caption: Tutorials
@@ -39,6 +57,9 @@ The MoabDB API offers the following features:
    tutorial/installation
    tutorial/simple_example
 
+
+Dataset Documentation
+---------------------
 
 .. toctree::
    :maxdepth: 2
@@ -50,6 +71,9 @@ The MoabDB API offers the following features:
    .. datasets/financials_balancesheet
    .. datasets/financials_cashflows
    .. datasets/financialss_income
+
+API Documentation
+-----------------
 
 .. toctree::
    :maxdepth: 2
@@ -63,16 +87,6 @@ The MoabDB API offers the following features:
    .. api/get_cf
    .. api/get_is
 
-   
-Data Provided by MoabDB
------------------------
-
-MoabDB provides the following data:
-
-* Equities: Daily-level and Second-by-second
-* Options: Daily-level and Minute-by-minute
-* Interest Rates
-* Financial Statements
 
 ```python
 import moabdb as mdb
