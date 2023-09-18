@@ -15,43 +15,43 @@ Before you begin:
 * Ensure you have your API key on hand. You can find this in your account dashboard.
 
 
-Installation
-------------
+Install and Quickstart
+======================
 
-Download the client library:
+The following example will run through installing, importing, and using the MoabDB library.
+
+**Download the client library**
 
 .. code-block:: bash
 
    pip install moabdb
 
 
-Access data without API Key
-===========================
+**Import Library**
 
-1. **Import MoabDB Library**:
+Once installed, import the MoabDB library.
 
-   Once installed, import the MoabDB library.
+.. code-block:: python
 
-   .. code-block:: python
+    import moabdb as mdb
 
-      import moabdb as mdb
+**Test that the library is working**
 
-2. **Test Connection**:
+Try accessing data.
 
-   Verify that the setup is successful:
+.. code-block:: python
 
-   .. code-block:: python
+    import moabdb as mdb
 
-      import moabdb as mdb
-
-      test_df = mdb.get_equity('AAPL')
-      print(test_df)
+    test_df = mdb.get_equity('AAPL')
+    print(test_df)
 
 
-Access data with API Key - Manual Key Entry
-===========================================
+Advanced Data Access with API Key
+=================================
 
-**Example 1: Manually Enter Credentials**:
+Example 1: Manually Enter Credentials
+-------------------------------------
 
 With an API key and subscription, intraday data is available. To access intraday data, you must first login with your API key:
 
@@ -64,19 +64,19 @@ With an API key and subscription, intraday data is available. To access intraday
     print(test_df)
 
 
-Access data with API Key - Config File for Key Entry
-====================================================
+Example 2: Use Config File for API Key
+--------------------------------------
 
 **Example 2: Use Config File for API Credentials**:
 
 Instead of hardcoding your email and API key in the code, a safer practice is to store them in a configuration file. This method prevents the accidental exposure of sensitive credentials, especially if sharing or publishing your code.
 
 Config File Setup
------------------
+~~~~~~~~~~~~~~~~~
 
 Create a file named ``config.ini`` and structure it as follows:
 
-.. code-block:: ini
+.. code-block:: python
     [Credentials]
     email = your-email@example.com
     api_key = your-secret-api-key
