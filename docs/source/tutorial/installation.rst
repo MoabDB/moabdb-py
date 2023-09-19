@@ -78,6 +78,7 @@ Create a file named ``config.ini`` and structure it as follows:
 ..     email = 'your-email@example.com'
 ..     api_key = 'your-secret-api-key'
 .. code-block:: python
+
     import configparser
     import moabdb as mdb
 
@@ -88,6 +89,7 @@ To access intraday data, you must first retrieve your
 credentials from the config file and then login with your API key:
 
 .. code-block:: python
+    
     import configparser
     import moabdb as mdb
 
