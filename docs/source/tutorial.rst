@@ -8,4 +8,5 @@ using python and MoabDB.
    :maxdepth: 2
 
    tutorial/installation
-   tutorial/example1_plot
+   tutorial/ex1_plot
+   tutorial/ex2_plot_intraday

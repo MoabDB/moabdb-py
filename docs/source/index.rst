@@ -55,7 +55,8 @@ Getting Started Tutorials
    :caption: Tutorials
 
    tutorial/installation
-   tutorial/example1_plot
+   tutorial/ex1_plot
+   tutorial/ex2_plot_intraday
 
 
 API Documentation
