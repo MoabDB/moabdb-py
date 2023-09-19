@@ -55,7 +55,23 @@ Getting Started Tutorials
    :caption: Tutorials
 
    tutorial/installation
-   tutorial/simple_example
+   tutorial/example1_plot
+
+
+API Documentation
+-----------------
+
+.. toctree::
+   :maxdepth: 1
+   :caption: API
+
+   api/login
+   api/get_equity
+   api/get_rates
+   api/get_options
+   .. api/get_bs
+   .. api/get_cf
+   .. api/get_is
 
 
 Dataset Documentation
@@ -72,20 +88,6 @@ Dataset Documentation
    .. datasets/financials_cashflows
    .. datasets/financialss_income
 
-API Documentation
------------------
-
-.. toctree::
-   :maxdepth: 1
-   :caption: API
-
-   api/login
-   api/get_equity
-   api/get_rates
-   api/get_options
-   .. api/get_bs
-   .. api/get_cf
-   .. api/get_is
 
 
 
