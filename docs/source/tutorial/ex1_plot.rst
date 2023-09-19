@@ -74,7 +74,12 @@ With our data in hand, we can now plot it:
     plt.legend()
     plt.show()
 
+.. figure:: /_static/images/ex1_fig1.jpg
+   :alt: Single Stock with Daily-Level Data
+   :align: center
+   :width: 80%
 
+   
 
 Plotting Multiple Stocks with Daily-Level Data
 ==============================================
