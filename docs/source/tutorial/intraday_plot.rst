@@ -15,6 +15,12 @@ Prerequisites
 
 Prior to running this example, you should have the following:
 
+- You will need `matplotlib` installed. If you haven't already, you can install it with:
+
+  .. code-block:: bash
+
+     pip install matplotlib
+
 - For advanced plotting, ensure you've set up and authenticated with MoabDB as described in the Quick Start guide.
 - The advanced plotting will assume you have a ``config.ini`` file in your working directory with the following structure: 
 
@@ -24,12 +30,29 @@ Prior to running this example, you should have the following:
       email = your-email@example.com
       api_key = your-secret-api-key
 
+- Login to MoabDB using ``mdb.login()``:
+  
+  .. code-block:: python
 
-- You will need `matplotlib` installed. If you haven't already, you can install it with:
+        import configparser
+        import moabdb as mdb
+        import matplotlib.pyplot as plt
+        import matplotlib.dates as mdates
 
-  .. code-block:: bash
+        # Constants defined here for flexibility
+        TIC = 'MSFT'
+        SAMPLE = '1d'
+        DAY_START = '9:30'
+        DAY_END = '16:00'
 
-     pip install matplotlib
+        # Reading in credentials from config.ini file
+        # Read credentials from config file
+        config = configparser.ConfigParser()
+        config.read('config.ini')
+        email = config.get("Credentials", "email")
+        api_key = config.get("Credentials", "api_key")
+        mdb.login(email, api_key)
+
 
 
 Plotting Single Stock with Daily-Level Data
@@ -40,26 +63,6 @@ First, let's retrieve some financial data. For this example, we'll fetch histori
 Import MoabDB and fetch data
 ----------------------------
 
-.. code-block:: python
-
-    import configparser
-    import moabdb as mdb
-    import matplotlib.pyplot as plt
-    import matplotlib.dates as mdates
-
-    # Constants defined here for flexibility
-    TIC = 'MSFT'
-    SAMPLE = '1d'
-    DAY_START = '9:30'
-    DAY_END = '16:00'
-
-    # Reading in credentials from config.ini file
-    # Read credentials from config file
-    config = configparser.ConfigParser()
-    config.read('config.ini')
-    email = config.get("Credentials", "email")
-    api_key = config.get("Credentials", "api_key")
-    mdb.login(email, api_key)
 
 
 Plot 1 day of intraday data
