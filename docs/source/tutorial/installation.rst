@@ -15,31 +15,35 @@ Before you begin:
 * Ensure you have your API key on hand. You can find this in your account dashboard.
 
 
-Install and Quickstart
-======================
 
-The following example will run through installing, importing, and using the MoabDB library.
+Install and Load Library
+========================
 
-**Download the client library**
+You can install the MoabDB library using ``pip``.
 
 .. code-block:: bash
 
    pip install moabdb
 
-
-**Import Library**
-
-Once installed, import the MoabDB library.
+Once installed, you can load the library in your Python code.
 
 .. code-block:: python
 
     import moabdb as mdb
 
-**Test that the library is working**
 
-Try accessing data.
+
+Data Access without API Key
+===========================
+
+To access basic data, you do not need an API key.
+The ``get_equity()`` function can be used to 
+access end-of-day stock data.
+
+**Simple Example to Access MoabDB Data**
 
 .. code-block:: python
+    :linenos:
 
     import moabdb as mdb
 
@@ -50,11 +54,13 @@ Try accessing data.
 Advanced Data Access with API Key
 =================================
 
-With an API key and subscription, intraday data is available. 
-To access intraday data, you can enter your 
+With an API key and subscription, intraday data and other
+advanced datasets are available. 
+As an example, to access intraday data you can enter your 
 credentials by either:
-1. Manually entering your email and API
-2. Using a ``config.ini`` file
+
+1. Manually enter your email and API key in the code.
+2. Using a ``config.ini`` file: 
 
 You then can use the ``mdb.login()`` function to login with your credentials.
 
@@ -64,6 +70,7 @@ Manually Entering Credentials
 To access advanced data you must first login with your API key.
 
 .. code-block:: python
+    :linenos:
 
     import moabdb as mdb
 
@@ -88,22 +95,10 @@ Create a file named ``config.ini`` and structure it as follows:
     email = 'your-email@example.com'
     api_key = 'your-secret-api-key'
 
-**Read Config File and Login**
+**Read Config File, Login, and Access Data**
 
 .. code-block:: python
-
-    import configparser
-    import moabdb as mdb
-
-    # Read credentials from config file
-    config = configparser.ConfigParser()
-    config.read('config.ini')
-    email = config['Credentials']['email']
-    api_key = config['Credentials']['api_key']
-
-**Login and Access Data**
-
-.. code-block:: python
+    :linenos:
 
     import configparser
     import moabdb as mdb
