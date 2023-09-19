@@ -135,6 +135,11 @@ With our data in hand, we can now plot it:
     plt.show()
 
 
+.. figure:: /_static/images/ex1_fig2.jpg
+   :alt: Single Stock with Daily-Level Data
+   :align: center
+   :width: 80%
+
 Plotting Cumulative Returns for Multiple Stocks
 ===============================================
 
@@ -190,7 +195,10 @@ the initial price, and then subtracting 1 Let's compute this for our stocks:
     plt.show()
 
 
-
+.. figure:: /_static/images/ex1_fig3.jpg
+   :alt: Single Stock with Daily-Level Data
+   :align: center
+   :width: 80%
 
 With these simple steps, you've fetched financial data using MoabDB 
 and visualized it with a basic chart. Explore more with 
