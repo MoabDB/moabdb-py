@@ -91,8 +91,8 @@ Create a file named ``config.ini`` and structure it as follows:
 .. code-block:: ini
 
     [Credentials]
-    email = 'your-email@example.com'
-    api_key = 'your-secret-api-key'
+    email = your-email@example.com
+    api_key = your-secret-api-key
 
 **Read Config File, Login, and Access Data**
 
@@ -104,8 +104,8 @@ Create a file named ``config.ini`` and structure it as follows:
     # Read credentials from config file
     config = configparser.ConfigParser()
     config.read('config.ini')
-    email = config['Credentials']['email']
-    api_key = config['Credentials']['api_key']
+    email = config.get("Credentials","email")
+    api_key = config.get("Credentials","api_key")
 
     # Login and access data
     mdb.login(email, api_key)

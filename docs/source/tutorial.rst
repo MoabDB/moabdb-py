@@ -7,6 +7,6 @@ using python and MoabDB.
 .. toctree::
    :maxdepth: 2
 
-   tutorial/installation
+   tutorial/ex0_install
    tutorial/ex1_plot
    tutorial/ex2_plot_intraday

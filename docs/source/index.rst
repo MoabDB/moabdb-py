@@ -54,7 +54,7 @@ Getting Started Tutorials
    :maxdepth: 2
    :caption: Tutorials
 
-   tutorial/installation
+   tutorial/ex0_install
    tutorial/ex1_plot
    tutorial/ex2_plot_intraday
 

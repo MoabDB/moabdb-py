@@ -1,81 +1,143 @@
 Plotting Intraday Stock Prices
 ##############################
 
-In this guide, we will walk you through the steps to retrieve 
-financial data using MoabDB and how to create a basic 
-chart using the `matplotlib` library.
+.. image:: https://img.shields.io/pypi/v/moabdb.svg
+   :target: https://pypi.python.org/pypi/moabdb
+   :alt: PyPI Version
+
+Continuing with the theme of price plotting, this guide will walk
+ you through how to plot intraday stock prices using MoabDB and `matplotlib`.
+
+Prerequisites
+=============
+
+- For advanced plotting, ensure you've set up and authenticated with MoabDB as described in the Quick Start guide.
+- The advanced plotting will assume you have a ``config.ini`` file in your working directory with the following structure: 
+
+  .. code-block:: ini
+
+      [Credentials]
+      email = your-email@example.com
+      api_key = your-secret-api-key
 
 
-.. Prerequisites
-.. =============
+- You will need `matplotlib` installed. If you haven't already, you can install it with:
 
-.. - For advanced plotting, ensure you've set up and authenticated with MoabDB as described in the Quick Start guide.
-..   The advanced plotting will assume you have a ``config.ini`` file in your working directory with the following structure: 
+  .. code-block:: bash
 
-..   .. code-block:: ini
-
-..       [Credentials]
-..       email = 'your-email@example.com'
-..       api_key = 'your-secret-api-key'
+     pip install matplotlib
 
 
-.. - You will need `matplotlib` installed. If you haven't already, you can install it with:
+Plotting Single Stock with Daily-Level Data
+===========================================
 
-..   .. code-block:: bash
+First, let's retrieve some financial data. For this example, we'll fetch historical closing prices for a given stock (e.g., `AAPL`):
 
-..      pip install matplotlib
+Import MoabDB and fetch data
+----------------------------
+
+.. code-block:: python
+
+    import configparser
+    import moabdb as mdb
+    import matplotlib.pyplot as plt
+    import matplotlib.dates as mdates
+
+    # Constants defined here for flexibility
+    TIC = 'MSFT'
+    SAMPLE = '1d'
+    DAY_START = '9:30'
+    DAY_END = '16:00'
+
+    # Reading in credentials from config.ini file
+    # Read credentials from config file
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+    email = config.get("Credentials", "email")
+    api_key = config.get("Credentials", "api_key")
+    mdb.login(email, api_key)
 
 
-.. Plotting Single Stock with Daily-Level Data
-.. ===========================================
+Plot 1 day of intraday data
+---------------------------
 
-.. First, let's retrieve some financial data. For this example, we'll fetch historical closing prices for a given stock (e.g., `AAPL`):
+**Simple plot**
 
-.. Import MoabDB and fetch data
-.. ----------------------------
+With our data in hand, we can now plot it:
 
-.. .. code-block:: python
+.. code-block:: python
 
-..     import moabdb as mdb
-..     import matplotlib.pyplot as plt
+    import configparser
+    import moabdb as mdb
+    import matplotlib.pyplot as plt
+    import matplotlib.dates as mdates
 
-..     # Constants defined here for flexibility
-..     TIC = 'MSFT'
-..     SAMPLE = '5y'
+    # Constants defined here for flexibility
+    TIC = 'MSFT'
+    SAMPLE = '1d'
+    DAY_START = '9:30'
+    DAY_END = '16:00'
 
-..     # Load and Check Data
-..     data_df = mdb.get_equity(tickers=TIC, sample=SAMPLE)
-..     print(data_df.head())
+    # Reading in credentials from config.ini file
+    # Read credentials from config file
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+    email = config.get("Credentials", "email")
+    api_key = config.get("Credentials", "api_key")
+    mdb.login(email, api_key)
 
+    # Load and get price data
+    data_df = mdb.get_equity(tickers=TIC, sample=SAMPLE, intraday=True)
+    price_df = data_df['Close'].between_time(DAY_START, DAY_END)
 
-.. Visualizing Data with Matplotlib
-.. --------------------------------
+    # Plot
+    price_df.plot()
+    plt.show()
 
-.. With our data in hand, we can now plot it:
+**Customization with Matplotlib**
 
-.. .. code-block:: python
+The simple plot leaves a lot to be desired. Let's customize it with `matplotlib`:
 
-..     import moabdb as mdb
-..     import matplotlib.pyplot as plt
+.. code-block:: python
 
-..     # Constants defined here for flexibility
-..     TIC = 'MSFT'
-..     SAMPLE = '5y'
+    import configparser
+    import moabdb as mdb
+    import matplotlib.pyplot as plt
+    import matplotlib.dates as mdates
 
-..     # Load and Check Data
-..     data_df = mdb.get_equity(tickers=TIC, sample=SAMPLE)
-..     print(data_df.head())
+    # Constants defined here for flexibility
+    TIC = 'MSFT'
+    SAMPLE = '1d'
+    DAY_START = '9:30'
+    DAY_END = '16:00'
 
-..     # Creating the plot
-..     x = data_df.index
-..     y = data_df['Close']
+    # Reading in credentials from config.ini file
+    # Read credentials from config file
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+    email = config.get("Credentials", "email")
+    api_key = config.get("Credentials", "api_key")
+    mdb.login(email, api_key)
 
-..     fig, ax = plt.subplots(figsize=(6,4))
-..     ax.plot(x, y, label=TIC, color='blue')
-..     ax.set_xlabel('Date')
-..     ax.set_ylabel('Closing Price (in $)')
-..     plt.legend()
-..     plt.show()
+    # Load and get price data
+    data_df = mdb.get_equity(tickers=TIC, sample=SAMPLE, intraday=True)
+    price_df = data_df['Close'].between_time(DAY_START, DAY_END)
+
+    # Plot Data Values
+    x = price_df.index
+    y = price_df.values
+
+    # Plot
+    fig, ax = plt.subplots(figsize=(8,4))
+    ax.plot(x, y, label=TIC, color='blue')
+    ax.set_xlabel('Date')
+    ax.set_ylabel('Closing Price (in $)')
+    ax.xaxis.set_major_formatter(
+        mdates.ConciseDateFormatter(ax.xaxis.get_major_locator()))
+    fig.autofmt_xdate()
+    plt.legend()
+    plt.show()
+
 
 
 
