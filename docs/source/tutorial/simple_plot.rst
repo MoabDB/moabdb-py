@@ -1,6 +1,10 @@
 Plotting Daily-Level Stock Prices
 #################################
 
+.. image:: https://img.shields.io/pypi/v/moabdb.svg
+   :target: https://pypi.python.org/pypi/moabdb
+   :alt: PyPI Version
+   
 In this guide, we will walk you through the steps to retrieve 
 financial data using MoabDB and how to create a basic 
 chart using the `matplotlib` library.
@@ -11,6 +15,8 @@ three examples of plotting data:
 - Single Stock with Daily-Level Data
 - Multiple Stocks with Daily-Level Data
 - Multiple Stocks with Cumulative Returns
+
+
 
 
 Prerequisites

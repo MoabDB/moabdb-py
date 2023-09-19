@@ -1,4 +1,4 @@
-Plotting Intraday Stock Prices
+Plotting Intraday Candlesticks
 ##############################
 
 .. image:: https://img.shields.io/pypi/v/moabdb.svg
@@ -6,10 +6,14 @@ Plotting Intraday Stock Prices
    :alt: PyPI Version
 
 Continuing with the theme of price plotting, this guide will walk
- you through how to plot intraday stock prices using MoabDB and `matplotlib`.
+you through how to plot intraday stock prices using MoabDB and `matplotlib`.
+
+We'll plot candlestock charts to illustrate intraday data.
 
 Prerequisites
 =============
+
+Prior to running this example, you should have the following:
 
 - For advanced plotting, ensure you've set up and authenticated with MoabDB as described in the Quick Start guide.
 - The advanced plotting will assume you have a ``config.ini`` file in your working directory with the following structure: 
