@@ -70,7 +70,6 @@ Manually Entering Credentials
 To access advanced data you must first login with your API key.
 
 .. code-block:: python
-    :linenos:
 
     import moabdb as mdb
 
@@ -98,7 +97,6 @@ Create a file named ``config.ini`` and structure it as follows:
 **Read Config File, Login, and Access Data**
 
 .. code-block:: python
-    :linenos:
 
     import configparser
     import moabdb as mdb
