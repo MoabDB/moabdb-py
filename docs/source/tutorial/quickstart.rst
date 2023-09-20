@@ -35,8 +35,12 @@ Once installed, you can load the library in your Python code.
 
 
 
+.. _login-example:
+
 Data Access without API Key
 ---------------------------
+
+
 
 To access basic data, you do not need an API key.
 The ``get_equity()`` function can be used to 
@@ -56,76 +60,71 @@ access end-of-day stock data.
 Advanced Data Access with API Key
 ---------------------------------
 
-.. include:: api/login
-   :start-after: Start login description
-   :end-before: End login description
+Advanced Data Access with API Key
+---------------------------------
+
+With an API key and subscription, intraday data and other
+advanced datasets are available. 
+As an example, to access intraday data you can enter your 
+credentials by either:
+
+1. Manually enter your email and API key in the code.
+2. Using a ``config.ini`` file: 
+
+You then can use the ``mdb.login()`` function to login with your credentials.
+
+Manually Entering Credentials
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To access advanced data you must first login with your API key.
+
+.. code-block:: python
+
+    import moabdb as mdb
+
+    mdb.login('your-email', 'your-api-key')
+    test_df = mdb.get_equity('AAPL', intraday=True)
+    print(test_df)
 
 
-.. Advanced Data Access with API Key
-.. ---------------------------------
+Using ``config.ini`` File for Credentials
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. With an API key and subscription, intraday data and other
-.. advanced datasets are available. 
-.. As an example, to access intraday data you can enter your 
-.. credentials by either:
+Instead of hardcoding your email and API key in the code, a safer practice is to store them in a configuration file. 
+This method prevents the accidental exposure of sensitive credentials, especially if sharing or publishing your code.
 
-.. 1. Manually enter your email and API key in the code.
-.. 2. Using a ``config.ini`` file: 
+**Create Config File**
 
-.. You then can use the ``mdb.login()`` function to login with your credentials.
+Create a file named ``config.ini`` and structure it as follows:
 
-.. Manually Entering Credentials
-.. ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. code-block:: ini
 
-.. To access advanced data you must first login with your API key.
+    [Credentials]
+    email = your-email@example.com
+    api_key = your-secret-api-key
 
-.. .. code-block:: python
+**Read Config File, Login, and Access Data**
 
-..     import moabdb as mdb
+.. code-block:: python
 
-..     mdb.login('your-email', 'your-api-key')
-..     test_df = mdb.get_equity('AAPL', intraday=True)
-..     print(test_df)
+    import configparser
+    import moabdb as mdb
 
+    # Read credentials from config file
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+    email = config.get("Credentials","email")
+    api_key = config.get("Credentials","api_key")
 
-.. Using ``config.ini`` File for Credentials
-.. ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    # Login and access data
+    mdb.login(email, api_key)
+    test_df = mdb.get_equity('AAPL', intraday=True)
+    print(test_df)
 
-.. Instead of hardcoding your email and API key in the code, a safer practice is to store them in a configuration file. 
-.. This method prevents the accidental exposure of sensitive credentials, especially if sharing or publishing your code.
+**Security Notes**
 
-.. **Create Config File**
-
-.. Create a file named ``config.ini`` and structure it as follows:
-
-.. .. code-block:: ini
-
-..     [Credentials]
-..     email = your-email@example.com
-..     api_key = your-secret-api-key
-
-.. **Read Config File, Login, and Access Data**
-
-.. .. code-block:: python
-
-..     import configparser
-..     import moabdb as mdb
-
-..     # Read credentials from config file
-..     config = configparser.ConfigParser()
-..     config.read('config.ini')
-..     email = config.get("Credentials","email")
-..     api_key = config.get("Credentials","api_key")
-
-..     # Login and access data
-..     mdb.login(email, api_key)
-..     test_df = mdb.get_equity('AAPL', intraday=True)
-..     print(test_df)
-
-.. **Security Notes**
-
-.. - Ensure your ``config.ini`` file is kept secure and out of the reach of unauthorized users.
-.. - Never commit the ``config.ini`` file to public version control repositories to prevent exposure of your credentials.
+- Ensure your ``config.ini`` file is kept secure and out of the reach of unauthorized users.
+- Never commit the ``config.ini`` file to public version control repositories to prevent exposure of your credentials.
 
 
 Conclusion
