@@ -56,7 +56,7 @@ access end-of-day stock data.
 Advanced Data Access with API Key
 ---------------------------------
 
-.. include:: api_description.rst
+.. include:: api/login.rst
    :start-after: Start login description
    :end-before: End login description
 
