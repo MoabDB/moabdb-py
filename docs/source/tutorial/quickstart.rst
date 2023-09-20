@@ -43,7 +43,6 @@ To access the data, we will use the ``get_equity()`` function to end-of-day stoc
 MoabDB will return a Pandas DataFrame:
 
 .. code-block:: python
-    :linenos:
 
     print(test_df.head())
 
@@ -55,25 +54,36 @@ MoabDB will return a Pandas DataFrame:
     2023-08-24   AAPL  181.70  183.08  172.76  176.08  177.50  176.05  176.08  129308295  1201840
     2023-08-25   AAPL  176.97  179.14  175.28  178.57  177.98  178.50  178.58  114993736  1098505
 
+.. note::
+
+    The daily-level ``get_equity()`` function currently returns prices based on after-market hours. 
+    In a future release this will be updated to return prices based on regular market hours.
+
+
 .. _login-example:
 
 Using ``mdb.login()`` for Advanced Data Access
 ----------------------------------------------
 
-With an API key and subscription, intraday data and other
-advanced datasets are available. 
-As an example, to access intraday data you can enter your 
-credentials by either:
+Prerequisites
+^^^^^^^^^^^^^
 
-1. Manually enter your email and API key in the code.
-2. Using a ``config.ini`` file: 
+To access advanced data:
 
-You then can use the ``mdb.login()`` function to login with your credentials.
+* Sign up for an account at `MoabDB.com <https://moabdb.com>`_.
+* Ensure you have your API key on hand. You can find this in your account dashboard.
 
-Manually Entering Credentials
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+With your API key and active subscription, intraday data and other advanced datasets are available. 
+You can login and access advanced data in two ways:
 
-To access advanced data you must first login with your API key.
+1. Manually enter your email and API key in the ``mdb.login()`` function.
+2. Using a ``config.ini`` file and the ``configparser`` library. Then use the ``mdb.login()`` function.
+
+
+Manually Entering API Credentials
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Entering your email and API key in the ``mdb.login()`` function is the simplest way to access advanced data.
 
 .. code-block:: python
 
@@ -83,14 +93,17 @@ To access advanced data you must first login with your API key.
     test_df = mdb.get_equity('AAPL', intraday=True)
     print(test_df)
 
+However, depending on your use case, frequently entering the API key can be tedious. 
+An alternative is to use a ``config.ini`` file to store your credentials.
 
-Using ``config.ini`` File for Credentials
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Using ``config.ini`` File to Store API Credentials
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Instead of hardcoding your email and API key in the code, a safer practice is to store them in a configuration file. 
 This method prevents the accidental exposure of sensitive credentials, especially if sharing or publishing your code.
 
-**Create Config File**
+**Create the Config File**
 
 Create a file named ``config.ini`` and structure it as follows:
 
@@ -116,7 +129,13 @@ Create a file named ``config.ini`` and structure it as follows:
     # Login and access data
     mdb.login(email, api_key)
     test_df = mdb.get_equity('AAPL', intraday=True)
-    print(test_df)
+
+.. note::
+
+    * The ``config.ini`` file must be in the same directory as your Python script.
+    * If you are using a Jupyter Notebook, ensure the ``config.ini`` file is in the same directory as the notebook.
+    * If you store the ``config.ini`` file in a different directory, you must specify the path to the file in the ``config.read()`` function.
+
 
 **Security Notes**
 
