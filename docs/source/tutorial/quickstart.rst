@@ -1,13 +1,15 @@
+
+====================
 Quickstart
-##########
+====================
 
 Getting Started with MoabDB
-===========================
+---------------------------
 
 Welcome to the MoabDB documentation! If you're new to MoabDB, this guide will help you set up and make your first API call.
 
 Prerequisites
--------------
+^^^^^^^^^^^^^
 
 Before you begin:
 
@@ -17,7 +19,7 @@ Before you begin:
 
 
 Install and Load Library
-========================
+------------------------
 
 You can install the MoabDB library using ``pip``.
 
@@ -34,7 +36,7 @@ Once installed, you can load the library in your Python code.
 
 
 Data Access without API Key
-===========================
+---------------------------
 
 To access basic data, you do not need an API key.
 The ``get_equity()`` function can be used to 
@@ -52,7 +54,7 @@ access end-of-day stock data.
 
 
 Advanced Data Access with API Key
-=================================
+---------------------------------
 
 With an API key and subscription, intraday data and other
 advanced datasets are available. 
@@ -65,7 +67,7 @@ credentials by either:
 You then can use the ``mdb.login()`` function to login with your credentials.
 
 Manually Entering Credentials
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To access advanced data you must first login with your API key.
 
@@ -79,7 +81,7 @@ To access advanced data you must first login with your API key.
 
 
 Using ``config.ini`` File for Credentials
------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Instead of hardcoding your email and API key in the code, a safer practice is to store them in a configuration file. 
 This method prevents the accidental exposure of sensitive credentials, especially if sharing or publishing your code.

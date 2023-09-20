@@ -1,5 +1,7 @@
+
+==================
 MoabDB API
-##########
+==================
 
 .. toctree::
    :maxdepth: 2
@@ -11,9 +13,3 @@ MoabDB API
    api/get_bs
    api/get_cf
    api/get_is
-   .. get_equity
-   .. get_options
-   .. get_rates
-   .. get_is
-   .. get_bs
-   .. get_cf

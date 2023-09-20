@@ -52,7 +52,7 @@ release = __version__
 
 html_theme = "sphinx_book_theme"
 html_title = f'<strong>{project}</strong> <i>{release}</i>'
-html_favicon = '_static/favicon.ico'
+html_favicon = '_static/favicon-32x32.ico'
 html_baseurl = 'https://docs.moabdb.com/'
 html_static_path = ['_static']
 html_css_files = ["custom.css"]

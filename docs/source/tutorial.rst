@@ -1,5 +1,7 @@
+
+==================
 Getting Started
-###############
+==================
 
 The tutorial series walks you through common problems and solutions
 using python and MoabDB.

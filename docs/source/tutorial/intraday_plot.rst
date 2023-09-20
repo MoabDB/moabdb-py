@@ -34,23 +34,21 @@ Prior to running this example, you should have the following:
   
   .. code-block:: python
 
-        import configparser
         import moabdb as mdb
-        import matplotlib.pyplot as plt
-        import matplotlib.dates as mdates
 
         # Constants defined here for flexibility
-        TIC = 'MSFT'
-        SAMPLE = '1d'
-        DAY_START = '9:30'
-        DAY_END = '16:00'
+        # TIC = 'MSFT'
+        # SAMPLE = '1d'
+        # DAY_START = '9:30'
+        # DAY_END = '16:00'
 
-        # Reading in credentials from config.ini file
         # Read credentials from config file
         config = configparser.ConfigParser()
         config.read('config.ini')
         email = config.get("Credentials", "email")
         api_key = config.get("Credentials", "api_key")
+
+        # MoabDB login
         mdb.login(email, api_key)
 
 

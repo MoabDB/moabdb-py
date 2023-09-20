@@ -1,10 +1,12 @@
+
+=================================
 Plotting Daily-Level Stock Prices
-#################################
+=================================
 
 .. image:: https://img.shields.io/pypi/v/moabdb.svg
    :target: https://pypi.python.org/pypi/moabdb
    :alt: PyPI Version
-   
+
 In this guide, we will walk you through the steps to retrieve 
 financial data using MoabDB and how to create a basic 
 chart using the `matplotlib` library.
@@ -20,7 +22,7 @@ three examples of plotting data:
 
 
 Prerequisites
-=============
+-------------
 
 - You will need `matplotlib` installed. If you haven't already, you can install it with:
 
@@ -30,12 +32,12 @@ Prerequisites
 
 
 Plotting Single Stock with Daily-Level Data
-===========================================
+-------------------------------------------
 
 First, let's retrieve some financial data. For this example, we'll fetch historical closing prices for a given stock (e.g., `MSFT`):
 
 Import MoabDB and fetch data
-----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: python
 
@@ -52,7 +54,7 @@ Import MoabDB and fetch data
 
 
 Visualizing Data with Matplotlib
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 With our data in hand, we can now plot it:
 
@@ -88,12 +90,12 @@ With our data in hand, we can now plot it:
    
 
 Plotting Multiple Stocks with Daily-Level Data
-==============================================
+----------------------------------------------
 
 First, let's retrieve some financial data. For this example, we'll fetch historical closing prices for a given stock (e.g., `AAPL`):
 
 Import MoabDB and fetch data
-----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: python
 
@@ -110,7 +112,7 @@ Import MoabDB and fetch data
 
 
 Visualizing Data with Matplotlib
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 With our data in hand, we can now plot it:
 
@@ -147,7 +149,7 @@ With our data in hand, we can now plot it:
    :width: 80%
 
 Plotting Cumulative Returns for Multiple Stocks
-===============================================
+-----------------------------------------------
 
 To visualize the performance of various stocks over time, 
 we'll compute and plot their cumulative returns. Mathematically, the 
@@ -162,7 +164,7 @@ subtracted by 1. This gives us a percentage that we can plot over time.
 
 
 Compute and Visualize Cumulative Returns with Matplotlib
---------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We can easily calculate cumulative return as price `t` divided by 
 the initial price, and then subtracting 1 Let's compute this for our stocks:
