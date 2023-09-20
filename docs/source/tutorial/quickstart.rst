@@ -115,6 +115,9 @@ Create a file named ``config.ini`` and structure it as follows:
 
 **Read Config File, Login, and Access Data**
 
+If the ``config.ini`` file is in the same directory as your Python script, 
+you can use the ``configparser`` library to read the file and access the credentials as follows:
+
 .. code-block:: python
 
     import configparser
@@ -136,6 +139,19 @@ Create a file named ``config.ini`` and structure it as follows:
     * If you are using a Jupyter Notebook, ensure the ``config.ini`` file is in the same directory as the notebook.
     * If you store the ``config.ini`` file in a different directory, you must specify the path to the file in the ``config.read()`` function.
 
+The intraday data is returned as a Pandas DataFrame:
+
+.. code-block:: python
+    
+        print(test_df.head())
+
+                            Symbol  Trades   Volume  Imbalance   Close    VWAP  BidPrc  AskPrc  BidSz  AskSz
+        Time
+        2023-08-21 08:00:01   AAPL    82.0   6846.0    -4438.0  175.22  175.21  175.41  175.44    1.0    2.0
+        2023-08-21 08:00:02   AAPL   155.0  14020.0   -13940.0  175.24  175.19  175.41  175.44    1.0    1.0
+        2023-08-21 08:00:03   AAPL   235.0  16678.0   -16598.0  175.25  175.21  175.41  175.48    1.0   12.0
+        2023-08-21 08:00:04   AAPL   149.0   7073.0    -7045.0  175.27  175.28  175.41  175.48    1.0   11.0
+        2023-08-21 08:00:05   AAPL   143.0   4555.0    -4327.0  175.27  175.26  175.41  175.46    1.0    1.0
 
 **Security Notes**
 
