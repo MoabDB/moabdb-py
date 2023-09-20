@@ -3,9 +3,11 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-====================================
-MoabDB API and Dataset Documentation
-====================================
+========================
+MoabDB API Documentation
+========================
+
+f'<strong>{project}</strong> <i>{release}</i>'
 
 MoabDB is a fast and easy-to-use database for financial data.
 It is built with Rust for fast data retrieval and is accessible with Python for easy data manipulation.
