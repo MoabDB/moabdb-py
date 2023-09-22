@@ -1,6 +1,6 @@
 
 =================================
-Plotting Daily-Level Stock Prices
+Plotting Daily Prices
 =================================
 
 .. image:: https://img.shields.io/pypi/v/moabdb.svg

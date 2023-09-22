@@ -11,4 +11,5 @@ using python and MoabDB.
 
    tutorial/quickstart
    tutorial/simple_plot
-   tutorial/intraday_plot
+   tutorial/return_distributions
+   tutorial/candlesticks
