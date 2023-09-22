@@ -3,6 +3,10 @@
 Quickstart
 ====================
 
+.. image:: https://img.shields.io/pypi/v/moabdb.svg
+   :target: https://pypi.python.org/pypi/moabdb
+   :alt: PyPI Version
+   
 Welcome to the MoabDB documentation! If you're new to MoabDB, 
 this guide will help you set up and make your first API call.
 
@@ -15,7 +19,7 @@ You can install the MoabDB library using ``pip``.
 
    pip install moabdb
 
-Once installed, you can load the library in your Python code.
+Once installed, you can load the library in your Python code
 
 .. code-block:: python
 
@@ -105,7 +109,7 @@ The intraday data is returned as a Pandas DataFrame:
         2023-08-21 08:00:03   AAPL   235.0  16678.0   -16598.0  175.25  175.21  175.41  175.48    1.0   12.0
         2023-08-21 08:00:04   AAPL   149.0   7073.0    -7045.0  175.27  175.28  175.41  175.48    1.0   11.0
         2023-08-21 08:00:05   AAPL   143.0   4555.0    -4327.0  175.27  175.26  175.41  175.46    1.0    1.0
-        
+
 
 However, depending on your use case, frequently entering the API key can be tedious. 
 An alternative is to use a ``config.ini`` file to store your credentials.
