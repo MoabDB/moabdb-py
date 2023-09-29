@@ -45,12 +45,17 @@ MoabDB provides the following data:
 * Financial Statements
 
 
-.. toctree::
-   :maxdepth: 2
+Important Links
+-----------------
 
-   Documentation Home <https://docs.moabdb.com/index.html>
+.. toctree::
+   :maxdepth: 1
+
    MoabDB Home <https://moabdb.com>
+   API Subscriptions <https://www.moabdb.com/pricing>
+   Documentation Home <https://docs.moabdb.com/index.html>
    tutorial/quickstart
+
 
 API Documentation
 -----------------
@@ -66,6 +71,7 @@ API Documentation
    api/get_bs
    api/get_is
    api/get_cf
+   
    
 Dataset Documentation
 ---------------------
