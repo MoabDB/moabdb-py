@@ -7,7 +7,7 @@ Install with pip:
 ```bash
 pip install moabdb
 ```
-Check out the [docs](https://docs.moabdb.com) and [getting started guide](https://docs.moabdb.com/moabdb.html#getting-started).
+Check out the [docs](https://docs.moabdb.com) and [getting started guide](https://docs.moabdb.com/tutorial/quickstart.html).
 
 ## Development
 Contributions will be licensed under the MIT license unless specified otherwise.
