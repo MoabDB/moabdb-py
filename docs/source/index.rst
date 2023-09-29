@@ -96,6 +96,7 @@ Examples and Guides
    :caption: Simple Tutorials
  
    tutorial/simple_plot
+   tutorial/simple_returns
    tutorial/return_distributions
    tutorial/calc_beta
 
