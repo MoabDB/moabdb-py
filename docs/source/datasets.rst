@@ -1,8 +1,10 @@
 Datasets
 ########
 
+Currently the library offers the following datasets:
+
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    datasets/equity
    datasets/options
