@@ -7,14 +7,18 @@
 MoabDB API Documentation
 ========================
 
-f'<strong>{project}</strong> <i>{release}</i>'
+
+.. image:: https://img.shields.io/pypi/v/moabdb.svg
+   :target: https://pypi.python.org/pypi/moabdb
+
+.. '<strong>{project}</strong> <i>{release}</i>'
 
 MoabDB is a fast and easy-to-use database for financial data.
 It is built with Rust for fast data retrieval and is accessible with Python for easy data manipulation.
 
 .. note::
 
-   If you're looking for subscriptions options they can be found at  
+   If you're looking for subscriptions options, they are found at  
    `MoabDB.com <https://moabdb.com>`_
 
 
@@ -46,35 +50,23 @@ MoabDB provides the following data:
 
    Documentation Home <https://docs.moabdb.com/index.html>
    MoabDB Home <https://moabdb.com>
-
-Getting Started Tutorials
--------------------------
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Tutorials
-
    tutorial/quickstart
-   tutorial/simple_plot
-   tutorial/intraday_plot
-
 
 API Documentation
 -----------------
 
 .. toctree::
    :maxdepth: 1
-   :caption: API
+   :caption: API calls
 
    api/login
    api/get_equity
    api/get_rates
    api/get_options
-   .. api/get_bs
-   .. api/get_cf
-   .. api/get_is
-
-
+   api/get_bs
+   api/get_is
+   api/get_cf
+   
 Dataset Documentation
 ---------------------
 
@@ -83,11 +75,44 @@ Dataset Documentation
    :caption: Datasets
 
    datasets/equity
-   datasets/interest_rates
    datasets/options
-   .. datasets/financials_balancesheet
-   .. datasets/financials_cashflows
-   .. datasets/financialss_income
+   datasets/financials_balancesheet
+   datasets/financials_income
+   datasets/financials_cashflows
+   datasets/interest_rates
+   
+
+Examples and Guides
+-------------------
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Simple Tutorials
+ 
+   tutorial/simple_plot
+   tutorial/return_distributions
+   tutorial/calc_beta
+
+.. .. toctree::
+..    :maxdepth: 2
+..    :caption: Intraday Tutorials
+
+..    tutorial/quickstart
+..    tutorial/simple_plot
+..    tutorial/return_distributions
+..    tutorial/candlesticks
+
+
+.. .. toctree::
+..    :maxdepth: 2
+..    :caption: Advanced Tutorials
+
+..    tutorial/quickstart
+..    tutorial/simple_plot
+..    tutorial/return_distributions
+..    tutorial/candlesticks
+
+
 
 
 
